@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": ";AAAA,UAAU;EACN,WAAW,EAAE,OAAO;EACpB,GAAG,EACC,WAAW,EACX,gDAAgD,CAAC,eAAe,EAChE,+CAA+C,CAAC,cAAc;EAClE,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,GAAG",
+    "sources": [
+        "brandingDefinitions.scss"
+    ],
+    "names": [],
+    "file": "brandingDefinitions.css"
+}

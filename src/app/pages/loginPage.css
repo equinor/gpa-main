@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Equinor;
+  src: local("☻"), url(/fonts/Equinor-Regular.woff2) format("woff2"), url(/fonts/assets/fonts/Equinor-Regular.woff) format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+
+.loginPage h1 {
+  color: #ff003a;
+  font-family: "Equinor";
+}
+/*# sourceMappingURL=loginPage.css.map */

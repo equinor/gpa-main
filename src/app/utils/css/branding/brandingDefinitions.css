@@ -1,0 +1,8 @@
+@charset "UTF-8";
+@font-face {
+  font-family: Equinor;
+  src: local("☻"), url(../../../assets/fonts/Equinor-Regular.woff2) format("woff2"), url(../../../assets/fonts/Equinor-Regular.woff) format("woff");
+  font-style: normal;
+  font-weight: 400;
+}
+/*# sourceMappingURL=brandingDefinitions.css.map */

@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": ";ACAA,UAAU;EACN,WAAW,EAAE,OAAO;EACpB,GAAG,EACC,WAAW,EACX,iCAAiC,CAAC,eAAe,EACjD,6CAA6C,CAAC,cAAc;EAChE,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,GAAG;;;ADLpB,AACI,UADM,CACN,EAAE,CAAC;EACC,KAAK,ECOD,OAAO;EDNX,WAAW,EAAE,SAAS;CACzB",
+    "sources": [
+        "loginPage.scss",
+        "../utils/css/branding/brandingDefinitions.scss"
+    ],
+    "names": [],
+    "file": "loginPage.css"
+}
