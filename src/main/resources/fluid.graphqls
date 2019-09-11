@@ -1,0 +1,13 @@
+extend type Query {
+    fluids: [Fluid]
+}
+
+type Fluid {
+    id: ID!
+    name: String
+    components: [Component]
+}
+
+type Mutation {
+    newFluid(name: String!): Fluid!
+}
