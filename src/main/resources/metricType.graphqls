@@ -1,0 +1,9 @@
+type MetricType {
+    value: Float
+    unit: String
+}
+
+input MetricInput {
+    value: Float
+    unit: String
+}

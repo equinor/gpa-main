@@ -1,13 +1,25 @@
-extend type Query {
-    fluids: [Fluid]
-}
-
 type Fluid {
     id: ID!
-    name: String
-    components: [Component]
+    nitrogen: MetricType!
+    methane: MetricType!
+    ethane: MetricType!
+    propane: MetricType!
+    iButane: MetricType!
+    nButane: MetricType!
+    iPentane: MetricType!
+    nPentane: MetricType!
+    nHexane: MetricType!
 }
 
-type Mutation {
-    newFluid(name: String!): Fluid!
+input FluidInput {
+    nitrogen: MetricInput!
+    methane: MetricInput!
+    ethane: MetricInput!
+    propane: MetricInput!
+    iButane: MetricInput!
+    nButane: MetricInput!
+    iPentane: MetricInput!
+    nPentane: MetricInput!
+    nHexane: MetricInput!
 }
+

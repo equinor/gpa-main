@@ -1,0 +1,24 @@
+type Calculation {
+    id: ID!
+    ship: Ship!
+    fluid: Fluid!
+    transport: Transport!
+    standard: Standard!
+    result: [ResultRow]!
+}
+
+type Query {
+    calculation(id:ID!):Calculation!
+    result(id:ID!): Calculation!
+    calculations: [Calculation]!
+}
+
+type Mutation {
+    addCalculation(
+        ship: ShipInput!,
+        fluid: FluidInput!,
+        transport: TransportInput!,
+        standard: StandardInput!,
+        result: [ResultRowInput]!
+    ):Calculation!
+}
