@@ -1,4 +1,4 @@
-import "./index.css";
+import "./app/utils/css/reset.css";
 
 import * as serviceWorker from "./serviceWorker";
 

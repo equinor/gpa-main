@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": ";ACAA,UAAU;EACN,WAAW,EAAE,OAAO;EACpB,GAAG,EACC,WAAW,EACX,iCAAiC,CAAC,eAAe,EACjD,6CAA6C,CAAC,cAAc;EAChE,UAAU,EAAE,MAAM;EAClB,WAAW,EAAE,GAAG;;;ADLpB,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;EACX,gBAAgB,EAAE,OAAO;CAQ5B;;AAZD,AAKI,WALO,CAKP,EAAE,CAAC;EACC,WAAW,EAAE,SAAS;EACtB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,MAAM;EACnB,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "TitleBlock.scss",
+        "../../utils/css/branding/brandingDefinitions.scss"
+    ],
+    "names": [],
+    "file": "TitleBlock.css"
+}

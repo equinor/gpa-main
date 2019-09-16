@@ -1,0 +1,10 @@
+.SiteMenu {
+  float: left;
+  width: 290px;
+  border-right: 2px solid #f7f7f7;
+  display: table-cell;
+  background-color: white;
+  position: absolute;
+  min-height: 300px;
+}
+/*# sourceMappingURL=SiteMenu.css.map */

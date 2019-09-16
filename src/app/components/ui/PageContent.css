@@ -1,0 +1,10 @@
+.PageContent {
+  float: left;
+  width: 100%;
+  display: table-cell;
+  background-color: white;
+  padding-left: 292px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*# sourceMappingURL=PageContent.css.map */

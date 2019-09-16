@@ -1,0 +1,37 @@
+@import "../../utils/css/branding/brandingDefinitions.scss";
+
+.NavBar {
+    width: 100%;
+    background: #FFFFFF;
+    float: left;
+    height: 64px;
+    border-bottom: 2px solid #f7f7f7;
+
+    .left {
+        float: left;
+        margin: 0 0 0 50px;
+
+        span {
+            font-family: "Equinor";
+            color: black;
+            display: block;
+            float: left;
+            margin: 25px 0 0 25px;
+            font-size: 16px;
+        }
+    }
+
+    svg {
+        color: $green;
+        width: 24px;
+        height: 24px;
+        margin: 20px 0 0 0;
+        float: left;
+    }
+
+    .right {
+        float: right;
+        margin: 0 50px 0 0;
+    }
+
+}
