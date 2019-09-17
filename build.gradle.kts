@@ -38,12 +38,13 @@ dependencies {
     implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:5.10.0")
     implementation("com.graphql-java-kickstart:graphql-java-tools:5.6.1")
 
+    implementation("com.graphql-java:graphql-java-extended-scalars:1.0")
+
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-
 }
 
 tasks.withType<KotlinCompile> {

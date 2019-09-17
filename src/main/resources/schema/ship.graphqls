@@ -12,10 +12,3 @@ input ShipInput {
 extend type Query {
     ships: [Ship]
 }
-
-extend type Mutation {
-    newShip(
-        name: String,
-        country: String
-    ):Ship!
-}

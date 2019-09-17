@@ -1,23 +1,32 @@
 package com.equinor.neqsim.entities
 
 import javax.persistence.*
-import MetricType
 
 @Entity
-class Fluid {
-    var nitrogen: MetricType,
-    var methane: MetricType,
-    var ethane: MetricType,
-    var propane: MetricType,
-    var iButane: MetricType,
-    var nButane: MetricType,
-    var iPentane: MetricType,
-    var nPentane: MetricType,
-    var nHexane: MetricType,
+class Fluid (
+    var nitrogen: Double,
+    var nitrogen_unit: String = "mol/sec",
+    var methane: Double,
+    var methane_unit: String = "mol/sec",
+    var ethane: Double,
+    var ethane_unit: String = "mol/sec",
+    var propane: Double,
+    var propane_unit: String = "mol/sec",
+    var iButane: Double,
+    var iButane_unit: String = "mol/sec",
+    var nButane: Double,
+    var nButane_unit: String = "mol/sec",
+    var iPentane: Double,
+    var iPentane_unit: String = "mol/sec",
+    var nPentane: Double,
+    var nPentane_unit: String = "mol/sec",
+    var nHexane: Double,
+    var nHexane_unit: String = "mol/sec",
 
-    @Id @GeneratedValue var id: Long? = null
+    @Id
+    var id: Long? = null,
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "calculation_id")
-    var calculation: Calculation? = null,
-}
+    @MapsId
+    var calculation: Calculation? = null
+)

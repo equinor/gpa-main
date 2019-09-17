@@ -1,19 +1,19 @@
 package com.equinor.neqsim.entities
 
+import java.time.OffsetDateTime
 import javax.persistence.*
-import java.util.Date;
 
 @Entity
-class Transport {
-    var volume: Float,
-    var pressure: Float,
-    var boilOffRate: Float,
-    var from: Date,
-    var to: Date,
+class Transport (
+    var volume: Double,
+    var pressure: Double,
+    var boilOffRate: Double,
+    var fromDate: OffsetDateTime,
+    var toDate: OffsetDateTime,
 
-    @Id @GeneratedValue var id: Long? = null
+    @Id @GeneratedValue var id: Long? = null,
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "calculation_id")
-    var calculation: Calculation? = null,
-}
+    @MapsId
+    var calculation: Calculation? = null
+)

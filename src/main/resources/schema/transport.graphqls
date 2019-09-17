@@ -1,18 +1,18 @@
-scalar Date
+scalar DateTime
 
 type Transport {
     id: ID!
     volume: Float!
     pressure: Float!
     boilOffRate: Float!
-    from: Date!
-    to: Date!
+    fromDate: DateTime!
+    toDate: DateTime!
 }
 
 input TransportInput {
     volume: Float!
     pressure: Float!
     boilOffRate: Float!
-    from: Date!
-    to: Date!
+    fromDate: DateTime!
+    toDate: DateTime!
 }

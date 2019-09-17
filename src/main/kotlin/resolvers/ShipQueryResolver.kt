@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component
 class ShipQueryResolver(private val shipRepository: ShipRepository): GraphQLQueryResolver {
 
     fun ships(): MutableIterable<Ship> {
-        val ships = shipRepository.findAll()
-        return ships
+        return shipRepository.findAll()
     }
 }

@@ -3,22 +3,22 @@ package com.equinor.neqsim.entities
 import javax.persistence.*
 
 @Entity
-class Calculation {
-    @Id @GeneratedValue var id: Long? = null
-
-//TODO: Relationship?
-    @OneToOne(fetch = FetchType.Lazy, mappedBy = "calculation")
-    var ship: Ship,
-
-    @OneToOne(fetch = FetchType.Lazy, mappedBy = "calculation")
+class Calculation(
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var fluid: Fluid,
 
-    @OneToOne(fetch = FetchType.Lazy, mappedBy = "calculation")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var transport: Transport,
 
-    @OneToOne(fetch = FetchType.Lazy, mappedBy = "calculation")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var standard: Standard,
 
-    @OneToMany(fetch = FetchType.Lazy, mappedBy = "calculation")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE])
+    @JoinColumn(name = "ship_id")
+    var ship: Ship,
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation")
     var result: MutableSet<ResultRow> = mutableSetOf(),
-}
+
+    @Id @GeneratedValue var id: Long? = null
+)

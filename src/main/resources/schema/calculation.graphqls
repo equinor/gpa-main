@@ -4,12 +4,11 @@ type Calculation {
     fluid: Fluid!
     transport: Transport!
     standard: Standard!
-    result: [ResultRow]!
+#    result: [ResultRow]
 }
 
 type Query {
     calculation(id:ID!):Calculation!
-    result(id:ID!): Calculation!
     calculations: [Calculation]!
 }
 
@@ -19,6 +18,5 @@ type Mutation {
         fluid: FluidInput!,
         transport: TransportInput!,
         standard: StandardInput!,
-        result: [ResultRowInput]!
-    ):Calculation!
+    ): Calculation!
 }
