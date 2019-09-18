@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Color} from '../../common/Color';
 
 interface FieldsetProps {
   legendText: string,
@@ -21,8 +22,8 @@ const CircleIcon = styled.span`
   max-width: 40px;
   max-height: 40px;
   border-radius: 50%;
-  color: #007079;
-  background-color: #CCE2E4;
+  color: ${Color.GREEN};
+  background-color: ${Color.LIGHT_GREEN};
   display: flex;
   justify-content: center;
   align-items: center;

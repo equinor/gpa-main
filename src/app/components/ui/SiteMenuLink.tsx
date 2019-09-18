@@ -2,6 +2,7 @@ import React from 'react';
 import {EquinorIcon, Icon, IProps as EquinorIconProps} from '../../assets/svg/EquinorIcon';
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
+import {Color} from '../../common/Color';
 
 interface SiteMenuLinkProps {
   to: string,
@@ -10,7 +11,7 @@ interface SiteMenuLinkProps {
 }
 const MenuLink = styled(NavLink).attrs({
   activeStyle: {
-    color: '#007079'
+    color: Color.GREEN,
   }
 })`
   display: flex;

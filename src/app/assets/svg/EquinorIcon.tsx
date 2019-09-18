@@ -1,4 +1,5 @@
 import React from "react";
+import {Color} from '../../common/Color';
 
 export interface IProps {
   icon: Icon,
@@ -16,7 +17,7 @@ const MenuIcon: React.FC<IconProps> = ({size}) => (
             d="M2 5.33333V4H14V5.33333H2ZM2 8.66667H14V7.33333H2V8.66667ZM2 12H14V10.6667H2V12Z" fill="#007079"/>
     </mask>
     <g mask="url(#mask0)">
-      <rect width="16" height="16" fill="#007079"/>
+      <rect width="16" height="16" fill={Color.GREEN}/>
     </g>
   </svg>
 );
@@ -29,7 +30,7 @@ const UserIcon: React.FC<IconProps> = ({size}) => (
             fill="#007079"/>
     </mask>
     <g mask="url(#mask1)">
-      <rect width="16" height="16" fill="#007079"/>
+      <rect width="16" height="16" fill={Color.GREEN}/>
     </g>
   </svg>
 );
