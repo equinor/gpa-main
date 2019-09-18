@@ -1,23 +1,15 @@
-import './SiteContent.css';
-
+import styled from 'styled-components';
 import React from "react";
 
-export interface IProps { }
+const SiteContentStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+`;
 
-export interface IState { }
-
-export class SiteContent extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <div className="SiteContent">
-        {this.props.children}
-      </div>
-    );
-  }
-};
+export const SiteContent: React.FunctionComponent = (props) => (
+  <SiteContentStyled>
+    {props.children}
+  </SiteContentStyled>
+);

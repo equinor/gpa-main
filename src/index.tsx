@@ -1,31 +1,24 @@
 import "./app/utils/css/reset.css";
-
+import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import { BrowserRouter, Route, Router, Switch } from "react-router-dom";
-
-// import { ApolloProvider } from "react-apollo";
-import { HomePage } from "./app/pages/HomePage";
-import { LoginPage } from "./app/pages/LoginPage";
+import {BrowserRouter as Router} from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-// import { apolloClient } from "./app/api/endpoint";
-import { createBrowserHistory } from "history";
+import {App} from "./App";
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from '@apollo/react-hooks';
 
-const history = createBrowserHistory();
+const client = new ApolloClient({
+  uri: '/graphql'
+});
 
 ReactDOM.render(
-  // <ApolloProvider client={apolloClient}>
-  <BrowserRouter>
-    <Router history={history}>
-      <Switch>
-        <Route path="/login" component={LoginPage}></Route>
-        <Route path="/" component={HomePage}></Route>
-        <Route path="*" component={HomePage}></Route>
-      </Switch>
+  <ApolloProvider client={client}>
+    <Router>
+      <App/>
     </Router>
-  </BrowserRouter>,
-  // </ApolloProvider>,
+  </ApolloProvider>,
   document.getElementById("root")
 );
 
