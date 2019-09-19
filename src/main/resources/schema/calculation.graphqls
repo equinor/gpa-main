@@ -4,7 +4,7 @@ type Calculation {
     fluid: Fluid!
     transport: Transport!
     standard: Standard!
-#    result: [ResultRow]
+    result: [ResultRow]
 }
 
 type Query {

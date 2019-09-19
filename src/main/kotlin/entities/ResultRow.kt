@@ -10,7 +10,7 @@ class ResultRow (
     var wi_unit: String = "MJ/m^3",
     var gcv: Double,
     var gcv_unit: String = "MJ/m^3",
-    var gcv2: Double,
+    var gcv2: Double? = null,
     var gcv2_unit: String = "MJ/kg",
     var density: Double,
     var density_unit: String = "kg/m^3",

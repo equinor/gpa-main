@@ -17,7 +17,7 @@ class Calculation(
     @JoinColumn(name = "ship_id")
     var ship: Ship,
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var result: MutableSet<ResultRow> = mutableSetOf(),
 
     @Id @GeneratedValue var id: Long? = null

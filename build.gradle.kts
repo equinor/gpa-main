@@ -15,6 +15,12 @@ plugins {
 group = "com.equinor.neqsim"
 version = "1.0-SNAPSHOT"
 
+configurations.all {
+    resolutionStrategy {
+        preferProjectModules()
+    }
+}
+
 application {
     mainClassName = "com.equinor.neqsim.NeqsimApiApplicationKt"
 }
@@ -28,9 +34,11 @@ allOpen {
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
+    mavenLocal()
 }
 
 dependencies {
+
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.springframework.boot:spring-boot-starter")
 
@@ -45,6 +53,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework:NeqSim:1.1")
 }
 
 tasks.withType<KotlinCompile> {
