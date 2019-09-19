@@ -71,7 +71,7 @@ const CALCULATIONS_QUERY = gql`
     }
 `;
 
-interface Calculation {
+export interface Calculation {
   id: string,
   ship: {
     id: string,

@@ -3,7 +3,7 @@ import {PageContent} from "../components/ui/PageContent";
 import {TitleBlock} from "../components/ui/TitleBlock";
 import {H2} from '../components/ui/Headers';
 import styled from 'styled-components';
-import {CalculateFormContainer} from '../components/ui/CalculateFormContainer';
+import {CalculateFormContainer} from '../components/calculator/CalculateFormContainer';
 
 const CalculateWrapper = styled.div`
   padding: 25px;

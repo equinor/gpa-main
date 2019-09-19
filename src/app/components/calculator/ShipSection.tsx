@@ -1,19 +1,9 @@
-import React, {useState} from 'react';
-import {FormSection} from './FormSection';
-import {Label, TextInput} from './Inputs';
+import React from 'react';
+import {FormSection} from '../ui/FormSection';
+import {Label, TextInput} from '../ui/Inputs';
 import styled from 'styled-components';
 
-const ShipInputs = styled.span`
-  display: flex;
-  flex-direction: row;
-`;
-
-const ShipInput = styled.p`
-  flex-grow: 1;
-  margin-right: 25px;
-`;
-
-interface Ship {
+export interface Ship {
   country: string,
   name: string,
 }
@@ -24,7 +14,16 @@ interface ShipSectionProps {
   setShip(ship: Ship): void,
 }
 
-const ShipSection: React.FC<ShipSectionProps> = ({ship, setShip}) => (
+const ShipInputs = styled.span`
+  display: flex;
+  flex-direction: row;
+`;
+
+const ShipInput = styled.p`
+  margin-right: 25px;
+`;
+
+export const ShipSection: React.FC<ShipSectionProps> = ({ship, setShip}) => (
   <FormSection legendText='Ship' index={1}>
     <ShipInputs>
       <ShipInput>
@@ -52,13 +51,3 @@ const ShipSection: React.FC<ShipSectionProps> = ({ship, setShip}) => (
     </ShipInputs>
   </FormSection>
 );
-
-export const CalculateFormContainer = () => {
-  const [ship, setShip] = useState({name: '', country: ''});
-
-  return (
-    <form>
-      <ShipSection ship={ship} setShip={setShip}/>
-    </form>
-  );
-};

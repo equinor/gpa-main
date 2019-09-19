@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import {Color} from '../../common/Color';
 
-export const TextInput = styled.input.attrs({
-  type: 'text',
-})`
+const Input = styled.input`
   padding: 5px 10px;
   background-color: ${Color.LIGHT_GRAY};
   color: ${Color.GRAY};
@@ -13,8 +11,19 @@ export const TextInput = styled.input.attrs({
   font-family: Equinor,serif;
   line-height: 24px;
   width: 100%;
-  max-width: 300px;
   box-sizing: border-box;
+`;
+
+export const TextInput = styled(Input).attrs({
+  type: 'text',
+})`
+    max-width: 300px;
+`;
+
+export const NumberInput = styled(Input).attrs({
+  type: 'number',
+})`
+  max-width: 100px;
 `;
 
 export const Label = styled.label`
