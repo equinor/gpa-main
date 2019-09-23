@@ -3,7 +3,7 @@ version: "3"
 services:
   api:
     image: neqsim-api
-    build: .
+    build: api
     ports:
       - "8080:8080"
     depends_on:
@@ -12,6 +12,13 @@ services:
       - DB_URL=jdbc:postgresql://db:5432/neqsim
       - DB_USERNAME=neqsim
       - DB_PASSWORD=${POSTGRES_PASSWORD}
+
+  web:
+    image: neqsim-web
+    build: web
+    ports:
+      - "80:80"
+
   db:
     image: postgres:10-alpine
     ports:
@@ -22,4 +29,3 @@ services:
       - POSTGRES_USER=neqsim
       - POSTGRES_DB=neqsim
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-
