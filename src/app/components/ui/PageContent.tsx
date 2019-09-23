@@ -1,23 +1,16 @@
-import './PageContent.css';
-
+import styled from 'styled-components';
 import React from "react";
 
-export interface IProps { }
+const PageContentStyled = styled.div`
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  flex-direction: column;
+`;
 
-export interface IState { }
-
-export class PageContent extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <div className="PageContent">
-        {this.props.children}
-      </div>
-    );
-  }
-};
+export const PageContent: React.FunctionComponent = (props) => (
+  <PageContentStyled>
+    {props.children}
+  </PageContentStyled>
+);
