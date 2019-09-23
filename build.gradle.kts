@@ -15,12 +15,6 @@ plugins {
 group = "com.equinor.neqsim"
 version = "1.0-SNAPSHOT"
 
-configurations.all {
-    resolutionStrategy {
-        preferProjectModules()
-    }
-}
-
 application {
     mainClassName = "com.equinor.neqsim.NeqsimApiApplicationKt"
 }

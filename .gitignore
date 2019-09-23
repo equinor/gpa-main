@@ -51,3 +51,5 @@ gradle-app.setting
 
 # IntelliJ
 out/
+
+data
