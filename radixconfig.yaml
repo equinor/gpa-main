@@ -34,6 +34,17 @@ spec:
         - DB_URL
         - DB_USERNAME
         - DB_PASSWORD
+      environmentConfig:
+        - environment: dev
+          monitoring: false
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+            limits:
+              memory: "2048Mi"
+              cpu: "500m"
+          replicas: 1
     - name: oauth-proxy
       src: ./oauth-proxy
       ports:
