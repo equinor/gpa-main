@@ -1,0 +1,18 @@
+scalar DateTime
+
+type Transport {
+    id: ID!
+    volume: Float!
+    pressure: Float!
+    boilOffRate: Float!
+    fromDate: DateTime!
+    toDate: DateTime!
+}
+
+input TransportInput {
+    volume: Float!
+    pressure: Float!
+    boilOffRate: Float!
+    fromDate: DateTime!
+    toDate: DateTime!
+}

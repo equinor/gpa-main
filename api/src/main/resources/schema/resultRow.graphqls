@@ -1,0 +1,10 @@
+type ResultRow {
+    id: ID!
+    time: MetricType!
+    wi: MetricType!
+    gcv: MetricType!
+    density: MetricType!
+    temp: MetricType!
+    volume: MetricType!
+    energy: MetricType!
+}
