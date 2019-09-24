@@ -29,12 +29,19 @@ const Legend: React.FC = ({ children }) => {
   );
 };
 
+const S_FormSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 35px 0 0 0;
+`;
+
+
 const S_Legend = styled.legend`
   display: flex;
   align-items: center;
-  width: 45px;
-  height: 45px;
-  font-size: 26px;
+  width: 100%;
+  height: 42px;
+  font-size: 24px;
   font-family: Equinor,serif;
 `;
 
@@ -60,10 +67,3 @@ const S_FieldSet = styled.fieldset`
   display: flex;
   width: 100%;
 `;
-
-const S_FormSection = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 30px 0;
-`;
-

@@ -3,7 +3,7 @@ import { PageContent } from "../components/ui/PageContent";
 import { TitleBlock } from "../components/ui/TitleBlock";
 import { H2, P } from '../components/elements/Texts';
 import styled from 'styled-components/macro';
-import { CalculateFormContainer } from '../components/calculator/CalculateFormContainer';
+import { CalculateFormContainer } from '../components/content/calculator/CalculateFormContainer';
 
 export const CalculatorPage: React.FunctionComponent = () => (
   <PageContent>

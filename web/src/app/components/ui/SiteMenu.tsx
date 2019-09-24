@@ -13,5 +13,5 @@ const S_SiteMenu = styled.div`
   border-right: 2px solid ${Color.LIGHT_GRAY};
   display: flex;
   flex-direction: column;
-  padding: 20px 0 0 0;
+  padding: 15px 0 0 0;
 `;
