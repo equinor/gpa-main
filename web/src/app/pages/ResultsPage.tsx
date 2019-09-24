@@ -3,7 +3,7 @@ import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
 import {PageContent} from '../components/ui/PageContent';
 import {TitleBlock} from '../components/ui/TitleBlock';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const CALCULATIONS_QUERY = gql`
     {

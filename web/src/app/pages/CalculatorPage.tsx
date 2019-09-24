@@ -1,20 +1,24 @@
 import React from "react";
-import {PageContent} from "../components/ui/PageContent";
-import {TitleBlock} from "../components/ui/TitleBlock";
-import {H2} from '../components/ui/Headers';
-import styled from 'styled-components';
-import {CalculateFormContainer} from '../components/calculator/CalculateFormContainer';
-
-const CalculateWrapper = styled.div`
-  padding: 25px;
-`;
+import { PageContent } from "../components/ui/PageContent";
+import { TitleBlock } from "../components/ui/TitleBlock";
+import { H2, P } from '../components/elements/Texts';
+import styled from 'styled-components/macro';
+import { CalculateFormContainer } from '../components/content/calculator/CalculateFormContainer';
 
 export const CalculatorPage: React.FunctionComponent = () => (
   <PageContent>
     <TitleBlock>Calculator</TitleBlock>
-    <CalculateWrapper>
+    <S_PageWrapper>
       <H2>Calculate</H2>
-      <CalculateFormContainer/>
-    </CalculateWrapper>
+      <P>Fill all the values. After calculation, results are shown on the same page. </P>
+      <CalculateFormContainer />
+    </S_PageWrapper>
   </PageContent>
 );
+
+const S_PageWrapper = styled.div`
+  padding: 30px;
+  h2 {
+    margin: 0 0 20px 0;
+  }
+`;

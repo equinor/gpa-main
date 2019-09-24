@@ -6,5 +6,6 @@
         "**/*.css.map": {
             "when": "$(basename)"
         }
-    }
+    },
+    "editor.gotoLocation.multiple": "goto"
 }

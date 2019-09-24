@@ -8,6 +8,21 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: Equinor;
+    src:
+        local('☻☻'),
+        url(/fonts/Equinor-Bold.woff2) format('woff2'),
+        url(/fonts/assets/fonts/Equinor-Bold.woff) format('woff');
+    font-style: bold;
+    font-weight: 700;
+}
 
-$energyRed: #ff003a;
-$green: #007079;
+@font-face {
+    font-family: Equinor;
+    src:
+        local('☻☻☻'),
+        url(/fonts/Equinor-Medium.woff2) format('woff2'),
+        url(/fonts/assets/fonts/Equinor-Medium.woff) format('woff');
+    font-weight: 500;
+}
