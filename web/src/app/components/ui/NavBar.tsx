@@ -1,8 +1,22 @@
 import React from "react";
-import {EquinorIcon, Icon} from '../../assets/svg/EquinorIcon';
-import styled from 'styled-components';
+import { EquinorIcon, Icon } from '../../assets/svg/EquinorIcon';
+import styled from "styled-components/macro";
 
-const NavBarStyled = styled.nav`
+export const NavBar = () => {
+  return (
+    <S_NavBar>
+      <S_Header>
+        <EquinorIcon icon={Icon.MENU} size={24} />
+        <span>Neqsim</span>
+      </S_Header>
+      <div style={{ marginRight: '50px', height: "24px" }}>
+        <EquinorIcon icon={Icon.USER} size={24} />
+      </div>
+    </S_NavBar>
+  );
+};
+
+const S_NavBar = styled.nav`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -12,24 +26,15 @@ const NavBarStyled = styled.nav`
   justify-content: space-between;
 `;
 
-const Header = styled.div`
+const S_Header = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 50px;
   align-items: center;
   font-family: Equinor, serif;
+  > span {
+    margin: 2px 0 0 25px;
+    font-size: 18px; 
+    font-weight: 500;
+  }
 `;
-
-export const NavBar = () => {
-  return (
-    <NavBarStyled>
-      <Header>
-        <EquinorIcon icon={Icon.MENU} size={24}/>
-        <span style={{marginLeft: '25px'}}>Neqsim</span>
-      </Header>
-      <div style={{marginRight: '50px'}}>
-        <EquinorIcon icon={Icon.USER} size={24}/>
-      </div>
-    </NavBarStyled>
-  );
-};

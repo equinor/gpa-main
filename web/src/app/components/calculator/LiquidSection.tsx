@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import React from 'react';
-import {FormSection} from '../ui/FormSection';
-import {Label, NumberInput} from '../ui/Inputs';
+import { FormSection } from '../ui/FormSection';
+import { Label, NumberInput } from '../ui/Inputs';
 
 
 export interface Liquid {
@@ -38,7 +38,7 @@ interface LiquidComponentInputProps {
   onChange(value: number): void,
 }
 
-const LiquidComponentInput: React.FC<LiquidComponentInputProps> = ({onChange, componentName, componentValue}) => {
+const LiquidComponentInput: React.FC<LiquidComponentInputProps> = ({ onChange, componentName, componentValue }) => {
   return (
     <LiquidInput>
       <Label htmlFor={`liquid-${componentName}`}>
@@ -54,7 +54,7 @@ const LiquidComponentInput: React.FC<LiquidComponentInputProps> = ({onChange, co
   );
 };
 
-export const LiquidSection: React.FC<LiquidSectionProps> = ({liquid, setLiquid}) => (
+export const LiquidSection: React.FC<LiquidSectionProps> = ({ liquid, setLiquid }) => (
   <FormSection legendText='Liquid' index={2}>
     <LiquidInputs>
       <div>
@@ -62,18 +62,19 @@ export const LiquidSection: React.FC<LiquidSectionProps> = ({liquid, setLiquid})
         <LiquidComponentInput
           componentName='nitrogen'
           componentValue={liquid.nitrogen}
-          onChange={value => setLiquid({...liquid, nitrogen: value})}
+          onChange={value => setLiquid({ ...liquid, nitrogen: value })}
         />
       </div>
-      <div style={{flexGrow: 1, height: '180px'}}>
+      <div style={{ flexGrow: 1, height: '180px' }}>
         <h3>Light hydrocarbons</h3>
-        <div style={{display: 'flex', flexDirection: 'column', flexGrow: 1, flexWrap: 'wrap', height: '100%', justifyContent: 'flex-start', alignContent: 'flex-start'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, flexWrap: 'wrap', height: '100%', justifyContent: 'flex-start', alignContent: 'flex-start' }}>
           {
-            (Object.keys(liquid) as Array<keyof typeof liquid>).map(componentName => componentName !== 'nitrogen' && (
+            (Object.keys(liquid) as Array<keyof typeof liquid>).map((componentName, index) => componentName !== 'nitrogen' && (
               <LiquidComponentInput
+                key={index}
                 componentName={componentName}
                 componentValue={liquid[componentName]}
-                onChange={value => setLiquid({...liquid, [componentName]: value})}
+                onChange={value => setLiquid({ ...liquid, [componentName]: value })}
               />
             ))
           }

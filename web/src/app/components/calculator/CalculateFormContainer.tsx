@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Ship, ShipSection} from './ShipSection';
-import {Liquid, LiquidSection} from './LiguidSection';
+import {Liquid, LiquidSection} from './LiquidSection';
 import {gql} from 'apollo-boost';
 import {useMutation} from '@apollo/react-hooks';
 import {Calculation} from '../../pages/ResultsPage';

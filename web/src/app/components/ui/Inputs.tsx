@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import {Color} from '../../common/Color';
 
 const Input = styled.input`

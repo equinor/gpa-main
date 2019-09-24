@@ -8,6 +8,7 @@ import {SiteContent} from './app/components/ui/SiteContent';
 import {ResultsPage} from './app/pages/ResultsPage';
 import {Icon} from './app/assets/svg/EquinorIcon';
 import {SiteMenuLink} from './app/components/ui/SiteMenuLink';
+import "./app/utils/css/branding/brandingDefinitions.css";
 
 const NotFound = () => (
   <div>
