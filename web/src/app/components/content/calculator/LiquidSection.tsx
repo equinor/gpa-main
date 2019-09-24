@@ -36,7 +36,7 @@ export const LiquidSection: React.FC<LiquidSectionProps> = (props) => (
       </div>
       <div style={{ flexGrow: 1, height: '180px' }}>
         <H3>Light hydrocarbons</H3>
-        <div style={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', height: '100%', width: "500px", justifyContent: 'flex-start' }}>
+        <div style={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', height: '100%', width: "470px", justifyContent: 'flex-start' }}>
           {
             (Object.keys(props.liquid) as Array<keyof typeof props.liquid>).map((componentName, index) => componentName !== 'nitrogen' && (
               <LiquidComponentInput

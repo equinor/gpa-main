@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Ship, ShipSection } from './ShipSection';
+import { IShip, ShipSection } from './ShipSection';
 import { Liquid, LiquidSection } from './LiquidSection';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
@@ -31,7 +31,7 @@ const CALCULATE = gql`
 `;
 
 export const CalculateFormContainer = () => {
-  const [ship, setShip] = useState<Ship>({ name: '', country: '' });
+  const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<Liquid>({
     nitrogen: 0.691,
     methane: 91.93,
@@ -44,7 +44,7 @@ export const CalculateFormContainer = () => {
     nHexane: 0.0,
   });
 
-  const [addCalculation, { data }] = useMutation<Calculation, { ship: Ship, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation, { data }] = useMutation<Calculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
