@@ -13,14 +13,34 @@ const client = new ApolloClient({
   uri: '/api/graphql'
 });
 
-ReactDOM.render(
+// ReactDOM.render(
+//   <ApolloProvider client={client}>
+//     <Router>
+//       <App/>
+//     </Router>
+//   </ApolloProvider>,
+//   document.getElementById("root")
+// );
+
+const render = (Component:any) => {
+  return ReactDOM.render(
   <ApolloProvider client={client}>
     <Router>
       <App/>
     </Router>
   </ApolloProvider>,
-  document.getElementById("root")
-);
+    document.getElementById('root')
+  );
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+    render(NextApp);
+  });
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
