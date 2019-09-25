@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormSection } from '../../ui/FormSection';
-import { S_Label, TextInput } from '../../elements/Inputs';
+import { S_Label, TextInput, StandardInput } from '../../elements/Inputs';
 import styled from 'styled-components/macro';
 
 export interface IShip {
@@ -17,26 +17,24 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => (
   <FormSection legendText='Ship' index={1}>
     <S_ShipInputs>
       <S_ShipInput>
-        <S_Label htmlFor='ship-name'>
-          Name
-        </S_Label>
-        <TextInput
-          id='ship-name'
-          placeholder='Name'
+        <StandardInput
+          id="ship-name"
+          label="Name"
+          onChange={(e: any) => props.setShip({ ...props.ship, name: e.target.value })}
+          placeholder="Name"
           value={props.ship.name}
-          onChange={e => props.setShip({ ...props.ship, name: e.target.value })}
-        />
+          type="text"
+        ></StandardInput>
       </S_ShipInput>
       <S_ShipInput>
-        <S_Label htmlFor='ship-country'>
-          Country
-        </S_Label>
-        <TextInput
-          id='ship-country'
-          placeholder='Country'
+        <StandardInput
+          id="ship-country"
+          label="Country"
+          onChange={(e: any) => props.setShip({ ...props.ship, country: e.target.value })}
+          placeholder="Country"
           value={props.ship.country}
-          onChange={e => props.setShip({ ...props.ship, country: e.target.value })}
-        />
+          type="text"
+        ></StandardInput>
       </S_ShipInput>
     </S_ShipInputs>
   </FormSection>
@@ -49,5 +47,5 @@ const S_ShipInputs = styled.span`
 
 const S_ShipInput = styled.p`
   margin: 10px 30px 0 0;
-  width: 200px;
+  width: 225px;
 `;

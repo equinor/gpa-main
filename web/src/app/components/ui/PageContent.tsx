@@ -12,5 +12,6 @@ const S_PageContent = styled.div`
   display: flex;
   flex-grow: 1;
   height: 100%;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
