@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { IShip, ShipSection } from './ShipSection';
-import { Liquid, LiquidSection } from './LiquidSection';
+import { ILiquid, LiquidSection } from './LiquidSection';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { Calculation } from '../../../pages/ResultsPage';
+import { TransportSection } from './TransportSection';
 
 interface MetricInput {
   value: number,
@@ -32,7 +33,7 @@ const CALCULATE = gql`
 
 export const CalculateFormContainer = () => {
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
-  const [liquid, setLiquid] = useState<Liquid>({
+  const [liquid, setLiquid] = useState<ILiquid>({
     nitrogen: 0.691,
     methane: 91.93,
     ethane: 5.651,
@@ -63,6 +64,7 @@ export const CalculateFormContainer = () => {
     }}>
       <ShipSection ship={ship} setShip={setShip} />
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
+      <TransportSection></TransportSection>
       <button>Compute</button>
     </form>
   );

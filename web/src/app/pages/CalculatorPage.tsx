@@ -18,6 +18,8 @@ export const CalculatorPage: React.FunctionComponent = () => (
 
 const S_PageWrapper = styled.div`
   padding: 30px;
+  width: 800px;
+  box-sizing: border-box;
   h2 {
     margin: 0 0 20px 0;
   }
