@@ -8,6 +8,7 @@ export interface IStandardButtonProps {
     text: string;
     icon?: EIcon;
     onClick?: Function;
+    style?: Object;
 }
 
 const StStandardButton = styled.button`
@@ -30,11 +31,13 @@ const StStandardButton = styled.button`
 
 export const StandardButton = (props: IStandardButtonProps) => {
     return (
-        <StStandardButton onClick={() => {
-            if (props.onClick) {
-                props.onClick();
-            }
-        }}>
+        <StStandardButton
+            style={props.style}
+            onClick={() => {
+                if (props.onClick) {
+                    props.onClick();
+                }
+            }}>
             {props.icon &&
                 <EquinorIcon icon={props.icon} size={16}></EquinorIcon>
             }

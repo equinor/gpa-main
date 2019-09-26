@@ -59,7 +59,7 @@ const StCircleIcon = styled.span`
   font-size: 20px;
   margin-right: 20px;
   > span {
-    margin: -3px 0 0 0px;
+    margin: 1px 0 0 0px;
   }
 `;
 

@@ -74,10 +74,9 @@ const StTransportInput = styled.div`
     margin: 0 30px 20px 0;
 `;
 const StDateInfo = styled.div`
-    padding-top: 29px;
+    padding-top: 32px;
     box-sizing: border-box;
     > span {
-        font-family: Equinor;
         font-size: 12px;
     }
 `;
