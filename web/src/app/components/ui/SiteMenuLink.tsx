@@ -1,23 +1,23 @@
 import React from 'react';
-import { EquinorIcon, Icon, IProps as EquinorIconProps } from '../../assets/svg/EquinorIcon';
+import { EquinorIcon, EIcon} from '../../assets/svg/EquinorIcon';
 import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
-import { Color } from '../../common/Color';
+import { EColor } from '../../common/Color';
 
 interface SiteMenuLinkProps {
   to: string,
   name: string,
-  icon: Icon,
+  icon: EIcon,
 }
 
 export const SiteMenuLink: React.FunctionComponent<SiteMenuLinkProps> = ({ to, icon, name }) => (
-  <S_MenuLink to={to}>
+  <StMenuLink to={to}>
     <EquinorIcon icon={icon} />
     <span>{name}</span>
-  </S_MenuLink>
+  </StMenuLink>
 );
 
-const S_MenuLink = styled(NavLink)`
+const StMenuLink = styled(NavLink)`
   display: flex;
   flex-direction: row;
   padding: 20px 20px 20px 53px;
@@ -36,18 +36,18 @@ const S_MenuLink = styled(NavLink)`
   &:hover {
     background-color: #fdfdfd;
     > svg, rect {
-      fill: ${Color.BLACK};
+      fill: ${EColor.BLACK};
     }
     > span {
-      color: ${Color.BLACK};
+      color: ${EColor.BLACK};
     }
   }
   &.active {
     > span {
-      color: ${Color.GREEN};
+      color: ${EColor.GREEN};
     }
     > svg, rect {
-      fill: ${Color.GREEN};
+      fill: ${EColor.GREEN};
     }
   }
 `;

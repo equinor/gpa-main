@@ -1,8 +1,8 @@
 import styled from 'styled-components/macro';
 import React from 'react';
 import { FormSection } from '../../ui/FormSection';
-import { S_Label, NumberInput } from '../../elements/Inputs';
 import { H3 } from '../../elements/Texts';
+import { StandardInput } from '../../elements/Inputs';
 
 
 export interface ILiquid {
@@ -25,7 +25,7 @@ interface ILiquidSectionProps {
 
 export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => (
   <FormSection legendText='Liquid' index={2}>
-    <S_LiquidInputs>
+    <StLiquidInputs>
       <div>
         <H3>Standard gases</H3>
         <LiquidComponentInput
@@ -49,7 +49,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => (
           }
         </div>
       </div>
-    </S_LiquidInputs>
+    </StLiquidInputs>
   </FormSection>
 );
 
@@ -62,21 +62,20 @@ interface LiquidComponentInputProps {
 
 const LiquidComponentInput: React.FC<LiquidComponentInputProps> = (props) => {
   return (
-    <S_LiquidInput>
-      <S_Label htmlFor={`liquid-${props.componentName}`}>
-        {props.componentName}
-      </S_Label>
-      <NumberInput
+    <StLiquidInput>
+      <StandardInput
         id={`liquid-${props.componentName}`}
+        label={props.componentName}
+        onChange={(e:any) => props.onChange(parseFloat(e.target.value))}
+        placeholder={props.componentName}
         value={props.componentValue.toFixed(2)}
-        onChange={e => props.onChange(parseFloat(e.target.value))}
-        step='0.01'
-      />
-    </S_LiquidInput>
+        type="number"
+      ></StandardInput>
+    </StLiquidInput>
   );
 };
 
-const S_LiquidInputs = styled.span`
+const StLiquidInputs = styled.span`
   display: flex;
   flex-direction: row;
   h3 {
@@ -84,6 +83,7 @@ const S_LiquidInputs = styled.span`
   }
 `;
 
-const S_LiquidInput = styled.div`
+const StLiquidInput = styled.div`
       margin: 0 30px 20px 0;
+      width: 135px;
 `;

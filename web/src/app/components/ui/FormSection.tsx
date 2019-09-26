@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Color } from '../../common/Color';
+import { EColor } from '../../common/Color';
 
 interface FieldsetProps {
   legendText: string,
@@ -9,34 +9,34 @@ interface FieldsetProps {
 
 export const FormSection: React.FC<FieldsetProps> = ({ legendText, children, index }) => {
   return (
-    <S_FormSection>
-      <S_CircleIcon>
+    <StFormSection>
+      <StCircleIcon>
         <span>{index}</span>
-      </S_CircleIcon>
-      <S_FieldSet>
+      </StCircleIcon>
+      <StFieldSet>
         <Legend>{legendText}</Legend>
         {children}
-      </S_FieldSet>
-    </S_FormSection>
+      </StFieldSet>
+    </StFormSection>
   );
 };
 
 const Legend: React.FC = ({ children }) => {
   return (
-    <S_Legend>
+    <StLegend>
       {children}
-    </S_Legend>
+    </StLegend>
   );
 };
 
-const S_FormSection = styled.div`
+const StFormSection = styled.div`
   display: flex;
   flex-direction: row;
   margin: 35px 0 0 0;
 `;
 
 
-const S_Legend = styled.legend`
+const StLegend = styled.legend`
   display: flex;
   align-items: center;
   width: 100%;
@@ -45,14 +45,14 @@ const S_Legend = styled.legend`
   font-family: Equinor,serif;
 `;
 
-const S_CircleIcon = styled.span`
+const StCircleIcon = styled.span`
   min-width: 40px;
   min-height: 40px;
   max-width: 40px;
   max-height: 40px;
   border-radius: 50%;
-  color: ${Color.GREEN};
-  background-color: ${Color.LIGHT_GREEN};
+  color: ${EColor.GREEN};
+  background-color: ${EColor.LIGHT_GREEN};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +63,7 @@ const S_CircleIcon = styled.span`
   }
 `;
 
-const S_FieldSet = styled.fieldset`
+const StFieldSet = styled.fieldset`
   display: flex;
   width: 100%;
 `;

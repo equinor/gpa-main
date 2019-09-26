@@ -6,7 +6,7 @@ import {NavBar} from "./app/components/ui/NavBar";
 import {SiteMenu} from './app/components/ui/SiteMenu';
 import {SiteContent} from './app/components/ui/SiteContent';
 import {ResultsPage} from './app/pages/ResultsPage';
-import {Icon} from './app/assets/svg/EquinorIcon';
+import {EIcon} from './app/assets/svg/EquinorIcon';
 import {SiteMenuLink} from './app/components/ui/SiteMenuLink';
 import "./app/utils/css/branding/brandingDefinitions.css";
 
@@ -21,8 +21,8 @@ export const App = () => (
     <NavBar/>
     <SiteContent>
       <SiteMenu>
-        <SiteMenuLink to="/calculator" name="Calculator" icon={Icon.CALCULATOR}/>
-        <SiteMenuLink to="/results" name="Results" icon={Icon.RESULT}/>
+        <SiteMenuLink to="/calculator" name="Calculator" icon={EIcon.CALCULATOR}/>
+        <SiteMenuLink to="/results" name="Results" icon={EIcon.RESULT}/>
       </SiteMenu>
       <Switch>
         <Redirect exact from="/" to="/calculator"/>
