@@ -4,12 +4,14 @@ import { EColor } from '../../common/Color';
 export const H2 = styled.h2`
   font-family: Equinor,serif;
   font-size: 24px;
+  color: black;
 `;
 
 export const H3 = styled.h3`
   font-family: Equinor,serif;
   font-size: 16px;
   font-weight: 500;
+  color: black;
 `;
 
 export const P = styled.p`

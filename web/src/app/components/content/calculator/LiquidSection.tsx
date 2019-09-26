@@ -84,6 +84,6 @@ const StLiquidInputs = styled.span`
 `;
 
 const StLiquidInput = styled.div`
-      margin: 0 30px 20px 0;
+      margin: 0 30px 15px 0;
       width: 135px;
 `;

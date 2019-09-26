@@ -8,6 +8,7 @@ import { TransportSection } from './TransportSection';
 import { StandardSection } from './StandardSection';
 import { StandardButton } from '../../elements/Buttons';
 import { EIcon } from '../../../assets/svg/EquinorIcon';
+import { ResultContainer } from '../result/ResultContainer';
 
 interface MetricInput {
   value: number,
@@ -69,12 +70,14 @@ export const CalculateFormContainer = () => {
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
       <TransportSection></TransportSection>
       <StandardSection></StandardSection>
-      <div style={{margin: "30px 0 0 0"}}>
-        <StandardButton
-          icon={EIcon.SUBMIT}
-          text={"Compute"}
-        ></StandardButton>
-      </div>
+      <StandardButton
+        icon={EIcon.SUBMIT}
+        text={"Compute"}
+        style={{ margin: "30px 0 0 0" }}
+      ></StandardButton>
+      <ResultContainer
+        style={{margin: "30px 0 0 0"}}
+      ></ResultContainer>
     </form>
   );
 };

@@ -3,6 +3,16 @@ import { EColor } from '../../common/Color';
 import React from 'react';
 import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 
+const StLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  color: ${EColor.GRAY};
+  font-size: 12px;
+  font-family: Equinor,serif;
+  padding: 5px 10px 6px 10px;
+  box-sizing: border-box;
+`;
+
 const StInput = styled.input`
   padding: 5px 10px;
   background-color: ${EColor.LIGHT_GRAY};
@@ -14,16 +24,7 @@ const StInput = styled.input`
   line-height: 24px;
   width: 100%;
   box-sizing: border-box;
-`;
-
-const StLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  color: ${EColor.GRAY};
-  font-size: 12px;
-  font-family: Equinor,serif;
-  padding: 5px 10px 6px 10px;
-  box-sizing: border-box;
+  color: ${EColor.BLACK};
 `;
 
 const StLabel2 = styled(StLabel)`
@@ -103,7 +104,8 @@ const StStandardBoolean = styled.div`
   }
   > span {
     font-size: 12px;
-    margin: 1px 0 0 15px;
+    padding: 4px 0 0 15px;
+    box-sizing: border-box;
   }
 `;
 
