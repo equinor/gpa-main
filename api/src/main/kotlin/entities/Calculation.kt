@@ -18,7 +18,7 @@ class Calculation(
     var ship: Ship,
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
-    var result: MutableSet<ResultRow> = mutableSetOf(),
+    var result: MutableSet<CalculationStep> = mutableSetOf(),
 
     @Id @GeneratedValue var id: Long? = null
 )

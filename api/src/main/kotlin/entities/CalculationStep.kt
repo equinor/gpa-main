@@ -3,7 +3,7 @@ package com.equinor.neqsim.entities
 import javax.persistence.*
 
 @Entity
-class ResultRow (
+class CalculationStep (
     var time: Double,
     var time_unit: String = "hrs",
     var wi: Double,

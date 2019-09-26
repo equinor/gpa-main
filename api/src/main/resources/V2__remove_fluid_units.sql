@@ -1,0 +1,9 @@
+ALTER TABLE "fluid" DROP "nitrogen_unit";
+ALTER TABLE "fluid" DROP "methane_unit";
+ALTER TABLE "fluid" DROP "ethane_unit";
+ALTER TABLE "fluid" DROP "propane_unit";
+ALTER TABLE "fluid" DROP "i_butane_unit";
+ALTER TABLE "fluid" DROP "i_pentane_unit";
+ALTER TABLE "fluid" DROP "n_hexane_unit";
+ALTER TABLE "fluid" DROP "n_pentane_unit";
+ALTER TABLE "fluid" DROP "n_butane_unit";

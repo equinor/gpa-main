@@ -1,8 +1,8 @@
-type ResultRow {
+type CalculationStep {
     id: ID!
     time: MetricType!
     wi: MetricType!
-    gcv: MetricType!
+    gcv(unit: String): MetricType!
     density: MetricType!
     temp: MetricType!
     volume: MetricType!
