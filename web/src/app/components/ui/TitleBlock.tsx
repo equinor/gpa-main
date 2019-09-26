@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-export const S_TitleBlock = styled.div`
+export const StTitleBlock = styled.div`
     width: 100%;
     height: 160px;
     background-color: #f7f7f7;
@@ -15,7 +15,7 @@ export const S_TitleBlock = styled.div`
 `;
 
 export const TitleBlock: React.FunctionComponent = (props) => (
-  <S_TitleBlock>
+  <StTitleBlock>
     <h1>{props.children}</h1>
-  </S_TitleBlock>
+  </StTitleBlock>
 );

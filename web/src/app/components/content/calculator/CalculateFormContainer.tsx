@@ -5,6 +5,9 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { Calculation } from '../../../pages/ResultsPage';
 import { TransportSection } from './TransportSection';
+import { StandardSection } from './StandardSection';
+import { StandardButton } from '../../elements/Buttons';
+import { EIcon } from '../../../assets/svg/EquinorIcon';
 
 interface MetricInput {
   value: number,
@@ -65,7 +68,13 @@ export const CalculateFormContainer = () => {
       <ShipSection ship={ship} setShip={setShip} />
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
       <TransportSection></TransportSection>
-      <button>Compute</button>
+      <StandardSection></StandardSection>
+      <div style={{margin: "30px 0 0 0"}}>
+        <StandardButton
+          icon={EIcon.SUBMIT}
+          text={"Compute"}
+        ></StandardButton>
+      </div>
     </form>
   );
 };

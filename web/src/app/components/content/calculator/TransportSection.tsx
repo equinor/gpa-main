@@ -1,7 +1,7 @@
 import { FormSection } from "../../ui/FormSection"
 import React from 'react';
 import styled from 'styled-components/macro';
-import { TextInput, S_Label, S_Label2, StandardInput } from "../../elements/Inputs";
+import { StandardInput } from "../../elements/Inputs";
 
 export interface ITransport {
 
@@ -12,8 +12,8 @@ export interface ITransportSectionProps {
 
 export const TransportSection: React.FC<ITransportSectionProps> = (props) => (
     <FormSection legendText='Transport' index={3}>
-        <S_TransportInputs>
-            <S_TransportInput>
+        <StTransportInputs>
+            <StTransportInput>
                 <StandardInput
                     id="transport-volume"
                     label="Volume"
@@ -23,8 +23,8 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => (
                     value={""}
                     type="text"
                 ></StandardInput>
-            </S_TransportInput>
-            <S_TransportInput>
+            </StTransportInput>
+            <StTransportInput>
                 <StandardInput
                     id="transport-pressure"
                     label="Pressure"
@@ -34,8 +34,8 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => (
                     value={""}
                     type="text"
                 ></StandardInput>
-            </S_TransportInput>
-            <S_TransportInput>
+            </StTransportInput>
+            <StTransportInput>
                 <StandardInput
                     id="transport-boilOffRate"
                     label="Boil off rate"
@@ -45,36 +45,35 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => (
                     value={""}
                     type="text"
                 ></StandardInput>
-            </S_TransportInput>
-            <S_TransportInput>
-                <S_Label htmlFor='transport-from'>
-                    Date
-                </S_Label>
-                <TextInput
-                    id='transport-from'
-                    placeholder='from'
+            </StTransportInput>
+            <StTransportInput>
+                <StandardInput
+                    id="transport-from"
+                    label="From"
+                    onChange={() => { }}
+                    placeholder="From"
                     value={""}
-                    onChange={e => { }}
-                />
-            </S_TransportInput>
-            <S_DateInfo>
+                    type="text"
+                ></StandardInput>
+            </StTransportInput>
+            <StDateInfo>
                 <span><b>13</b> days and <b>5</b> hours</span>
-            </S_DateInfo>
-        </S_TransportInputs>
+            </StDateInfo>
+        </StTransportInputs>
     </FormSection>
 );
 
-const S_TransportInputs = styled.div`
+const StTransportInputs = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 `;
-const S_TransportInput = styled.div`
+const StTransportInput = styled.div`
     width: 225px;
     margin: 0 30px 20px 0;
 `;
-const S_DateInfo = styled.div`
+const StDateInfo = styled.div`
     padding-top: 29px;
     box-sizing: border-box;
     > span {

@@ -20,7 +20,7 @@ export class LoginPage extends React.Component<IProps, IState> {
         <h1>Login page:</h1>
         <p>
           Test router:
-        <Link to="/">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/login">Login</Link>
         </p>
       </div>

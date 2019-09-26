@@ -2,12 +2,12 @@ import styled from 'styled-components/macro';
 import React from "react";
 
 export const PageContent: React.FunctionComponent = (props) => (
-  <S_PageContent>
+  <StPageContent>
     {props.children}
-  </S_PageContent>
+  </StPageContent>
 );
 
-const S_PageContent = styled.div`
+const StPageContent = styled.div`
   width: 100%;
   display: flex;
   flex-grow: 1;
