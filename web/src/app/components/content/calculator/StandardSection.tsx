@@ -1,7 +1,8 @@
 import React from "react";
-import { StandardInput, StandardBoolean } from "../../elements/Inputs";
+import { StandardInput, StandardBoolean, StLabel } from "../../elements/Inputs";
 import { FormSection } from "../../ui/FormSection";
 import styled from "styled-components";
+import { StandardSelect } from "../../elements/Selects";
 
 export interface IStandard {
 
@@ -15,30 +16,54 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
     <FormSection legendText='Standard (ISO6976)' index={4}>
         <StStandardInputs>
             <StStandardInput>
-                <StandardInput
-                    id="combustion-temperature"
-                    label="Combustion temperature"
+                <StLabel>
+                    Combustion temperature
+                </StLabel>
+                <StandardSelect
+                    options={[
+                        {
+                            value: "1",
+                            label: "Value 1"
+                        },
+                        {
+                            value: "2",
+                            label: "Value 2"
+                        },
+                        {
+                            value: "3",
+                            label: "Value 3"
+                        },
+                    ]}
                     onChange={() => { }}
-                    placeholder="Combustion temperature"
-                    value={""}
-                    type="text"
-                ></StandardInput>
+                ></StandardSelect>
             </StStandardInput>
             <StStandardInput>
-                <StandardInput
-                    id="measurement-temperature"
-                    label="Measurement temperature"
+                <StLabel>
+                Measurement temperature
+                </StLabel>
+                <StandardSelect
+                    options={[
+                        {
+                            value: "1",
+                            label: "Value 1"
+                        },
+                        {
+                            value: "2",
+                            label: "Value 2"
+                        },
+                        {
+                            value: "3",
+                            label: "Value 3"
+                        },
+                    ]}
                     onChange={() => { }}
-                    placeholder="Measurement temperature"
-                    value={""}
-                    type="text"
-                ></StandardInput>
+                ></StandardSelect>
             </StStandardInput>
             <div style={{ width: "100%" }}>
                 <StandardBoolean
                     value={false}
                     text={"Ideal gas reference state"}
-                    onChange={()=>{}}
+                    onChange={() => { }}
                 ></StandardBoolean>
             </div>
         </StStandardInputs>

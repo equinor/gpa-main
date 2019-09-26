@@ -1,7 +1,8 @@
 import React from 'react';
 import { FormSection } from '../../ui/FormSection';
-import { StandardInput } from '../../elements/Inputs';
+import { StandardInput, StLabel } from '../../elements/Inputs';
 import styled from 'styled-components/macro';
+import { StandardSelect } from '../../elements/Selects';
 
 export interface IShip {
   country: string,
@@ -15,6 +16,33 @@ interface ShipSectionProps {
 
 export const ShipSection: React.FC<ShipSectionProps> = (props) => (
   <FormSection legendText='Ship' index={1}>
+    <StShipInputs>
+      <StShipInput>
+        <StLabel>
+          Stored ship
+        </StLabel>
+        <StandardSelect
+          options={[
+            {
+              value: "1",
+              label: "Value 1"
+            },
+            {
+              value: "2",
+              label: "Value 2"
+            },
+            {
+              value: "3",
+              label: "Value 3"
+            },
+          ]}
+          onChange={() => { }}
+        ></StandardSelect>
+      </StShipInput>
+    </StShipInputs>
+    <div style={{ width: "100%", fontSize: "16px", fontWeight: 500, margin: "20px 0 5px 0" }}>
+      - or -
+    </div>
     <StShipInputs>
       <StShipInput>
         <StandardInput

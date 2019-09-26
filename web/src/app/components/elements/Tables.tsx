@@ -57,7 +57,7 @@ const StStandardTable = styled.table`
         tr:first-child {
             text-align: left;
             font-size: 14px;
-            font-weight: bold;
+            font-weight: 500;
         }
         tr:nth-child(2) {
             text-align: right;
@@ -72,7 +72,7 @@ const StStandardTable = styled.table`
         tr {
             border-bottom: 1px solid  #DCDCDC;
             :hover {
-                background-color: #fdfdfd;
+                background-color: ${EColor.LIGHT_GREEN};
             }
         }
         td {

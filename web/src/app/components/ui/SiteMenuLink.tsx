@@ -34,7 +34,7 @@ const StMenuLink = styled(NavLink)`
     color: #6f6f6f;
   }
   &:hover {
-    background-color: #fdfdfd;
+    background-color: ${EColor.LIGHT_GREEN};
     > svg, rect {
       fill: ${EColor.BLACK};
     }
