@@ -6,5 +6,6 @@ export enum EColor {
   ENERGY_RED = '#ff003a',
   GRAY = '#6F6F6F',
   LIGHT_GRAY = '#F7F7F7',
+  VERY_LIGHT_GRAY = '#fdfdfd',
   BLACK='#303030'
 }

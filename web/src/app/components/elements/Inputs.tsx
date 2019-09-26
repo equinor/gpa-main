@@ -3,7 +3,7 @@ import { EColor } from '../../common/Color';
 import React from 'react';
 import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 
-const StLabel = styled.label`
+export const StLabel = styled.label`
   display: flex;
   flex-direction: column;
   color: ${EColor.GRAY};
@@ -14,7 +14,7 @@ const StLabel = styled.label`
 `;
 
 const StInput = styled.input`
-  padding: 5px 10px;
+  padding: 7px 10px 6px 10px;
   background-color: ${EColor.LIGHT_GRAY};
   color: ${EColor.GRAY};
   border: none;
