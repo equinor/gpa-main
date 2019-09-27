@@ -38,9 +38,10 @@ const customStyles = {
   option: (styles: any, state: any) => (
     {
       ...styles,
-      backgroundColor: "white",
+      backgroundColor: (state.isSelected) ? EColor.GREEN : "white",
+      cursor: "pointer",
       '&:hover': {
-        backgroundColor: (state.isFocused || state.isSelected) ? EColor.LIGHT_GREEN : "white",
+        backgroundColor: (state.isFocused) ? EColor.LIGHT_GREEN : "white",
         color: "black"
       }
     }
