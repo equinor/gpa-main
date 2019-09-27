@@ -1,7 +1,8 @@
 import { FormSection } from "../../ui/FormSection"
 import React from 'react';
 import styled from 'styled-components/macro';
-import { StandardInput } from "../../elements/Inputs";
+import { StandardInput, StLabel } from "../../elements/Inputs";
+import { StandardDatePicker } from "../../elements/Dates";
 
 export interface ITransport {
 
@@ -46,15 +47,19 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => (
                     type="text"
                 ></StandardInput>
             </StTransportInput>
-            <StTransportInput>
-                <StandardInput
-                    id="transport-from"
-                    label="From"
-                    onChange={() => { }}
-                    placeholder="From"
-                    value={""}
-                    type="text"
-                ></StandardInput>
+            <StTransportInput style={{flexDirection: "row", display: "flex"}}>
+                <div style={{width: "50%"}}>
+                    <StLabel>From</StLabel>
+                    <StandardDatePicker
+                        onChange={(e: any) => { }}
+                    ></StandardDatePicker>
+                </div>
+                <div style={{width: "50%"}}>
+                    <StLabel>To</StLabel>
+                    <StandardDatePicker
+                        onChange={(e: any) => { }}
+                    ></StandardDatePicker>
+                </div>
             </StTransportInput>
             <StDateInfo>
                 <span><b>13</b> days and <b>5</b> hours</span>
@@ -74,7 +79,7 @@ const StTransportInput = styled.div`
     margin: 0 30px 20px 0;
 `;
 const StDateInfo = styled.div`
-    padding-top: 32px;
+    padding-top: 36px;
     box-sizing: border-box;
     > span {
         font-size: 12px;

@@ -16,7 +16,6 @@ export const StLabel = styled.label`
 const StInput = styled.input`
   padding: 7px 10px 6px 10px;
   background-color: ${EColor.LIGHT_GRAY};
-  color: ${EColor.GRAY};
   border: none;
   border-bottom: 1px solid ${EColor.GRAY};
   font-size: 16px;
