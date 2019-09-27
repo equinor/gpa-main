@@ -4,8 +4,8 @@ import { ILiquid, LiquidSection } from './LiquidSection';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { Calculation } from '../../../pages/ResultsPage';
-import { TransportSection } from './TransportSection';
-import { StandardSection } from './StandardSection';
+import { TransportSection, ITransport } from './TransportSection';
+import { StandardSection, IStandard } from './StandardSection';
 import { StandardButton } from '../../elements/Buttons';
 import { EIcon } from '../../../assets/svg/EquinorIcon';
 import { ResultContainer } from '../result/ResultContainer';
@@ -48,6 +48,18 @@ export const CalculateFormContainer = () => {
     nPentane: 0.003,
     nHexane: 0.0,
   });
+  const [transport, setTransport] = useState<ITransport>({
+    volume: 14000,
+    pressure: 1.013,
+    boilOffRate: 0.0015,
+    fromDate: "2019-09-17T03:01:07Z",
+    toDate: "2019-09-20T02:22:07Z"
+  });
+  const [standard, setStandard] = useState<IStandard>({
+    combustionTemperature: 15,
+    measurementTemperature: 15,
+    idealGasReferenceState: false
+  })
 
   const [addCalculation, { data }] = useMutation<Calculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
     variables: {
@@ -56,27 +68,28 @@ export const CalculateFormContainer = () => {
         acc[componentName] = { value: liquid[componentName], unit: 'mol' };
         return acc;
       }, {} as any),
-      transport: { volume: 14000, pressure: 1.013, boilOffRate: 0.0015, fromDate: "2019-09-17T06:54:07Z", toDate: "2019-09-17T06:54:07Z" },
-      standard: { combustionTemperature: 15, measurementTemperature: 15, idealGasReferenceState: false },
+      transport,
+      standard
     }
   });
 
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
+      console.log("To be submitted", ship, liquid, transport, standard);
       addCalculation();
     }}>
       <ShipSection ship={ship} setShip={setShip} />
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
-      <TransportSection></TransportSection>
-      <StandardSection></StandardSection>
+      <TransportSection transport={transport} setTransport={setTransport}></TransportSection>
+      <StandardSection standard={standard} setStandard={setStandard}></StandardSection>
       <StandardButton
         icon={EIcon.SUBMIT}
         text={"Compute"}
         style={{ margin: "30px 0 0 0" }}
       ></StandardButton>
       <ResultContainer
-        style={{margin: "30px 0 0 0"}}
+        style={{ margin: "30px 0 0 0" }}
       ></ResultContainer>
     </form>
   );

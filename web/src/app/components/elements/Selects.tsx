@@ -10,6 +10,7 @@ interface IOption {
 interface IStandardSelectProps {
   options: IOption[];
   onChange: Function;
+  value?: IOption | null;
 }
 
 export const StandardSelect = (props: IStandardSelectProps) => (
@@ -17,6 +18,7 @@ export const StandardSelect = (props: IStandardSelectProps) => (
     options={props.options}
     onChange={(e: any) => { props.onChange(e) }}
     styles={customStyles}
+    value={props.value}
   />
 )
 
@@ -29,6 +31,7 @@ const customStyles = {
       borderBottom: "1px solid " + EColor.GRAY,
       borderRadius: 0,
       boxShadow: state.isFocused ? 0 : 0,
+      cursor: "pointer",
       '&:hover': {
         border: state.isFocused ? 0 : 0,
         borderBottom: "1px solid " + EColor.GRAY
