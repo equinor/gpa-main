@@ -24,7 +24,9 @@
     "typescript": "3.5.3",
     "react-select": "3.0.5",
     "react-flatpickr": "3.9.1",
-    "@types/react-flatpickr": "3.8.0"
+    "@types/react-flatpickr": "3.8.0",
+    "moment": "2.24.0",
+    "@types/moment": "2.13.0"
   },
   "scripts": {
     "start": "react-scripts start",

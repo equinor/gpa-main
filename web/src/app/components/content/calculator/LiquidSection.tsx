@@ -53,14 +53,14 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => (
   </FormSection>
 );
 
-interface LiquidComponentInputProps {
+interface ILiquidComponentInputProps {
   componentName: string,
   componentValue: number,
 
   onChange(value: number): void,
 }
 
-const LiquidComponentInput: React.FC<LiquidComponentInputProps> = (props) => {
+const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
   return (
     <StLiquidInput>
       <StandardInput

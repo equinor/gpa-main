@@ -39,8 +39,7 @@ const TextInput = styled(StInput).attrs({
 const NumberInput = styled(StInput).attrs({
   type: 'number',
 })`
-  max-width: 135px;
-  min-width: 135px;
+  max-width: 300px;
 `;
 
 //standard TextInput
@@ -49,7 +48,7 @@ export interface IStandardInputProps {
   label: string;
   label2?: string;
   placeholder: string;
-  value: string;
+  value: string | number;
   onChange: Function;
   type: "text" | "number";
 }

@@ -5,11 +5,15 @@ import styled from "styled-components";
 import { StandardSelect } from "../../elements/Selects";
 
 export interface IStandard {
-
+    combustionTemperature: number,
+    measurementTemperature: number,
+    idealGasReferenceState: boolean
 }
 
 export interface IStandardSectionProps {
+    standard: IStandard;
 
+    setStandard(standard: IStandard): void;
 }
 
 export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
@@ -34,12 +38,18 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                             label: "Value 3"
                         },
                     ]}
-                    onChange={() => { }}
+                    onChange={(e: any) => {
+                        props.setStandard({ ...props.standard, combustionTemperature: e.value })
+                    }}
+                    value={props.standard.combustionTemperature ? {
+                        label: props.standard.combustionTemperature.toString(),
+                        value: props.standard.combustionTemperature.toString()
+                    } : null}
                 ></StandardSelect>
             </StStandardInput>
             <StStandardInput>
                 <StLabel>
-                Measurement temperature
+                    Measurement temperature
                 </StLabel>
                 <StandardSelect
                     options={[
@@ -56,14 +66,18 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                             label: "Value 3"
                         },
                     ]}
-                    onChange={() => { }}
+                    onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: e.value }) }}
+                    value={props.standard.measurementTemperature ? {
+                        label: props.standard.measurementTemperature.toString(),
+                        value: props.standard.measurementTemperature.toString()
+                    } : null}
                 ></StandardSelect>
             </StStandardInput>
             <div style={{ width: "100%" }}>
                 <StandardBoolean
-                    value={false}
+                    value={props.standard.idealGasReferenceState}
                     text={"Ideal gas reference state"}
-                    onChange={() => { }}
+                    onChange={(e:boolean) => { props.setStandard({...props.standard, idealGasReferenceState: e}) }}
                 ></StandardBoolean>
             </div>
         </StStandardInputs>

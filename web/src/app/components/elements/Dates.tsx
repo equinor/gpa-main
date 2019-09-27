@@ -6,15 +6,17 @@ import styled from 'styled-components';
 import { EColor } from '../../common/Color';
 
 interface IStandardDatePickerProps {
-    onChange: Function
+    onChange: Function;
+    value?: Date;
 }
 
 export const StandardDatePicker = (props: IStandardDatePickerProps) => {
     return (
         <StFlatPicker>
             <Flatpickr
-                value={new Date()}
-                onChange={(e: any) => { props.onChange(e) }}
+                placeholder={"Date"}
+                value={props.value}
+                onChange={(e: any) => { props.onChange(new Date(e).toISOString()) }}
                 options={{
                     dateFormat: "d.m. H:i",
                     enableTime: true,

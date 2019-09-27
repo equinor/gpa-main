@@ -21,6 +21,7 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => (
         <StLabel>
           Stored ship
         </StLabel>
+        {/* Get values, split, set value */}
         <StandardSelect
           options={[
             {
@@ -36,7 +37,13 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => (
               label: "Value 3"
             },
           ]}
-          onChange={() => { }}
+          onChange={(e: any) => {
+            props.setShip({ ...props.ship, name: e.value, country: e.value })
+          }}
+          value={props.ship.name ? { 
+            label: props.ship.name,
+            value: props.ship.name
+          } : null}
         ></StandardSelect>
       </StShipInput>
     </StShipInputs>
