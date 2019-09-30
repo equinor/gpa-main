@@ -50,6 +50,8 @@ export interface IStandardInputProps {
   placeholder: string;
   value: string | number;
   onChange: Function;
+  onBlur?: Function;
+  onKeyUp?: Function;
   type: "text" | "number";
 }
 export const StandardInput = (props: IStandardInputProps) => {
@@ -71,6 +73,12 @@ export const StandardInput = (props: IStandardInputProps) => {
           placeholder={props.placeholder}
           value={props.value}
           onChange={e => props.onChange(e)}
+          onBlur={(e) =>{
+            if (props.onBlur) props.onBlur(e);
+          }}
+          onKeyUp={(e) =>{
+            if (props.onKeyUp) props.onKeyUp(e);
+          }}
         />
       }
       {/* Number */}
@@ -78,8 +86,15 @@ export const StandardInput = (props: IStandardInputProps) => {
         <NumberInput
           id={props.id}
           placeholder={props.placeholder}
-          value={props.value}
+          value={props.value ? props.value : 0}
           onChange={e => props.onChange(e)}
+          onBlur={(e) =>{
+            if (props.onBlur) props.onBlur(e);
+          }}
+          onKeyUp={(e) =>{
+            if (props.onKeyUp) props.onKeyUp(e);
+          }}
+          step="0.01"
         />
       }
     </div>

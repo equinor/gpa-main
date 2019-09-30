@@ -36,7 +36,12 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         id="transport-volume"
                         label="Volume"
                         label2="m^3"
-                        onChange={(e: any) => { props.setTransport({ ...props.transport, volume: parseFloat(e.target.value) }) }}
+                        onChange={(e: any) => {
+                            setTransport("volume", e.target.value);
+                        }}
+                        onBlur={(e: any) => {
+                            setTransport("volume", e.target.value, true);
+                        }}
                         placeholder="Volume"
                         value={props.transport.volume}
                         type="number"
@@ -47,7 +52,12 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         id="transport-pressure"
                         label="Pressure"
                         label2="bara"
-                        onChange={(e: any) => { props.setTransport({ ...props.transport, pressure: parseFloat(e.target.value) }) }}
+                        onChange={(e: any) => {
+                            setTransport("pressure", e.target.value);
+                        }}
+                        onBlur={(e: any) => {
+                            setTransport("pressure", e.target.value, true);
+                        }}
                         placeholder="Pressure"
                         value={props.transport.pressure}
                         type="number"
@@ -58,7 +68,12 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         id="transport-boilOffRate"
                         label="Boil off rate"
                         label2="bara"
-                        onChange={(e: any) => { props.setTransport({ ...props.transport, boilOffRate: parseFloat(e.target.value) }) }}
+                        onChange={(e: any) => {
+                            setTransport("boilOffRate", e.target.value);
+                        }}
+                        onBlur={(e: any) => {
+                            setTransport("boilOffRate", e.target.value, true);
+                        }}
                         placeholder="Boil off rate"
                         value={props.transport.boilOffRate}
                         type="number"
@@ -77,17 +92,32 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         <StandardDatePicker
                             onChange={(e: any) => { props.setTransport({ ...props.transport, toDate: e }) }}
                             value={new Date(props.transport.toDate)}
+                            disabled={!props.transport.fromDate}
+                            minDate={new Date(props.transport.fromDate)}
                         ></StandardDatePicker>
                     </div>
                 </StTransportInput>
                 <StDateInfo>
-                    {daysDiff && hoursDiff &&
+                    {props.transport.fromDate < props.transport.toDate && daysDiff && hoursDiff &&
                         <span><b>{daysDiff}</b> days and <b>{hoursDiff}</b> hours</span>
                     }
                 </StDateInfo>
             </StTransportInputs>
         </FormSection>
     )
+
+    function setTransport(name: keyof ITransport, value: any, toFixed?: boolean) {
+        var transport: ITransport = props.transport;
+        var value;
+        if (toFixed) {
+            value = parseFloat(value).toFixed(2);
+        }
+        else {
+            value = parseFloat(value);
+        }
+        transport[name] = value as never;
+        props.setTransport({ ...props.transport });
+    }
 };
 
 const StTransportInputs = styled.div`

@@ -71,7 +71,7 @@ const CALCULATIONS_QUERY = gql`
     }
 `;
 
-export interface Calculation {
+export interface ICalculation {
   id: string,
   ship: {
     id: string,
@@ -84,7 +84,7 @@ export interface Calculation {
 }
 
 interface CalculationsData {
-  calculations: Calculation[],
+  calculations: ICalculation[],
 }
 
 const ResultsWrapper = styled.div`
@@ -100,7 +100,7 @@ const ResultItemStyled = styled.div`
 `;
 
 // TODO: Create link to single result page
-const ResultItem: React.FC<Calculation> = ({ship}) => (
+const ResultItem: React.FC<ICalculation> = ({ship}) => (
   <ResultItemStyled>
     Ship: {ship.name} - {ship.country}
   </ResultItemStyled>

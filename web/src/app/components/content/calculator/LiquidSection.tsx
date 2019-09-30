@@ -66,10 +66,13 @@ const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
       <StandardInput
         id={`liquid-${props.componentName}`}
         label={props.componentName}
-        onChange={(e:any) => props.onChange(parseFloat(e.target.value))}
+        onChange={(e: any) => props.onChange(parseFloat(e.target.value))}
         placeholder={props.componentName}
-        value={props.componentValue.toFixed(2)}
+        value={props.componentValue}
         type="number"
+        onBlur={(e: any) => {
+          props.onChange(parseFloat(parseFloat(e.target.value).toFixed(2)));
+        }}
       ></StandardInput>
     </StLiquidInput>
   );
