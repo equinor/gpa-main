@@ -3,7 +3,7 @@ import { IShip, ShipSection } from './ShipSection';
 import { ILiquid, LiquidSection } from './LiquidSection';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { Calculation } from '../../../pages/ResultsPage';
+import { ICalculation } from '../../../pages/ResultsPage';
 import { TransportSection, ITransport } from './TransportSection';
 import { StandardSection, IStandard } from './StandardSection';
 import { StandardButton } from '../../elements/Buttons';
@@ -38,20 +38,20 @@ const CALCULATE = gql`
 export const CalculateFormContainer = () => {
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<ILiquid>({
-    nitrogen: 0.691,
+    nitrogen: 0.61,
     methane: 91.93,
-    ethane: 5.651,
-    propane: 1.296,
-    iButane: 0.122,
-    nButane: 0.289,
-    iPentane: 0.018,
-    nPentane: 0.003,
+    ethane: 5.61,
+    propane: 1.96,
+    iButane: 0.12,
+    nButane: 0.89,
+    iPentane: 0.18,
+    nPentane: 0.03,
     nHexane: 0.0,
   });
   const [transport, setTransport] = useState<ITransport>({
     volume: 14000,
-    pressure: 1.013,
-    boilOffRate: 0.0015,
+    pressure: 1.13,
+    boilOffRate: 0.15,
     fromDate: "2019-09-17T03:01:07Z",
     toDate: "2019-09-20T02:22:07Z"
   });
@@ -61,7 +61,7 @@ export const CalculateFormContainer = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation, { data }] = useMutation<Calculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation, { data }] = useMutation<ICalculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {

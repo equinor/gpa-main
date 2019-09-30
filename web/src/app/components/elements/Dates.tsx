@@ -8,6 +8,8 @@ import { EColor } from '../../common/Color';
 interface IStandardDatePickerProps {
     onChange: Function;
     value?: Date;
+    disabled?: boolean;
+    minDate?: Date;
 }
 
 export const StandardDatePicker = (props: IStandardDatePickerProps) => {
@@ -16,13 +18,23 @@ export const StandardDatePicker = (props: IStandardDatePickerProps) => {
             <Flatpickr
                 placeholder={"Date"}
                 value={props.value}
-                onChange={(e: any) => { props.onChange(new Date(e).toISOString()) }}
+                onChange={(e: any) => {
+                    if (e.length !== 0) {
+                        props.onChange(new Date(e).toISOString())
+                    }
+                    else {
+                        props.onChange("")
+                    }
+                }
+                }
                 options={{
                     dateFormat: "d.m. H:i",
                     enableTime: true,
-                    time_24hr: true
+                    time_24hr: true,
+                    minDate: props.minDate
                 }}
                 className="flatPickerTheme"
+                disabled={props.disabled}
             />
         </StFlatPicker>
     )
