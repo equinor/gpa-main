@@ -53,3 +53,5 @@ gradle-app.setting
 out/
 
 data
+
+derby.log

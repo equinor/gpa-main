@@ -48,6 +48,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework:NeqSim:1.1")
+    implementation("org.flywaydb:flyway-core")
 }
 
 tasks.withType<KotlinCompile> {

@@ -3,7 +3,11 @@ package com.equinor.neqsim.entities
 import javax.persistence.*
 
 @Entity
+@Table(
+    uniqueConstraints = [UniqueConstraint(columnNames = ["name", "country"])]
+)
 class Ship (
+    @Column(unique = true)
     var name: String,
     var country: String,
 

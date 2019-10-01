@@ -2,7 +2,7 @@ package com.equinor.neqsim.resolvers
 
 import com.coxautodev.graphql.tools.GraphQLResolver
 import com.equinor.neqsim.entities.Fluid
-import com.equinor.neqsim.tools.MetricType
+import com.equinor.neqsim.utils.MetricType
 import org.springframework.stereotype.Component
 
 @Component

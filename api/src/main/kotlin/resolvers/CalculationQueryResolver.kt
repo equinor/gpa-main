@@ -2,19 +2,17 @@ package com.equinor.neqsim.resolvers
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import com.equinor.neqsim.entities.Calculation
-import com.equinor.neqsim.repositories.CalculationRepository
-import org.springframework.data.repository.findByIdOrNull
+import com.equinor.neqsim.services.LNGAgeingService
 import org.springframework.stereotype.Component
-import javax.persistence.EntityNotFoundException
 
 @Component
-class CalculationQueryResolver(private val calculationRepository: CalculationRepository): GraphQLQueryResolver {
+class CalculationQueryResolver(private val lngAgeingService: LNGAgeingService): GraphQLQueryResolver {
 
     fun calculation(id: String): Calculation {
-        return calculationRepository.findByIdOrNull(id.toLong()) ?: throw EntityNotFoundException()
+        return lngAgeingService.findOne(id)
     }
 
     fun calculations(): MutableIterable<Calculation> {
-        return calculationRepository.findAll()
+        return lngAgeingService.findAll()
     }
 }
