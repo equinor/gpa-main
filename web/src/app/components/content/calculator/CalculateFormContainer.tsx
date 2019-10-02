@@ -76,7 +76,6 @@ export const CalculateFormContainer = () => {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      console.log("To be submitted", ship, liquid, transport, standard);
       addCalculation();
     }}>
       <ShipSection ship={ship} setShip={setShip} />
