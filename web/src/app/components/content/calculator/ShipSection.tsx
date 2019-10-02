@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { FormSection } from '../../ui/FormSection';
-import { StandardInput, StLabel } from '../../elements/Inputs';
+import React from 'react';
 import styled from 'styled-components/macro';
+
+import { StandardInput, StLabel } from '../../elements/Inputs';
 import { StandardSelect } from '../../elements/Selects';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import { FormSection } from '../../ui/FormSection';
 
 export interface IShip {
   country: string,
@@ -17,18 +16,6 @@ interface ShipSectionProps {
 }
 
 export const ShipSection: React.FC<ShipSectionProps> = (props) => {
-  const { data, error, loading } = useQuery(GET_SHIPS);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  else if (error) {
-    return <div>Error! {error.message}</div>;
-  }
-  else {
-    console.log("Ships", data);
-  }
-
   return (
     <FormSection legendText='Ship' index={1}>
       <StShipInputs>
@@ -99,14 +86,4 @@ const StShipInputs = styled.div`
 const StShipInput = styled.div`
   margin: 10px 30px 0 0;
   width: 225px;
-`;
-
-const GET_SHIPS = gql`
-  query ships {
-    ships {
-      name,
-      country,
-      id
-    }
-  }
 `;

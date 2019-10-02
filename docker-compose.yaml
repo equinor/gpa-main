@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+  postgres:
+
 services:
   api:
     image: neqsim-api
@@ -24,7 +27,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "./data/postgres:/var/lib/postgresql/data"
+      - "postgres:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=neqsim
       - POSTGRES_DB=neqsim

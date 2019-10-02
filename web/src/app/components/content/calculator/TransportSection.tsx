@@ -25,8 +25,8 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
     if (props.transport.fromDate && props.transport.toDate) {
         const from = moment(props.transport.fromDate);
         const to = moment(props.transport.toDate);
-        daysDiff = to.diff(from, 'days');
-        hoursDiff = to.diff(from, 'hours') % 24;
+        daysDiff = to.diff(from, 'days').toString();
+        hoursDiff = (to.diff(from, 'hours') % 24).toString();
     }
     return (
         <FormSection legendText='Transport' index={3}>
@@ -108,14 +108,14 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
 
     function setTransport(name: keyof ITransport, value: any, toFixed?: boolean) {
         var transport: ITransport = props.transport;
-        var value;
+        var formattedValue;
         if (toFixed) {
-            value = parseFloat(value).toFixed(2);
+            formattedValue = parseFloat(value).toFixed(2);
         }
         else {
-            value = parseFloat(value);
+            formattedValue = parseFloat(value);
         }
-        transport[name] = value as never;
+        transport[name] = formattedValue as never;
         props.setTransport({ ...props.transport });
     }
 };

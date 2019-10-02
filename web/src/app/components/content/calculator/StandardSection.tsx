@@ -1,5 +1,5 @@
 import React from "react";
-import { StandardInput, StandardBoolean, StLabel } from "../../elements/Inputs";
+import { StandardBoolean, StLabel } from "../../elements/Inputs";
 import { FormSection } from "../../ui/FormSection";
 import styled from "styled-components";
 import { StandardSelect } from "../../elements/Selects";
@@ -77,7 +77,7 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 <StandardBoolean
                     value={props.standard.idealGasReferenceState}
                     text={"Ideal gas reference state"}
-                    onChange={(e:boolean) => { props.setStandard({...props.standard, idealGasReferenceState: e}) }}
+                    onChange={(e: boolean) => { props.setStandard({ ...props.standard, idealGasReferenceState: e }) }}
                 ></StandardBoolean>
             </div>
         </StStandardInputs>

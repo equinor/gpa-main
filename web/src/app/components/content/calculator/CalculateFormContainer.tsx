@@ -61,7 +61,7 @@ export const CalculateFormContainer = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation, { data }] = useMutation<ICalculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
