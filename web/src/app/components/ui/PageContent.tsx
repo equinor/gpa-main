@@ -1,16 +1,21 @@
 import styled from 'styled-components/macro';
 import React from "react";
+import { EColor } from '../../common/Color';
 
 export const PageContent: React.FunctionComponent = (props) => (
-  <S_PageContent>
+  <StPageContent>
     {props.children}
-  </S_PageContent>
+  </StPageContent>
 );
 
-const S_PageContent = styled.div`
+const StPageContent = styled.div`
   width: 100%;
   display: flex;
   flex-grow: 1;
-  height: 100%;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: Equinor, serif;
+  color: ${EColor.BLACK};
+  font-size: 14px;
+  height: fit-content;
 `;

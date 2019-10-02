@@ -8,16 +8,18 @@ import { CalculateFormContainer } from '../components/content/calculator/Calcula
 export const CalculatorPage: React.FunctionComponent = () => (
   <PageContent>
     <TitleBlock>Calculator</TitleBlock>
-    <S_PageWrapper>
+    <StPageWrapper>
       <H2>Calculate</H2>
       <P>Fill all the values. After calculation, results are shown on the same page. </P>
       <CalculateFormContainer />
-    </S_PageWrapper>
+    </StPageWrapper>
   </PageContent>
 );
 
-const S_PageWrapper = styled.div`
+const StPageWrapper = styled.div`
   padding: 30px;
+  width: 800px;
+  box-sizing: border-box;
   h2 {
     margin: 0 0 20px 0;
   }

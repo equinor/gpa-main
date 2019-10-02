@@ -1,22 +1,22 @@
 import React from "react";
-import { EquinorIcon, Icon } from '../../assets/svg/EquinorIcon';
+import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 import styled from "styled-components/macro";
 
 export const NavBar = () => {
   return (
-    <S_NavBar>
-      <S_Header>
-        <EquinorIcon icon={Icon.MENU} size={24} />
+    <StNavBar>
+      <StHeader>
+        <EquinorIcon icon={EIcon.MENU} size={24} />
         <span>Neqsim</span>
-      </S_Header>
+      </StHeader>
       <div style={{ marginRight: '50px', height: "24px" }}>
-        <EquinorIcon icon={Icon.USER} size={24} />
+        <EquinorIcon icon={EIcon.USER} size={24} />
       </div>
-    </S_NavBar>
+    </StNavBar>
   );
 };
 
-const S_NavBar = styled.nav`
+const StNavBar = styled.nav`
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -26,7 +26,7 @@ const S_NavBar = styled.nav`
   justify-content: space-between;
 `;
 
-const S_Header = styled.div`
+const StHeader = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 50px;

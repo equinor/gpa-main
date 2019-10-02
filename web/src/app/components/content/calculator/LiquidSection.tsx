@@ -1,11 +1,11 @@
 import styled from 'styled-components/macro';
 import React from 'react';
 import { FormSection } from '../../ui/FormSection';
-import { S_Label, NumberInput } from '../../elements/Inputs';
 import { H3 } from '../../elements/Texts';
+import { StandardInput } from '../../elements/Inputs';
 
 
-export interface Liquid {
+export interface ILiquid {
   nitrogen: number,
   methane: number,
   ethane: number,
@@ -17,15 +17,15 @@ export interface Liquid {
   nHexane: number,
 }
 
-interface LiquidSectionProps {
-  liquid: Liquid,
+interface ILiquidSectionProps {
+  liquid: ILiquid,
 
-  setLiquid(liquid: Liquid): void,
+  setLiquid(liquid: ILiquid): void,
 }
 
-export const LiquidSection: React.FC<LiquidSectionProps> = (props) => (
+export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => (
   <FormSection legendText='Liquid' index={2}>
-    <S_LiquidInputs>
+    <StLiquidInputs>
       <div>
         <H3>Standard gases</H3>
         <LiquidComponentInput
@@ -34,9 +34,9 @@ export const LiquidSection: React.FC<LiquidSectionProps> = (props) => (
           onChange={value => props.setLiquid({ ...props.liquid, nitrogen: value })}
         />
       </div>
-      <div style={{ flexGrow: 1, height: '180px' }}>
+      <div style={{ flexGrow: 1, height: "100%" }}>
         <H3>Light hydrocarbons</H3>
-        <div style={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', height: '100%', width: "470px", justifyContent: 'flex-start' }}>
+        <div style={{display: 'flex', flexGrow: 1, flexWrap: 'wrap', height: '235px', width: "470px", justifyContent: 'flex-start', flexDirection: "column" }}>
           {
             (Object.keys(props.liquid) as Array<keyof typeof props.liquid>).map((componentName, index) => componentName !== 'nitrogen' && (
               <LiquidComponentInput
@@ -49,34 +49,36 @@ export const LiquidSection: React.FC<LiquidSectionProps> = (props) => (
           }
         </div>
       </div>
-    </S_LiquidInputs>
+    </StLiquidInputs>
   </FormSection>
 );
 
-interface LiquidComponentInputProps {
+interface ILiquidComponentInputProps {
   componentName: string,
   componentValue: number,
 
   onChange(value: number): void,
 }
 
-const LiquidComponentInput: React.FC<LiquidComponentInputProps> = (props) => {
+const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
   return (
-    <S_LiquidInput>
-      <S_Label htmlFor={`liquid-${props.componentName}`}>
-        {props.componentName}
-      </S_Label>
-      <NumberInput
+    <StLiquidInput>
+      <StandardInput
         id={`liquid-${props.componentName}`}
-        value={props.componentValue.toFixed(2)}
-        onChange={e => props.onChange(parseFloat(e.target.value))}
-        step='0.01'
-      />
-    </S_LiquidInput>
+        label={props.componentName}
+        onChange={(e: any) => props.onChange(parseFloat(e.target.value))}
+        placeholder={props.componentName}
+        value={props.componentValue}
+        type="number"
+        onBlur={(e: any) => {
+          props.onChange(parseFloat(parseFloat(e.target.value).toFixed(2)));
+        }}
+      ></StandardInput>
+    </StLiquidInput>
   );
 };
 
-const S_LiquidInputs = styled.span`
+const StLiquidInputs = styled.span`
   display: flex;
   flex-direction: row;
   h3 {
@@ -84,6 +86,7 @@ const S_LiquidInputs = styled.span`
   }
 `;
 
-const S_LiquidInput = styled.div`
-      margin: 0 30px 20px 0;
+const StLiquidInput = styled.div`
+      margin: 0 30px 15px 0;
+      width: 135px;
 `;
