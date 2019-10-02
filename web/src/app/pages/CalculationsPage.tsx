@@ -27,7 +27,6 @@ export const CalculationsPage: React.FunctionComponent = (props: any) => {
 
   var rows: IStandardTableRow[] = [];
   if (calculations.data) {
-    console.log(calculations.data.calculations);
     calculations.data.calculations.forEach((calculation: ICalculationInfo) => {
       rows.push({
         value: calculation.id,
@@ -52,7 +51,6 @@ export const CalculationsPage: React.FunctionComponent = (props: any) => {
             <CalculationsContainer
               rows={rows}
               selectRow={(row: IStandardTableRow) => {
-                console.log(row);
                 props.history.push('/calculation/' + row.value);
               }}
             ></CalculationsContainer>

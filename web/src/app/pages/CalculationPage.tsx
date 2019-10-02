@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React from 'react';
 
-import { CalculationContainer } from '../components/content/calculation/CalculationContainer';
+import { CalculationContainer, IResult } from '../components/content/calculation/CalculationContainer';
 import { H2 } from '../components/elements/Texts';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
@@ -20,8 +20,12 @@ export interface ICalculation {
   standard: any,
 }
 
+interface ICalculationWithResult extends ICalculation {
+  result: IResult[];
+}
+
 interface ICalculationData {
-  calculation: ICalculation,
+  calculation: ICalculationWithResult,
 }
 
 export const CalculationPage: React.FunctionComponent = (props: any) => {
@@ -31,16 +35,19 @@ export const CalculationPage: React.FunctionComponent = (props: any) => {
     }
   });
 
-  if (calculation.data) {
-    console.log("Single", calculation.data);
-  }
-
   return (
     <PageContent>
       <TitleBlock>Calculation</TitleBlock>
       <StPageWrapper>
         <H2>Calculation</H2>
-        <CalculationContainer></CalculationContainer>
+        {calculation.loading &&
+          <div>Loading</div>
+        }
+        {calculation.data &&
+          <CalculationContainer
+            calculation={calculation.data.calculation}
+          ></CalculationContainer>
+        }
       </StPageWrapper>
     </PageContent>
   );

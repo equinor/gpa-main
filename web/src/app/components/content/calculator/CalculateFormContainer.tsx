@@ -1,30 +1,31 @@
-import React, { useState } from 'react';
-import { IShip, ShipSection } from './ShipSection';
-import { ILiquid, LiquidSection } from './LiquidSection';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { ICalculation } from '../../../pages/CalculationPage';
-import { TransportSection, ITransport } from './TransportSection';
-import { StandardSection, IStandard } from './StandardSection';
-import { StandardButton } from '../../elements/Buttons';
-import { EIcon } from '../../../assets/svg/EquinorIcon';
-import { CalculationContainer } from '../calculation/CalculationContainer';
+import { gql } from 'apollo-boost';
+import React, { useState } from 'react';
 
-interface MetricInput {
+import { EIcon } from '../../../assets/svg/EquinorIcon';
+import { ICalculation } from '../../../pages/CalculationPage';
+import { StandardButton } from '../../elements/Buttons';
+import { ILiquid, LiquidSection } from './LiquidSection';
+import { IShip, ShipSection } from './ShipSection';
+import { IStandard, StandardSection } from './StandardSection';
+import { ITransport, TransportSection } from './TransportSection';
+import useReactRouter from 'use-react-router';
+
+export interface IMetricInput {
   value: number,
   unit: string,
 }
 
-interface FluidInput {
-  nitrogen: MetricInput,
-  methane: MetricInput,
-  ethane: MetricInput,
-  propane: MetricInput,
-  iButane: MetricInput,
-  nButane: MetricInput,
-  iPentane: MetricInput,
-  nPentane: MetricInput,
-  nHexane: MetricInput,
+export interface IFluidInput {
+  nitrogen: IMetricInput,
+  methane: IMetricInput,
+  ethane: IMetricInput,
+  propane: IMetricInput,
+  iButane: IMetricInput,
+  nButane: IMetricInput,
+  iPentane: IMetricInput,
+  nPentane: IMetricInput,
+  nHexane: IMetricInput,
 }
 
 const CALCULATE = gql`
@@ -35,7 +36,8 @@ const CALCULATE = gql`
     }
 `;
 
-export const CalculateFormContainer = () => {
+export const CalculateFormContainer: React.FunctionComponent = (props: any) => {
+  const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<ILiquid>({
     nitrogen: 0.61,
@@ -61,7 +63,7 @@ export const CalculateFormContainer = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: IFluidInput, transport: any, standard: any }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
@@ -77,7 +79,7 @@ export const CalculateFormContainer = () => {
     <form onSubmit={(e) => {
       e.preventDefault();
       addCalculation().then((r: any) => {
-        console.log("data", r);
+        history.push('/calculation/' + r.data.addCalculation.id);
       });
     }}>
       <ShipSection ship={ship} setShip={setShip} />
@@ -89,9 +91,9 @@ export const CalculateFormContainer = () => {
         text={"Compute"}
         style={{ margin: "30px 0 0 0" }}
       ></StandardButton>
-      <CalculationContainer
+      {/* <CalculationContainer
         style={{ margin: "30px 0 0 0" }}
-      ></CalculationContainer>
+      ></CalculationContainer> */}
     </form>
   );
 };
