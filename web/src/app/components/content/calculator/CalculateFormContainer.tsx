@@ -3,12 +3,12 @@ import { IShip, ShipSection } from './ShipSection';
 import { ILiquid, LiquidSection } from './LiquidSection';
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { ICalculation } from '../../../pages/ResultsPage';
+import { ICalculation } from '../../../pages/CalculationPage';
 import { TransportSection, ITransport } from './TransportSection';
 import { StandardSection, IStandard } from './StandardSection';
 import { StandardButton } from '../../elements/Buttons';
 import { EIcon } from '../../../assets/svg/EquinorIcon';
-import { ResultContainer } from '../result/ResultContainer';
+import { CalculationContainer } from '../calculation/CalculationContainer';
 
 interface MetricInput {
   value: number,
@@ -76,7 +76,9 @@ export const CalculateFormContainer = () => {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      addCalculation();
+      addCalculation().then((r: any) => {
+        console.log("data", r);
+      });
     }}>
       <ShipSection ship={ship} setShip={setShip} />
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
@@ -87,9 +89,9 @@ export const CalculateFormContainer = () => {
         text={"Compute"}
         style={{ margin: "30px 0 0 0" }}
       ></StandardButton>
-      <ResultContainer
+      <CalculationContainer
         style={{ margin: "30px 0 0 0" }}
-      ></ResultContainer>
+      ></CalculationContainer>
     </form>
   );
 };

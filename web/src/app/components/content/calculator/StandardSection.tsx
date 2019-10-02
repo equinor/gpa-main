@@ -26,17 +26,25 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 <StandardSelect
                     options={[
                         {
-                            value: "1",
-                            label: "Value 1"
+                            value: 0,
+                            label: "0"
                         },
                         {
-                            value: "2",
-                            label: "Value 2"
+                            value: 15,
+                            label: "15"
                         },
                         {
-                            value: "3",
-                            label: "Value 3"
+                            value: 20,
+                            label: "20"
                         },
+                        {
+                            value: 25,
+                            label: "25"
+                        },
+                        {
+                            value: 60,
+                            label: "60"
+                        }
                     ]}
                     onChange={(e: any) => {
                         props.setStandard({ ...props.standard, combustionTemperature: e.value })
@@ -54,17 +62,21 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 <StandardSelect
                     options={[
                         {
-                            value: "1",
-                            label: "Value 1"
+                            value: 0,
+                            label: "0"
                         },
                         {
-                            value: "2",
-                            label: "Value 2"
+                            value: 15,
+                            label: "15"
                         },
                         {
-                            value: "3",
-                            label: "Value 3"
+                            value: 20,
+                            label: "20"
                         },
+                        {
+                            value: 60,
+                            label: "60"
+                        }
                     ]}
                     onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: e.value }) }}
                     value={props.standard.measurementTemperature ? {

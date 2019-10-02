@@ -16,7 +16,7 @@ export const CalculatorPage: React.FunctionComponent = () => (
   </PageContent>
 );
 
-const StPageWrapper = styled.div`
+export const StPageWrapper = styled.div`
   padding: 30px;
   width: 800px;
   box-sizing: border-box;

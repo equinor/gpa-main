@@ -32,7 +32,7 @@ const Legend: React.FC = ({ children }) => {
 const StFormSection = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 35px 0 0 0;
+  margin: 45px 0 0 0;
 `;
 
 

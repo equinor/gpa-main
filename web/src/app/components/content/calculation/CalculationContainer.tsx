@@ -4,19 +4,23 @@ import { H2, H3 } from "../../elements/Texts";
 import { EColor } from "../../../common/Color";
 import { StandardTable } from "../../elements/Tables";
 
-export const ResultContainer = (props: any) => {
+export interface ICalculationContainer {
+    
+}
+
+export const CalculationContainer = (props: any) => {
     return (
-        <StResultContainer style={props.style}>
+        <StCalculationContainer style={props.style}>
             <H2 style={{ width: "100%" }}>Results</H2>
             <div style={{ display: "flex" }}>
                 {sampleData.map((result: IResult, index) => {
                     return (
-                        <StResult key={index}>
+                        <StCalculation key={index}>
                             <span style={{ fontSize: "18px", margin: "20px 0 10px 0" }}>{result.title.toUpperCase()}</span>
                             <span style={{ fontSize: "10px" }}>{result.unit}</span>
                             <span style={{ color: "#73B1B5", fontSize: "14px", margin: "21px 0px 13px 0" }}>{result.initValue}</span>
                             <span style={{ color: EColor.GREEN, fontSize: "14px", fontWeight: 500 }}>{result.endValue}</span>
-                        </StResult>
+                        </StCalculation>
                     )
                 })}
             </div>
@@ -33,15 +37,15 @@ export const ResultContainer = (props: any) => {
                 headerSecondary={sampleResult.headerSecondary}
                 rows={sampleResult.rows}
             ></StandardTable>
-        </StResultContainer>
+        </StCalculationContainer>
     )
 }
 
-const StResultContainer = styled.div`
+const StCalculationContainer = styled.div`
     width: 100%;
 `;
 
-const StResult = styled.div`
+const StCalculation = styled.div`
     width: 100px;
     height: 140px;
     background-color: ${EColor.LIGHT_GREEN};
@@ -131,14 +135,21 @@ const sampleResult = {
     header: ["TIME", "WI", "GCV", "GCV", "DENSITY", "TEMP.", "VOLUME", "ENERGY"],
     headerSecondary: ["hrs", "MJ/m^3", "MJ/m^3", "MJ/kg", "kg/m^3", "C", "m^3", "MJ"],
     rows: [
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234],
-        [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234]
+        {
+            value: 1,
+            display:  [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234]
+        },
+        {
+            value: 2,
+            display:  [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234]
+        },
+        {
+            value: 3,
+            display:  [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234]
+        },
+        {
+            value: 4,
+            display:  [1234, 1234, "1234", 1234, 1234, 1234, "1234", 1234]
+        }
     ]
 }

@@ -2,8 +2,8 @@ import React from "react";
 import Select from 'react-select'
 import { EColor } from "../../common/Color";
 
-interface IOption {
-  value: string;
+export interface IOption {
+  value: string | number;
   label: string;
 }
 

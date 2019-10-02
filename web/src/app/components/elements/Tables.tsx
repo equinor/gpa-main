@@ -4,8 +4,14 @@ import { EColor } from "../../common/Color";
 
 interface IStandardTable {
     header: string[];
-    headerSecondary: string[];
-    rows: any[][];
+    headerSecondary?: string[];
+    rows: IStandardTableRow[];
+    selectRow?: Function;
+}
+
+export interface IStandardTableRow {
+    value: any;
+    display: any[];
 }
 
 export const StandardTable = (props: IStandardTable) => {
@@ -32,8 +38,14 @@ export const StandardTable = (props: IStandardTable) => {
             <tbody>
                 {props.rows.map((row, index) => {
                     return (
-                        <tr key={index}>
-                            {row.map((cell, index2) => {
+                        <tr key={index} style={props.selectRow ? { cursor: "pointer" } : {}}
+                            onClick={(e) => {
+                                if (props.selectRow) {
+                                    props.selectRow(row);
+                                }
+                            }}
+                        >
+                            {row.display.map((cell, index2) => {
                                 return (
                                     <td key={index2}>{cell}</td>
                                 )

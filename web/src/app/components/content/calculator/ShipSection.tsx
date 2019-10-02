@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { StandardInput, StLabel } from '../../elements/Inputs';
-import { StandardSelect } from '../../elements/Selects';
+import { StandardSelect, IOption } from '../../elements/Selects';
 import { FormSection } from '../../ui/FormSection';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 
 export interface IShip {
+  id?: string,
   country: string,
   name: string,
 }
@@ -16,37 +19,45 @@ interface ShipSectionProps {
 }
 
 export const ShipSection: React.FC<ShipSectionProps> = (props) => {
+  const ships = useQuery(SHIPS_QUERY);
+
+  //select ships
+  var options: IOption[] = [];
+  if (ships.data) {
+    ships.data.ships.forEach((ship: IShip) => {
+      options.push({
+        value: ship.name + "~" + ship.country,
+        label: ship.name + " (" + ship.country + ")"
+      })
+    })
+  }
+
   return (
     <FormSection legendText='Ship' index={1}>
       <StShipInputs>
         <StShipInput>
-          <StLabel>
-            Stored ship
-        </StLabel>
-          {/* Get values, split, set value */}
-          <StandardSelect
-            options={[
-              {
-                value: "1",
-                label: "Value 1"
-              },
-              {
-                value: "2",
-                label: "Value 2"
-              },
-              {
-                value: "3",
-                label: "Value 3"
-              },
-            ]}
-            onChange={(e: any) => {
-              props.setShip({ ...props.ship, name: e.value, country: e.value })
-            }}
-            value={props.ship.name ? {
-              label: props.ship.name,
-              value: props.ship.name
-            } : null}
-          ></StandardSelect>
+          {ships.loading &&
+            <div style={{ height: "61px" }}>
+              Loading
+            </div>
+          }
+          {!ships.loading &&
+            <>
+              <StLabel>
+                Stored ship
+              </StLabel>
+              <StandardSelect
+                options={options}
+                onChange={(e: any) => {
+                  props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] })
+                }}
+                value={props.ship.name ? {
+                  label: props.ship.name,
+                  value: props.ship.name
+                } : null}
+              ></StandardSelect>
+            </>
+          }
         </StShipInput>
       </StShipInputs>
       <div style={{ width: "100%", fontSize: "16px", fontWeight: 500, margin: "20px 0 5px 0" }}>
@@ -87,3 +98,13 @@ const StShipInput = styled.div`
   margin: 10px 30px 0 0;
   width: 225px;
 `;
+
+const SHIPS_QUERY = gql`
+  query ships {
+    ships {
+      id
+      name
+      country
+    }
+  }
+`
