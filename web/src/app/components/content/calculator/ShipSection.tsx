@@ -6,12 +6,7 @@ import { StandardSelect, IOption } from '../../elements/Selects';
 import { FormSection } from '../../ui/FormSection';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
-
-export interface IShip {
-  id?: string,
-  country: string,
-  name: string,
-}
+import { IShip } from '../../../common/Interfaces';
 
 interface ShipSectionProps {
   ship: IShip,
@@ -22,13 +17,13 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
   const ships = useQuery(SHIPS_QUERY);
 
   //select ships
-  var options: IOption[] = [];
+  let options: IOption[] = [];
   if (ships.data) {
-    ships.data.ships.forEach((ship: IShip) => {
-      options.push({
+    options = ships.data.ships.map((ship: IShip) => {
+      return {
         value: ship.name + "~" + ship.country,
         label: ship.name + " (" + ship.country + ")"
-      })
+      }
     })
   }
 

@@ -3,12 +3,7 @@ import { StandardBoolean, StLabel } from "../../elements/Inputs";
 import { FormSection } from "../../ui/FormSection";
 import styled from "styled-components";
 import { StandardSelect } from "../../elements/Selects";
-
-export interface IStandard {
-    combustionTemperature: number,
-    measurementTemperature: number,
-    idealGasReferenceState: boolean
-}
+import { IStandard } from "../../../common/Interfaces";
 
 export interface IStandardSectionProps {
     standard: IStandard;

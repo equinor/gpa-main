@@ -3,30 +3,13 @@ import { gql } from 'apollo-boost';
 import React, { useState } from 'react';
 
 import { EIcon } from '../../../assets/svg/EquinorIcon';
-import { ICalculation } from '../../../pages/CalculationPage';
 import { StandardButton } from '../../elements/Buttons';
 import { ILiquid, LiquidSection } from './LiquidSection';
-import { IShip, ShipSection } from './ShipSection';
-import { IStandard, StandardSection } from './StandardSection';
-import { ITransport, TransportSection } from './TransportSection';
+import { ShipSection } from './ShipSection';
+import { StandardSection } from './StandardSection';
+import { TransportSection } from './TransportSection';
 import useReactRouter from 'use-react-router';
-
-export interface IMetricInput {
-  value: number,
-  unit: string,
-}
-
-export interface IFluidInput {
-  nitrogen: IMetricInput,
-  methane: IMetricInput,
-  ethane: IMetricInput,
-  propane: IMetricInput,
-  iButane: IMetricInput,
-  nButane: IMetricInput,
-  iPentane: IMetricInput,
-  nPentane: IMetricInput,
-  nHexane: IMetricInput,
-}
+import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
@@ -36,7 +19,7 @@ const CALCULATE = gql`
     }
 `;
 
-export const CalculateFormContainer: React.FunctionComponent = (props: any) => {
+export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<ILiquid>({
@@ -63,7 +46,7 @@ export const CalculateFormContainer: React.FunctionComponent = (props: any) => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: IFluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {

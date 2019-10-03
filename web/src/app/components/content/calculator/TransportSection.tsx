@@ -20,8 +20,8 @@ export interface ITransportSectionProps {
 }
 
 export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
-    var daysDiff;
-    var hoursDiff;
+    let daysDiff;
+    let hoursDiff;
     if (props.transport.fromDate && props.transport.toDate) {
         const from = moment(props.transport.fromDate);
         const to = moment(props.transport.toDate);
@@ -107,14 +107,8 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
     )
 
     function setTransport(name: keyof ITransport, value: any, toFixed?: boolean) {
-        var transport: ITransport = props.transport;
-        var formattedValue;
-        if (toFixed) {
-            formattedValue = parseFloat(value).toFixed(2);
-        }
-        else {
-            formattedValue = parseFloat(value);
-        }
+        let transport: ITransport = props.transport;
+        const formattedValue = toFixed ? parseFloat(value).toFixed(2) : parseFloat(value);
         transport[name] = formattedValue as never;
         props.setTransport({ ...props.transport });
     }

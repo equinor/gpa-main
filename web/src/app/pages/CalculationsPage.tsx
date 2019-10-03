@@ -8,6 +8,7 @@ import { H2, P } from '../components/elements/Texts';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
+import { History } from 'history';
 
 export interface ICalculationInfo {
   id: string,
@@ -22,16 +23,20 @@ interface ICalculationsData {
   calculations: ICalculationInfo[],
 }
 
-export const CalculationsPage: React.FunctionComponent = (props: any) => {
+interface ICalculationPage {
+  history: History;
+}
+
+export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ history }) => {
   const calculations = useQuery<ICalculationsData>(CALCULATIONS_QUERY);
 
-  var rows: IStandardTableRow[] = [];
+  let rows: IStandardTableRow[] = [];
   if (calculations.data) {
-    calculations.data.calculations.forEach((calculation: ICalculationInfo) => {
-      rows.push({
+    rows = calculations.data.calculations.map((calculation: ICalculationInfo) => {
+      return {
         value: calculation.id,
         display: [calculation.ship.name, calculation.ship.country, ""]
-      })
+      }
     })
   }
 
@@ -51,7 +56,7 @@ export const CalculationsPage: React.FunctionComponent = (props: any) => {
             <CalculationsContainer
               rows={rows}
               selectRow={(row: IStandardTableRow) => {
-                props.history.push('/calculation/' + row.value);
+                history.push('/calculation/' + row.value);
               }}
             ></CalculationsContainer>
           }

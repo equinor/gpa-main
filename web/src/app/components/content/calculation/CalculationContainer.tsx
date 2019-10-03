@@ -2,42 +2,24 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { EColor } from '../../../common/Color';
+import { ICalculation, IResult } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2, H3 } from '../../elements/Texts';
-import { IFluidInput, IMetricInput } from '../calculator/CalculateFormContainer';
-import { IShip } from '../calculator/ShipSection';
-import { IStandard } from '../calculator/StandardSection';
-import { ITransport } from '../calculator/TransportSection';
 
 export interface ICalculationContainer {
-    calculation: {
-        id: string,
-        fluid: IFluidInput;
-        ship: IShip;
-        standard: IStandard;
-        transport: ITransport;
-        result: IResult[];
-    };
+    calculation: ICalculation;
     style?: Object;
 }
 
 export const CalculationContainer = (props: ICalculationContainer) => {
 
-    var header = ["TIME", "WI", "GCV", "DENSITY", "TEMP", "VOLUME", "ENERGY"];
-    var rows: IStandardTableRow[] = [];
-    var initRow: IResult;
-    var endRow: IResult;
-    var cardResults: ICardResult[] = [];
+    const header = ["TIME", "WI", "GCV", "DENSITY", "TEMP", "VOLUME", "ENERGY"];
+    const initRow: IResult = props.calculation.result[0];
+    const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
 
     //table
-    props.calculation.result.forEach((result: IResult, index: number) => {
-        if (index === 0) {
-            initRow = result;
-        }
-        else if (index === props.calculation.result.length - 1) {
-            endRow = result;
-        }
-        var row: IStandardTableRow = {
+    const rows: IStandardTableRow[] = props.calculation.result.map((result: IResult) => {
+        return {
             value: result.id,
             display: [
                 result.time.value,
@@ -49,17 +31,17 @@ export const CalculationContainer = (props: ICalculationContainer) => {
                 result.energy.value
             ]
         }
-        rows.push(row);
     })
 
-    //card result (TODO: improve)
-    header.forEach((title:string, index) =>{
-        cardResults.push({
+    //card result
+    const cardResults: ICardResult[] = header.map((title: string) => {
+        var lTitle = title.toLowerCase() as never;
+        return {
             title: title,
-            unit: initRow[title.toLowerCase() as never]["unit"],
-            initValue: initRow[title.toLowerCase() as never]["value"],
-            endValue: endRow[title.toLowerCase() as never]["value"]
-        })
+            unit: initRow[lTitle]["unit"],
+            initValue: initRow[lTitle]["value"],
+            endValue: endRow[lTitle]["value"]
+        }
     })
 
     return (
@@ -124,17 +106,6 @@ const StLinks = styled.div`
         }
     }
 `;
-
-export interface IResult {
-    id?: string;
-    density: IMetricInput;
-    energy: IMetricInput;
-    gcv: IMetricInput;
-    temp: IMetricInput;
-    time: IMetricInput;
-    volume: IMetricInput;
-    wi: IMetricInput;
-}
 
 export interface ICardResult {
     title: string;

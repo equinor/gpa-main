@@ -2,23 +2,13 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React from 'react';
 
-import { CalculationContainer, IResult } from '../components/content/calculation/CalculationContainer';
+import { CalculationContainer } from '../components/content/calculation/CalculationContainer';
 import { H2 } from '../components/elements/Texts';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-
-export interface ICalculation {
-  id: string,
-  ship: {
-    id: string,
-    name: string,
-    country: string,
-  },
-  fluid: any,
-  transport: any,
-  standard: any,
-}
+import { match } from 'react-router';
+import { ICalculation, IResult } from '../common/Interfaces';
 
 interface ICalculationWithResult extends ICalculation {
   result: IResult[];
@@ -28,10 +18,16 @@ interface ICalculationData {
   calculation: ICalculationWithResult,
 }
 
-export const CalculationPage: React.FunctionComponent = (props: any) => {
+interface ICalculationPage {
+  match: match<{
+    id: string
+  }>;
+}
+
+export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props) => {
   const calculation = useQuery<ICalculationData, { id: string }>(CALCULATION_QUERY, {
     variables: {
-      id: props.match.params.id
+      id: props.match.params["id"]
     }
   });
 

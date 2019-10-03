@@ -39,11 +39,11 @@ export const StandardTable = (props: IStandardTable) => {
                 {props.rows.map((row, index) => {
                     return (
                         <tr key={index} style={props.selectRow ? { cursor: "pointer" } : {}}
-                            onClick={(e) => {
+                            onClick={typeof props.selectRow !== "undefined" ? () => {
                                 if (props.selectRow) {
-                                    props.selectRow(row);
+                                    props.selectRow(row)
                                 }
-                            }}
+                            } : undefined}
                         >
                             {row.display.map((cell, index2) => {
                                 return (
