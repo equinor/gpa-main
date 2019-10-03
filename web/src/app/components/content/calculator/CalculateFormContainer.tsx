@@ -1,31 +1,15 @@
-import React, { useState } from 'react';
-import { IShip, ShipSection } from './ShipSection';
-import { ILiquid, LiquidSection } from './LiquidSection';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { ICalculation } from '../../../pages/ResultsPage';
-import { TransportSection, ITransport } from './TransportSection';
-import { StandardSection, IStandard } from './StandardSection';
-import { StandardButton } from '../../elements/Buttons';
+import { gql } from 'apollo-boost';
+import React, { useState } from 'react';
+
 import { EIcon } from '../../../assets/svg/EquinorIcon';
-import { ResultContainer } from '../result/ResultContainer';
-
-interface MetricInput {
-  value: number,
-  unit: string,
-}
-
-interface FluidInput {
-  nitrogen: MetricInput,
-  methane: MetricInput,
-  ethane: MetricInput,
-  propane: MetricInput,
-  iButane: MetricInput,
-  nButane: MetricInput,
-  iPentane: MetricInput,
-  nPentane: MetricInput,
-  nHexane: MetricInput,
-}
+import { StandardButton } from '../../elements/Buttons';
+import { ILiquid, LiquidSection } from './LiquidSection';
+import { ShipSection } from './ShipSection';
+import { StandardSection } from './StandardSection';
+import { TransportSection } from './TransportSection';
+import useReactRouter from 'use-react-router';
+import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
@@ -35,7 +19,8 @@ const CALCULATE = gql`
     }
 `;
 
-export const CalculateFormContainer = () => {
+export const CalculateFormContainer: React.FunctionComponent<any> = () => {
+  const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<ILiquid>({
     nitrogen: 0.61,
@@ -61,7 +46,7 @@ export const CalculateFormContainer = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: FluidInput, transport: any, standard: any }>(CALCULATE, {
+  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
@@ -76,7 +61,9 @@ export const CalculateFormContainer = () => {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      addCalculation();
+      addCalculation().then((r: any) => {
+        history.push('/calculation/' + r.data.addCalculation.id);
+      });
     }}>
       <ShipSection ship={ship} setShip={setShip} />
       <LiquidSection liquid={liquid} setLiquid={setLiquid} />
@@ -87,9 +74,9 @@ export const CalculateFormContainer = () => {
         text={"Compute"}
         style={{ margin: "30px 0 0 0" }}
       ></StandardButton>
-      <ResultContainer
+      {/* <CalculationContainer
         style={{ margin: "30px 0 0 0" }}
-      ></ResultContainer>
+      ></CalculationContainer> */}
     </form>
   );
 };
