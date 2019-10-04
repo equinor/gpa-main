@@ -45,7 +45,7 @@ const StLegend = styled.legend`
   font-family: Equinor,serif;
 `;
 
-const StCircleIcon = styled.span`
+export const StCircleIcon = styled.span`
   min-width: 40px;
   min-height: 40px;
   max-width: 40px;

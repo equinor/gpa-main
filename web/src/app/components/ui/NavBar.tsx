@@ -1,18 +1,21 @@
 import React from "react";
 import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
   return (
     <StNavBar>
       <StHeader>
         <EquinorIcon icon={EIcon.MENU} size={24} />
-        <span>Neqsim</span>
+        <span>
+          <Link to="/">Neqsim</Link>
+        </span>
       </StHeader>
       <div style={{ marginRight: '50px', height: "24px" }}>
         <EquinorIcon icon={EIcon.USER} size={24} />
       </div>
-    </StNavBar>
+    </StNavBar >
   );
 };
 
@@ -36,5 +39,10 @@ const StHeader = styled.div`
     margin: 2px 0 0 25px;
     font-size: 18px; 
     font-weight: 500;
+    cursor: pointer;
+    > a, a:hover {
+      color: black;
+      text-decoration: none
+    }
   }
 `;

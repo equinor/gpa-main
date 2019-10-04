@@ -48,7 +48,7 @@ export interface IStandardInputProps {
   label: string;
   label2?: string;
   placeholder: string;
-  value: string | number;
+  value: string | number | undefined;
   onChange: Function;
   onBlur?: Function;
   onKeyUp?: Function;
@@ -86,7 +86,7 @@ export const StandardInput = (props: IStandardInputProps) => {
         <NumberInput
           id={props.id}
           placeholder={props.placeholder}
-          value={props.value ? props.value : 0}
+          value={props.value !== null ? props.value : ""} 
           onChange={e => props.onChange(e)}
           onBlur={(e) =>{
             if (props.onBlur) props.onBlur(e);

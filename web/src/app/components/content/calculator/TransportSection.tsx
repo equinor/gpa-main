@@ -35,7 +35,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-volume"
                         label="Volume"
-                        label2="m^3"
+                        label2="m3"
                         onChange={(e: any) => {
                             setTransport("volume", e.target.value);
                         }}
@@ -108,9 +108,15 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
 
     function setTransport(name: keyof ITransport, value: any, toFixed?: boolean) {
         let transport: ITransport = props.transport;
-        const formattedValue = toFixed ? parseFloat(value).toFixed(2) : parseFloat(value);
-        transport[name] = formattedValue as never;
-        props.setTransport({ ...props.transport });
+        if (value !== "") {
+            const formattedValue = toFixed ? parseFloat(parseFloat(value).toFixed(2)) : parseFloat(value);
+            transport[name] = formattedValue as never;
+            props.setTransport({ ...props.transport });
+        }
+        else {
+            transport[name] = null as never;
+            props.setTransport({... props.transport});
+        }
     }
 };
 
