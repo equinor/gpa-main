@@ -10,6 +10,8 @@ import { StandardSection } from './StandardSection';
 import { TransportSection } from './TransportSection';
 import useReactRouter from 'use-react-router';
 import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
+import { Loading } from '../../elements/Loading';
+import styled from 'styled-components';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
@@ -46,7 +48,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
+  const [addCalculation, { loading }] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
@@ -55,28 +57,43 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       }, {} as any),
       transport,
       standard
+    },
+    onCompleted: (
+      r: any
+    ) => {
+      history.push('/calculation/' + r.addCalculation.id);
     }
   });
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      addCalculation().then((r: any) => {
-        history.push('/calculation/' + r.data.addCalculation.id);
-      });
-    }}>
-      <ShipSection ship={ship} setShip={setShip} />
-      <LiquidSection liquid={liquid} setLiquid={setLiquid} />
-      <TransportSection transport={transport} setTransport={setTransport}></TransportSection>
-      <StandardSection standard={standard} setStandard={setStandard}></StandardSection>
-      <StandardButton
-        icon={EIcon.SUBMIT}
-        text={"Compute"}
-        style={{ margin: "30px 0 0 0" }}
-      ></StandardButton>
-      {/* <CalculationContainer
-        style={{ margin: "30px 0 0 0" }}
-      ></CalculationContainer> */}
-    </form>
+    <>
+      {!loading &&
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          addCalculation();
+        }}>
+          <ShipSection ship={ship} setShip={setShip} />
+          <LiquidSection liquid={liquid} setLiquid={setLiquid} />
+          <TransportSection transport={transport} setTransport={setTransport}></TransportSection>
+          <StandardSection standard={standard} setStandard={setStandard}></StandardSection>
+          <StandardButton
+            icon={EIcon.SUBMIT}
+            text={"Compute"}
+            style={{ margin: "30px 0 0 0" }}
+          ></StandardButton>
+        </form>
+      }
+      {loading &&
+        <StLoading>
+          <Loading text={"Calculating parameters"} />
+        </StLoading>
+      }
+    </>
   );
 };
+
+const StLoading = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0;
+`;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
 import { EColor } from '../../../common/Color';
@@ -11,7 +11,9 @@ export interface ICalculationContainer {
     style?: Object;
 }
 
-export const CalculationContainer = (props: ICalculationContainer) => {
+export const CalculationContainer: React.FunctionComponent<ICalculationContainer> = (props) => {
+
+    const [moreResults, showMoreResults] = useState<boolean>(false);
 
     const header = ["TIME", "WI", "GCV", "DENSITY", "TEMP", "VOLUME", "ENERGY"];
     const initRow: IResult = props.calculation.result[0];
@@ -35,7 +37,7 @@ export const CalculationContainer = (props: ICalculationContainer) => {
 
     //card result
     const cardResults: ICardResult[] = header.map((title: string) => {
-        var lTitle = title.toLowerCase() as never;
+        const lTitle = title.toLowerCase() as never;
         return {
             title: title,
             unit: initRow[lTitle]["unit"],
@@ -60,17 +62,32 @@ export const CalculationContainer = (props: ICalculationContainer) => {
                 })}
             </div>
             <StLinks>
-                <span>Show more results</span>
-                &nbsp;•&nbsp;
                 <span>Get componsition</span>
                 &nbsp;•&nbsp;
                 <span>Export to Excel</span>
+                &nbsp;•&nbsp;
+                <span onClick={() => {
+                    showMoreResults(!moreResults);
+                }}>
+                    {!moreResults &&
+                        <>Show more results</>
+                    }
+                    {moreResults &&
+                        <>Hide more results</>
+                    }
+                </span>
             </StLinks>
-            <H3 style={{ width: "100%", margin: "0 0 15px 0" }}>More results</H3>
-            <StandardTable
-                header={header}
-                rows={rows}
-            ></StandardTable>
+            {moreResults &&
+                <>
+                    <H3 style={{ width: "100%", margin: "0 0 15px 0" }}>More results</H3>
+                    <StStandardTable>
+                        <StandardTable
+                            header={header}
+                            rows={rows}
+                        ></StandardTable>
+                    </StStandardTable>
+                </>
+            }
         </StCalculationContainer>
     )
 }
@@ -104,6 +121,13 @@ const StLinks = styled.div`
         :hover {
             text-decoration: none;
         }
+    }
+`;
+
+const StStandardTable = styled.div`
+    margin: 0 0 30px 0;
+    tbody tr:last-child {
+        font-weight: bold;
     }
 `;
 

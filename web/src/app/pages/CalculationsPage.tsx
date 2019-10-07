@@ -1,14 +1,16 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { History } from 'history';
 import React from 'react';
 
 import { CalculationsContainer } from '../components/content/calculations/CalculationsContainer';
 import { IStandardTableRow } from '../components/elements/Tables';
-import { H2, P } from '../components/elements/Texts';
+import { P } from '../components/elements/Texts';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { History } from 'history';
+import { Loading } from '../components/elements/Loading';
+import styled from 'styled-components';
 
 export interface ICalculationInfo {
   id: string,
@@ -42,17 +44,16 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
 
   return (
     <PageContent>
-      <TitleBlock>Results</TitleBlock>
+      <TitleBlock>Calculations</TitleBlock>
       <StPageWrapper>
-        <H2>Calculations</H2>
         <P>Select a row from the table to see details of the calculation.</P>
         <div style={{ margin: "30px 0 0 0" }}>
           {calculations.loading &&
-            <span>
-              Loading
-            </span>
+            <StLoading>
+              <Loading text={"Loading calculation"} />
+            </StLoading>
           }
-          {!calculations.loading &&
+          {calculations.data &&
             <CalculationsContainer
               rows={rows}
               selectRow={(row: IStandardTableRow) => {
@@ -65,6 +66,12 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
     </PageContent >
   );
 };
+
+const StLoading = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0;
+`;
 
 const CALCULATIONS_QUERY = gql`
     {

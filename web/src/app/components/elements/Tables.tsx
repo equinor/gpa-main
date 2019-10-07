@@ -7,10 +7,11 @@ interface IStandardTable {
     headerSecondary?: string[];
     rows: IStandardTableRow[];
     selectRow?: Function;
+    disableHover?: boolean;
 }
 
 export interface IStandardTableRow {
-    value: any;
+    value?: any;
     display: any[];
 }
 
@@ -38,7 +39,7 @@ export const StandardTable = (props: IStandardTable) => {
             <tbody>
                 {props.rows.map((row, index) => {
                     return (
-                        <tr key={index} style={props.selectRow ? { cursor: "pointer" } : {}}
+                        <tr key={index}
                             onClick={typeof props.selectRow !== "undefined" ? () => {
                                 if (props.selectRow) {
                                     props.selectRow(row)
@@ -84,7 +85,61 @@ const StStandardTable = styled.table`
         tr {
             border-bottom: 1px solid  #DCDCDC;
             :hover {
-                background-color: ${EColor.LIGHT_GREEN};
+                background-color: ${(props: IStTable) => props.disableHover ? "" : EColor.LIGHT_GREEN};
+                cursor: ${(props: IStTable) => props.disableHover ? "" : "pointer"};
+            }
+        }
+        td {
+            padding: 12px 10px;
+            font-size: 14px;
+        }
+    }
+`;
+
+interface ISimpleTable {
+    rows: IStandardTableRow[];
+    selectRow?: Function;
+    disableHover?: boolean;
+}
+
+export const SimpleTable = (props: ISimpleTable) => {
+    return (
+        <StSimpleTable disableHover={props.disableHover}>
+            <tbody>
+                {props.rows.map((row, index) => {
+                    return (
+                        <tr key={index}
+                            onClick={typeof props.selectRow !== "undefined" ? () => {
+                                if (props.selectRow) {
+                                    props.selectRow(row)
+                                }
+                            } : undefined}
+                        >
+                            {row.display.map((cell, index2) => {
+                                return (
+                                    <td key={index2}>{cell}</td>
+                                )
+                            })}
+                        </tr>
+                    )
+                })}
+            </tbody>
+        </StSimpleTable>
+    )
+}
+
+interface IStTable {
+    disableHover?: boolean;
+}
+
+const StSimpleTable = styled.table`
+    border-collapse: collapse;
+    > tbody {
+        tr {
+            border-bottom: 1px solid  #DCDCDC;
+            :hover {
+                background-color: ${(props: IStTable) => props.disableHover ? "" : EColor.LIGHT_GREEN};
+                cursor: ${(props: IStTable) => props.disableHover ? "" : "pointer"};
             }
         }
         td {

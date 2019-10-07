@@ -1,14 +1,16 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React from 'react';
+import { match } from 'react-router';
 
+import { ICalculation, IResult } from '../common/Interfaces';
 import { CalculationContainer } from '../components/content/calculation/CalculationContainer';
-import { H2 } from '../components/elements/Texts';
+import { CalculationValuesContainer } from '../components/content/calculation/CalculationValuesContainer';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { match } from 'react-router';
-import { ICalculation, IResult } from '../common/Interfaces';
+import { Loading } from '../components/elements/Loading';
+import styled from 'styled-components';
 
 interface ICalculationWithResult extends ICalculation {
   result: IResult[];
@@ -35,19 +37,32 @@ export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props
     <PageContent>
       <TitleBlock>Calculation</TitleBlock>
       <StPageWrapper>
-        <H2>Calculation</H2>
         {calculation.loading &&
-          <div>Loading</div>
+          <StLoading>
+            <Loading text={"Loading calculation"} />
+          </StLoading>
         }
         {calculation.data &&
-          <CalculationContainer
-            calculation={calculation.data.calculation}
-          ></CalculationContainer>
+          <>
+            <CalculationContainer
+              calculation={calculation.data.calculation}
+            ></CalculationContainer>
+            <CalculationValuesContainer
+              calculation={calculation.data.calculation}
+            >
+            </CalculationValuesContainer>
+          </>
         }
       </StPageWrapper>
     </PageContent>
   );
 };
+
+const StLoading = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0;
+`;
 
 const CALCULATION_QUERY = gql`
   query Calculation ($id: ID!) {

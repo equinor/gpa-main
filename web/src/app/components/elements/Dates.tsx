@@ -50,7 +50,7 @@ const StFlatPicker = styled.div`
         border-bottom: 1px solid ${EColor.GRAY};
         padding: 2px 10px 0 10px;
         font-family: Equinor, 'serif';
-        box-sizing: border-box;
+        box-sizing: border-box; 
     }
     .selected {
         background: ${EColor.GREEN} !important;
