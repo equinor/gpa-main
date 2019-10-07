@@ -5,6 +5,7 @@ type Calculation {
     transport: Transport!
     standard: Standard!
     result: [CalculationStep]
+    createdDate: String
 }
 
 type Query {

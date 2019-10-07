@@ -3,6 +3,7 @@ export interface IShip {
     id?: string,
     country: string,
     name: string,
+    createdDate?: string
 }
 
 //2 Liquid
@@ -45,6 +46,7 @@ export interface IResult {
     density: IMetric;
     energy: IMetric;
     gcv: IMetric;
+    gcvMass: IMetric;
     temp: IMetric;
     time: IMetric;
     volume: IMetric;
@@ -58,5 +60,6 @@ export interface ICalculation {
     fluid: IFluid,
     transport: ITransport,
     standard: IStandard,
-    result: IResult[]
+    result: IResult[],
+    createdDate?: string
   }

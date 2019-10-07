@@ -2,6 +2,7 @@ type Ship {
     id: ID!
     name: String!
     country: String!
+    createdDate: String
 }
 
 input ShipInput {

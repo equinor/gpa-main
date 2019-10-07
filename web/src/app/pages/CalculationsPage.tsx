@@ -11,14 +11,13 @@ import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
 import { Loading } from '../components/elements/Loading';
 import styled from 'styled-components';
+import { IShip } from '../common/Interfaces';
+import moment from 'moment';
 
 export interface ICalculationInfo {
   id: string,
-  ship: {
-    id: string,
-    name: string,
-    country: string,
-  }
+  ship: IShip,
+  createdDate: string
 }
 
 interface ICalculationsData {
@@ -37,7 +36,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
     rows = calculations.data.calculations.map((calculation: ICalculationInfo) => {
       return {
         value: calculation.id,
-        display: [calculation.ship.name, calculation.ship.country, ""]
+        display: [calculation.ship.name, calculation.ship.country, moment(calculation.createdDate).fromNow()]
       }
     })
   }
@@ -82,6 +81,7 @@ const CALCULATIONS_QUERY = gql`
                 name
                 country
             }
+            createdDate
         }
     }
 `;

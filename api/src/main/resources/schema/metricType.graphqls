@@ -4,6 +4,6 @@ type MetricType {
 }
 
 input MetricInput {
-    value: Float!
+    value: Float
     unit: String
 }

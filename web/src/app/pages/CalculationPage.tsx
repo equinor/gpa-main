@@ -136,9 +136,13 @@ const CALCULATION_QUERY = gql`
                 value 
                 unit
               }
-              gcv {
-                value 
+              gcv(isMass: false){
                 unit
+                value
+              }
+              gcvMass:gcv(isMass: true) {
+                unit
+                value
               }
               density {
                 value 

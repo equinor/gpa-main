@@ -1,5 +1,6 @@
 package com.equinor.neqsim.entities
 
+import com.equinor.neqsim.utils.Auditable
 import javax.persistence.*
 
 @Entity
@@ -29,4 +30,4 @@ class Fluid (
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     var calculation: Calculation? = null
-)
+): Auditable()

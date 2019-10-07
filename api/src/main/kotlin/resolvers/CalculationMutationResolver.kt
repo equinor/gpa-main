@@ -3,12 +3,14 @@ package com.equinor.neqsim.resolvers
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.equinor.neqsim.entities.*
 import com.equinor.neqsim.services.LNGAgeingService
+import com.equinor.neqsim.services.ShipService
 import com.equinor.neqsim.utils.FluidInput
 import org.springframework.stereotype.Component
 import java.time.OffsetDateTime
 
 @Component
-class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService) : GraphQLMutationResolver {
+//inject ShipService
+class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService, private val shipService: ShipService) : GraphQLMutationResolver {
 
     fun addCalculation(
         shipInput: ShipInput,
@@ -16,6 +18,7 @@ class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService
         transportInput: TransportInput,
         standardInput: StandardInput
     ): Calculation {
+        //loadOrPrepareShip
         val ship = Ship(name = shipInput.name, country = shipInput.country)
         val fluid = Fluid(
             nitrogen = fluidInput.methane.value,

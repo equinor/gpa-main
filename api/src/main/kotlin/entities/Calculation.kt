@@ -1,8 +1,11 @@
 package com.equinor.neqsim.entities
 
+import com.equinor.neqsim.utils.Auditable
 import javax.persistence.*
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 class Calculation(
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var fluid: Fluid,
@@ -21,4 +24,4 @@ class Calculation(
     var result: MutableSet<CalculationStep> = mutableSetOf(),
 
     @Id @GeneratedValue var id: Long? = null
-)
+) : Auditable()
