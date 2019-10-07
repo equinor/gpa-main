@@ -115,7 +115,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
         }
         else {
             transport[name] = null as never;
-            props.setTransport({... props.transport});
+            props.setTransport({...props.transport});
         }
     }
 };

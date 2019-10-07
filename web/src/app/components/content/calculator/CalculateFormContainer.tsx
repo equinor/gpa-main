@@ -57,6 +57,11 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       }, {} as any),
       transport,
       standard
+    },
+    onCompleted: (
+      r: any
+    ) => {
+      history.push('/calculation/' + r.addCalculation.id);
     }
   });
 
@@ -65,9 +70,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       {!loading &&
         <form onSubmit={(e) => {
           e.preventDefault();
-          addCalculation().then((r: any) => {
-            history.push('/calculation/' + r.data.addCalculation.id);
-          });
+          addCalculation();
         }}>
           <ShipSection ship={ship} setShip={setShip} />
           <LiquidSection liquid={liquid} setLiquid={setLiquid} />
