@@ -18,8 +18,7 @@ class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService
         transportInput: TransportInput,
         standardInput: StandardInput
     ): Calculation {
-        //loadOrPrepareShip
-        val ship = Ship(name = shipInput.name, country = shipInput.country)
+        val ship = shipService.loadOrPrepareShip(shipInput.name, shipInput.country);
         val fluid = Fluid(
             nitrogen = fluidInput.methane.value,
             nitrogen_unit = fluidInput.methane.unit,

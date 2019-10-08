@@ -10,6 +10,7 @@ interface IStandardDatePickerProps {
     value?: Date;
     disabled?: boolean;
     minDate?: Date;
+    required?: boolean;
 }
 
 export const StandardDatePicker = (props: IStandardDatePickerProps) => {
@@ -35,6 +36,7 @@ export const StandardDatePicker = (props: IStandardDatePickerProps) => {
                 }}
                 className="flatPickerTheme"
                 disabled={props.disabled}
+                required={props.required}
             />
         </StFlatPicker>
     )

@@ -30,7 +30,7 @@ class CalculationStepResolver(): GraphQLResolver<CalculationStep> {
     }
 
     fun gcv(calculationStep: CalculationStep, isMass: Boolean): MetricType {
-        //missing proper calculation
+        //TODO: missing proper calculation
         if (isMass) {
             return MetricType(
                 value = calculationStep.gcv * 10,

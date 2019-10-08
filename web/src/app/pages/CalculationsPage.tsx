@@ -1,18 +1,18 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { History } from 'history';
+import moment from 'moment';
 import React from 'react';
+import styled from 'styled-components';
 
+import { IShip } from '../common/Interfaces';
 import { CalculationsContainer } from '../components/content/calculations/CalculationsContainer';
 import { IStandardTableRow } from '../components/elements/Tables';
 import { P } from '../components/elements/Texts';
+import { UserMessage } from '../components/elements/UserMessage';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { Loading } from '../components/elements/Loading';
-import styled from 'styled-components';
-import { IShip } from '../common/Interfaces';
-import moment from 'moment';
 
 export interface ICalculationInfo {
   id: string,
@@ -48,9 +48,9 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
         <P>Select a row from the table to see details of the calculation.</P>
         <div style={{ margin: "30px 0 0 0" }}>
           {calculations.loading &&
-            <StLoading>
-              <Loading text={"Loading calculation"} />
-            </StLoading>
+            <StUserMessage>
+              <UserMessage type={"loading"} text={"Loading calculations"} />
+            </StUserMessage>
           }
           {calculations.data &&
             <CalculationsContainer
@@ -60,13 +60,18 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
               }}
             ></CalculationsContainer>
           }
+          {calculations.error &&
+            <StUserMessage>
+              <UserMessage type={"error"} text={"Loading failed"} />
+            </StUserMessage>
+          }
         </div>
       </StPageWrapper>
     </PageContent >
   );
 };
 
-const StLoading = styled.div`
+const StUserMessage = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0 0;

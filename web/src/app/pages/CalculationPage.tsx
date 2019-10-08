@@ -9,7 +9,7 @@ import { CalculationValuesContainer } from '../components/content/calculation/Ca
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { Loading } from '../components/elements/Loading';
+import { UserMessage } from '../components/elements/UserMessage';
 import styled from 'styled-components';
 
 interface ICalculationWithResult extends ICalculation {
@@ -38,9 +38,9 @@ export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props
       <TitleBlock>Calculation</TitleBlock>
       <StPageWrapper>
         {calculation.loading &&
-          <StLoading>
-            <Loading text={"Loading calculation"} />
-          </StLoading>
+          <StUserMessage>
+            <UserMessage type={"loading"} text={"Loading calculation"} />
+          </StUserMessage>
         }
         {calculation.data &&
           <>
@@ -53,12 +53,17 @@ export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props
             </CalculationValuesContainer>
           </>
         }
+        {calculation.error &&
+          <StUserMessage>
+            <UserMessage type={"error"} text={"Loading failed"} />
+          </StUserMessage>
+        }
       </StPageWrapper>
     </PageContent>
   );
 };
 
-const StLoading = styled.div`
+const StUserMessage = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0 0;
@@ -161,6 +166,7 @@ const CALCULATION_QUERY = gql`
                 unit
               }
             }
+            createdDate
         }
       }
 `;

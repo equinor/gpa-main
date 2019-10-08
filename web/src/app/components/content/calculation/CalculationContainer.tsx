@@ -5,6 +5,7 @@ import { EColor } from '../../../common/Color';
 import { ICalculation, IResult } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2, H3 } from '../../elements/Texts';
+import moment from 'moment';
 
 export interface ICalculationContainer {
     calculation: ICalculation;
@@ -81,7 +82,14 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
 
     return (
         <StCalculationContainer style={props.style}>
-            <H2 style={{ width: "100%" }}>Results</H2>
+            <H2 style={{ width: "100%" }}>
+                Results
+                <span style={{
+                    fontSize: "15px",
+                    color: EColor.GRAY,
+                    margin: "-1px 0 0 10px"
+                }}>{moment(props.calculation.createdDate).fromNow()}</span>
+            </H2>
             <div style={{ display: "flex" }}>
                 {cardResults.map((result: ICardResult, index) => {
                     return (
@@ -110,7 +118,8 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                     }
                 </span>
             </StLinks>
-            {moreResults &&
+            {
+                moreResults &&
                 <>
                     <H3 style={{ width: "100%", margin: "0 0 15px 0" }}>More results</H3>
                     <StStandardTable>
@@ -123,7 +132,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                     </StStandardTable>
                 </>
             }
-        </StCalculationContainer>
+        </StCalculationContainer >
     )
 }
 
@@ -132,7 +141,9 @@ const StCalculationContainer = styled.div`
 `;
 
 const StCalculation = styled.div`
-    width: 100px;
+    min-width: 100px;
+    padding: 0 10px;
+    box-sizing: border-box;
     height: 140px;
     background-color: ${EColor.LIGHT_GREEN};
     margin: 0 3px 0 0;

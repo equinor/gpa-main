@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
 import { StandardInput, StLabel } from '../../elements/Inputs';
@@ -17,6 +17,7 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
   const ships = useQuery(SHIPS_QUERY);
 
   //select ships
+  const [storedShip, setStoredShip] = useState<boolean>(false); //used select, empty otherwise
   let options: IOption[] = [];
   if (ships.data) {
     options = ships.data.ships.map((ship: IShip) => {
@@ -44,9 +45,10 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
               <StandardSelect
                 options={options}
                 onChange={(e: any) => {
-                  props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] })
+                  props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] });
+                  setStoredShip(true);
                 }}
-                value={props.ship.name ? {
+                value={props.ship.name && storedShip ? {
                   label: props.ship.name,
                   value: props.ship.name
                 } : null}
@@ -63,17 +65,24 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
           <StandardInput
             id="ship-name"
             label="Name"
-            onChange={(e: any) => props.setShip({ ...props.ship, name: e.target.value })}
+            onChange={(e: any) => {
+              props.setShip({ ...props.ship, name: e.target.value })
+              setStoredShip(false);
+            }}
             placeholder="Name"
             value={props.ship.name}
             type="text"
+            required={true}
           ></StandardInput>
         </StShipInput>
         <StShipInput>
           <StandardInput
             id="ship-country"
             label="Country"
-            onChange={(e: any) => props.setShip({ ...props.ship, country: e.target.value })}
+            onChange={(e: any) => {
+              props.setShip({ ...props.ship, country: e.target.value })
+              setStoredShip(false);
+            }}
             placeholder="Country"
             value={props.ship.country}
             type="text"
