@@ -35,8 +35,8 @@ export interface ITransport {
 
 //4 Standard
 export interface IStandard {
-    combustionTemperature: number,
-    measurementTemperature: number,
+    combustionTemperature: number | null,
+    measurementTemperature: number | null,
     idealGasReferenceState: boolean
 }
 

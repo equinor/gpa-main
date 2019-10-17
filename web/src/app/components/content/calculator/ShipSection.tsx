@@ -1,12 +1,12 @@
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
-import { StandardInput, StLabelLeft } from '../../elements/Inputs';
-import { StandardSelect, IOption } from '../../elements/Selects';
-import { FormSection } from '../../ui/FormSection';
-import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
 import { IShip } from '../../../common/Interfaces';
+import { StandardInput } from '../../elements/Inputs';
+import { IOption, StandardSelect } from '../../elements/Selects';
+import { FormSection } from '../../ui/FormSection';
 
 interface ShipSectionProps {
   ship: IShip,
@@ -38,22 +38,19 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
             </div>
           }
           {!ships.loading &&
-            <>
-              <StLabelLeft>
-                Stored ship
-              </StLabelLeft>
-              <StandardSelect
-                options={options}
-                onChange={(e: any) => {
-                  props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] });
-                  setStoredShip(true);
-                }}
-                value={props.ship.name && storedShip ? {
-                  label: props.ship.name,
-                  value: props.ship.name
-                } : null}
-              ></StandardSelect>
-            </>
+            <StandardSelect
+              id="storedShip"
+              label={"Stored ship"}
+              options={options}
+              onChange={(e: any) => {
+                props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] });
+                setStoredShip(true);
+              }}
+              value={props.ship.name && storedShip ? {
+                label: props.ship.name,
+                value: props.ship.name
+              } : null}
+            ></StandardSelect>
           }
         </StShipInput>
       </StShipInputs>
