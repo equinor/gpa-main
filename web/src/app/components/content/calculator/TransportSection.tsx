@@ -1,7 +1,7 @@
 import { FormSection } from "../../ui/FormSection"
 import React from 'react';
 import styled from 'styled-components/macro';
-import { StandardInput, StLabel } from "../../elements/Inputs";
+import { StandardInput, StLabelLeft } from "../../elements/Inputs";
 import { StandardDatePicker } from "../../elements/Dates";
 import moment from "moment";
 
@@ -45,6 +45,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         placeholder="Volume"
                         value={props.transport.volume}
                         type="number"
+                        required={true}
                     ></StandardInput>
                 </StTransportInput>
                 <StTransportInput>
@@ -61,6 +62,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         placeholder="Pressure"
                         value={props.transport.pressure}
                         type="number"
+                        required={true}
                     ></StandardInput>
                 </StTransportInput>
                 <StTransportInput>
@@ -77,23 +79,32 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         placeholder="Boil off rate"
                         value={props.transport.boilOffRate}
                         type="number"
+                        required={true}
                     ></StandardInput>
                 </StTransportInput>
                 <StTransportInput style={{ flexDirection: "row", display: "flex" }}>
                     <div style={{ width: "50%" }}>
-                        <StLabel>From</StLabel>
+                        <StLabelLeft>
+                            <span>From</span>
+                            <span>&nbsp;*</span>
+                        </StLabelLeft>
                         <StandardDatePicker
                             onChange={(e: any) => { props.setTransport({ ...props.transport, fromDate: e }) }}
                             value={new Date(props.transport.fromDate)}
+                            required={true}
                         ></StandardDatePicker>
                     </div>
                     <div style={{ width: "50%" }}>
-                        <StLabel>To</StLabel>
+                        <StLabelLeft>
+                            <span>To</span>
+                            <span>&nbsp;*</span>
+                        </StLabelLeft>
                         <StandardDatePicker
                             onChange={(e: any) => { props.setTransport({ ...props.transport, toDate: e }) }}
                             value={new Date(props.transport.toDate)}
                             disabled={!props.transport.fromDate}
                             minDate={new Date(props.transport.fromDate)}
+                            required={true}
                         ></StandardDatePicker>
                     </div>
                 </StTransportInput>
@@ -115,7 +126,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
         }
         else {
             transport[name] = null as never;
-            props.setTransport({...props.transport});
+            props.setTransport({ ...props.transport });
         }
     }
 };

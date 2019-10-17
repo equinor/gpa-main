@@ -1,5 +1,6 @@
 package com.equinor.neqsim.entities
 
+import com.equinor.neqsim.utils.Auditable
 import javax.persistence.*
 
 @Entity
@@ -10,8 +11,6 @@ class CalculationStep (
     var wi_unit: String = "MJ/m^3",
     var gcv: Double,
     var gcv_unit: String = "MJ/m^3",
-    var gcv2: Double? = null,
-    var gcv2_unit: String = "MJ/kg",
     var density: Double,
     var density_unit: String = "kg/m^3",
     var temp: Double,
@@ -26,4 +25,4 @@ class CalculationStep (
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "calculation_id")
     var calculation: Calculation? = null
-)
+): Auditable()

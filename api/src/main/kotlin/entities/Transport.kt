@@ -1,5 +1,6 @@
 package com.equinor.neqsim.entities
 
+import com.equinor.neqsim.utils.Auditable
 import java.time.OffsetDateTime
 import javax.persistence.*
 
@@ -16,4 +17,4 @@ class Transport (
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     var calculation: Calculation? = null
-)
+): Auditable()

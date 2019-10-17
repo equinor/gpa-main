@@ -38,6 +38,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
             onBlur={(value: any) => {
               setLiquid("nitrogen", value, true);
             }}
+            required={false}
           />
         </div>
         <div style={{ flexGrow: 1, height: "100%" }}>
@@ -55,6 +56,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
                   onBlur={(value: any) => {
                     setLiquid(componentName, value, true);
                   }}
+                  required={false}
                 />
               ))
             }
@@ -79,11 +81,12 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
 }
 
 interface ILiquidComponentInputProps {
-  componentName: string,
-  componentValue: number,
+  componentName: string;
+  componentValue: number;
 
-  onChange(value: number): void,
-  onBlur(value: number): void,
+  onChange(value: number): void;
+  onBlur(value: number): void;
+  required: boolean;
 }
 
 const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
@@ -101,6 +104,7 @@ const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
         onBlur={(e: any) => {
           props.onBlur(e.target.value)
         }}
+        required={props.required}
       ></StandardInput>
     </StLiquidInput>
   );

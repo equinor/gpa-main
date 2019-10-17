@@ -10,7 +10,7 @@ import { StandardSection } from './StandardSection';
 import { TransportSection } from './TransportSection';
 import useReactRouter from 'use-react-router';
 import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
-import { Loading } from '../../elements/Loading';
+import { UserMessage } from '../../elements/UserMessage';
 import styled from 'styled-components';
 
 const CALCULATE = gql`
@@ -48,7 +48,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     idealGasReferenceState: false
   })
 
-  const [addCalculation, { loading }] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
+  const [addCalculation, { loading, error }] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
     variables: {
       ship,
       liquid: (Object.keys(liquid) as Array<keyof typeof liquid>).reduce((acc, componentName) => {
@@ -67,7 +67,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
 
   return (
     <>
-      {!loading &&
+      {!loading && !error &&
         <form onSubmit={(e) => {
           e.preventDefault();
           addCalculation();
@@ -84,15 +84,21 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
         </form>
       }
       {loading &&
-        <StLoading>
-          <Loading text={"Calculating parameters"} />
-        </StLoading>
+        <StUserMessage>
+          <UserMessage type={"loading"} text={"Calculating parameters"} />
+        </StUserMessage>
       }
+      {error &&
+        <StUserMessage>
+          <UserMessage type={"error"} text={"Calculation failed"} />
+        </StUserMessage>
+      }
+
     </>
   );
 };
 
-const StLoading = styled.div`
+const StUserMessage = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0 0;

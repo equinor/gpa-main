@@ -3,12 +3,17 @@ package com.equinor.neqsim.resolvers
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.equinor.neqsim.entities.*
 import com.equinor.neqsim.services.LNGAgeingService
+import com.equinor.neqsim.services.ShipService
 import com.equinor.neqsim.utils.FluidInput
 import org.springframework.stereotype.Component
 import java.time.OffsetDateTime
 
 @Component
-class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService) : GraphQLMutationResolver {
+//inject ShipService
+class CalculationMutationResolver(
+    private val lngAgeingService: LNGAgeingService,
+    private val shipService: ShipService
+) : GraphQLMutationResolver {
 
     fun addCalculation(
         shipInput: ShipInput,
@@ -16,7 +21,7 @@ class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService
         transportInput: TransportInput,
         standardInput: StandardInput
     ): Calculation {
-        val ship = Ship(name = shipInput.name, country = shipInput.country)
+        val ship = shipService.loadOrPrepareShip(shipInput.name, shipInput.country)
         val fluid = Fluid(
             nitrogen = fluidInput.methane.value,
             nitrogen_unit = fluidInput.methane.unit,
@@ -56,18 +61,18 @@ class CalculationMutationResolver(private val lngAgeingService: LNGAgeingService
     }
 }
 
-data class ShipInput (
+data class ShipInput(
     val name: String,
     val country: String
 )
 
-class StandardInput (
+class StandardInput(
     val combustionTemperature: Double,
     val measurementTemperature: Double,
     val idealGasReferenceState: Boolean
 )
 
-class TransportInput (
+class TransportInput(
     val volume: Double,
     val pressure: Double,
     val boilOffRate: Double,

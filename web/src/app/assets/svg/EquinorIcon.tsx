@@ -104,6 +104,12 @@ const Loading: React.FC<IconProps> = ({ size }) => (
   </svg>
 )
 
+const Error: React.FC<IconProps> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.66659 1.27334L8.72659 0.333344L4.99992 4.06001L1.27325 0.333344L0.333252 1.27334L4.05992 5.00001L0.333252 8.72668L1.27325 9.66668L4.99992 5.94001L8.72659 9.66668L9.66659 8.72668L5.93992 5.00001L9.66659 1.27334Z" fill="#EB0000" />
+  </svg>
+)
+
 export enum EIcon {
   MENU = 'menu',
   USER = 'user',
@@ -113,7 +119,8 @@ export enum EIcon {
   CHECKBOX_ON = 'checkbox_on',
   CHECKBOX_OFF = 'checkbox_off',
   SUBMIT = 'submit',
-  LOADING = 'loading'
+  LOADING = 'loading',
+  ERROR = 'error'
 }
 
 export const EquinorIcon: React.FunctionComponent<IProps> = (props) => {
@@ -140,8 +147,10 @@ export const EquinorIcon: React.FunctionComponent<IProps> = (props) => {
       return <Submit size={size} />;
     case EIcon.LOADING:
       return <Loading size={size} />;
+    case EIcon.ERROR:
+      return <Error size={size} />;
     default:
-      throw Error('Unknown icon');
+      throw Error;
   }
 };
 

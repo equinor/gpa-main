@@ -3,6 +3,7 @@ type Standard {
     combustionTemperature: Float!
     measurementTemperature: Float!
     idealGasReferenceState: Boolean!
+    createdDate: String
 }
 
 input StandardInput {

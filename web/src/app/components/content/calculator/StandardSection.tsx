@@ -1,5 +1,5 @@
 import React from "react";
-import { StandardBoolean, StLabel } from "../../elements/Inputs";
+import { StandardBoolean, StLabelLeft } from "../../elements/Inputs";
 import { FormSection } from "../../ui/FormSection";
 import styled from "styled-components";
 import { StandardSelect } from "../../elements/Selects";
@@ -15,9 +15,9 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
     <FormSection legendText='Standard (ISO6976)' index={4}>
         <StStandardInputs>
             <StStandardInput>
-                <StLabel>
+                <StLabelLeft>
                     Combustion temperature
-                </StLabel>
+                </StLabelLeft>
                 <StandardSelect
                     options={[
                         {
@@ -51,9 +51,9 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 ></StandardSelect>
             </StStandardInput>
             <StStandardInput>
-                <StLabel>
+                <StLabelLeft>
                     Measurement temperature
-                </StLabel>
+                </StLabelLeft>
                 <StandardSelect
                     options={[
                         {

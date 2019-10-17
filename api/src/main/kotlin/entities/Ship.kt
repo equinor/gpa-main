@@ -1,5 +1,6 @@
 package com.equinor.neqsim.entities
 
+import com.equinor.neqsim.utils.Auditable
 import javax.persistence.*
 
 @Entity
@@ -15,4 +16,4 @@ class Ship (
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "ship")
     var calculations: MutableSet<Calculation> = mutableSetOf()
-)
+): Auditable()

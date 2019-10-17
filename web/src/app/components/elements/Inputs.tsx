@@ -1,46 +1,7 @@
 import styled from 'styled-components/macro';
 import { EColor } from '../../common/Color';
-import React from 'react';
+import React, { useState } from 'react';
 import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
-
-export const StLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  color: ${EColor.GRAY};
-  font-size: 12px;
-  font-family: Equinor,serif;
-  padding: 5px 10px 6px 10px;
-  box-sizing: border-box;
-`;
-
-const StInput = styled.input`
-  padding: 7px 10px 6px 10px;
-  background-color: ${EColor.LIGHT_GRAY};
-  border: none;
-  border-bottom: 1px solid ${EColor.GRAY};
-  font-size: 16px;
-  font-family: Equinor,serif;
-  line-height: 24px;
-  width: 100%;
-  box-sizing: border-box;
-  color: ${EColor.BLACK};
-`;
-
-const StLabel2 = styled(StLabel)`
-  text-align: right;
-`;
-
-const TextInput = styled(StInput).attrs({
-  type: 'text',
-})`
-    max-width: 300px;
-`;
-
-const NumberInput = styled(StInput).attrs({
-  type: 'number',
-})`
-  max-width: 300px;
-`;
 
 //standard TextInput
 export interface IStandardInputProps {
@@ -53,48 +14,73 @@ export interface IStandardInputProps {
   onBlur?: Function;
   onKeyUp?: Function;
   type: "text" | "number";
+  required?: boolean;
 }
 export const StandardInput = (props: IStandardInputProps) => {
+  const [invalid, setInvalid] = useState<boolean>(false);
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {/* Labels */}
-      <StLabel htmlFor={props.id} style={props.label2 ? { width: "50%" } : { width: "100%" }}>
-        {props.label}
-      </StLabel>
+      <StLabelLeft htmlFor={props.id} style={props.label2 ? { width: "50%" } : { width: "100%" }}>
+        <span>{props.label}</span>
+        {props.required &&
+          <span>&nbsp;*</span>
+        }
+      </StLabelLeft>
       {props.label2 &&
-        <StLabel2 htmlFor={props.id} style={{ width: "50%" }}>
-          {props.label2}
-        </StLabel2>
+        <StLabelRight htmlFor={props.id} style={{ width: "50%" }}>
+          <span>{props.label2}</span>
+        </StLabelRight>
       }
       {/* Text */}
       {props.type === "text" &&
-        <TextInput
+        <StTextInput
           id={props.id}
           placeholder={props.placeholder}
           value={props.value}
           onChange={e => props.onChange(e)}
-          onBlur={(e) =>{
+          onBlur={(e) => {
+            //required
+            if (props.required && e.target.value === "") {
+              setInvalid(true);
+            }
+            else if (props.required && e.target.value !== "") {
+              setInvalid(false);
+            }
+            //action
             if (props.onBlur) props.onBlur(e);
           }}
-          onKeyUp={(e) =>{
+          onKeyUp={(e) => {
             if (props.onKeyUp) props.onKeyUp(e);
           }}
+          invalid={invalid}
         />
       }
       {/* Number */}
       {props.type === "number" &&
-        <NumberInput
+        <StNumberInput
           id={props.id}
           placeholder={props.placeholder}
-          value={props.value !== null ? props.value : ""} 
+          value={props.value !== null ? props.value : ""}
           onChange={e => props.onChange(e)}
-          onBlur={(e) =>{
+          onBlur={(e) => {
+            //required
+            if (props.required && e.target.value === "") {
+              setInvalid(true);
+            }
+            else if (props.required && e.target.value !== "") {
+              setInvalid(false);
+            }
+            //action
             if (props.onBlur) props.onBlur(e);
           }}
-          onKeyUp={(e) =>{
+          onKeyUp={(e) => {
             if (props.onKeyUp) props.onKeyUp(e);
           }}
           step="0.01"
+          required={props.required}
+          invalid={invalid}
         />
       }
     </div>
@@ -137,3 +123,56 @@ export const StandardBoolean = (props: IStandardBooleanProps) => {
     </StStandardBoolean>
   )
 }
+
+export const StLabelLeft = styled.label`
+  display: flex;
+  flex-direction: column;
+  color: ${EColor.GRAY};
+  font-size: 12px;
+  font-family: Equinor,serif;
+  padding: 5px 10px 6px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  > span:nth-child(2) {
+    font-weight: bold;
+    color: ${EColor.DANGER_RED}
+  }
+`;
+
+interface IStInput {
+  invalid?: boolean;
+}
+
+const StInput = styled.input`
+  padding: 7px 10px 6px 10px;
+  background-color: ${EColor.LIGHT_GRAY};
+  border: none;
+  border-bottom: 1px solid;
+  border-color: ${(props: IStInput) => props.invalid ? EColor.DANGER_RED : EColor.GRAY};
+  font-size: 16px;
+  font-family: Equinor,serif;
+  line-height: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  color: ${EColor.BLACK};
+`;
+
+const StLabelRight = styled(StLabelLeft)`
+  text-align: right;
+  > span {
+    width: 100%;
+  }
+`;
+
+const StTextInput = styled(StInput).attrs({
+  type: 'text',
+})`
+    max-width: 300px;
+`;
+
+const StNumberInput = styled(StInput).attrs({
+  type: 'number',
+})`
+  max-width: 300px;
+`;

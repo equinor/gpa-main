@@ -1,24 +1,23 @@
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { History } from 'history';
+import moment from 'moment';
 import React from 'react';
+import styled from 'styled-components';
 
+import { IShip } from '../common/Interfaces';
 import { CalculationsContainer } from '../components/content/calculations/CalculationsContainer';
 import { IStandardTableRow } from '../components/elements/Tables';
 import { P } from '../components/elements/Texts';
+import { UserMessage } from '../components/elements/UserMessage';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { Loading } from '../components/elements/Loading';
-import styled from 'styled-components';
 
 export interface ICalculationInfo {
   id: string,
-  ship: {
-    id: string,
-    name: string,
-    country: string,
-  }
+  ship: IShip,
+  createdDate: string
 }
 
 interface ICalculationsData {
@@ -37,7 +36,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
     rows = calculations.data.calculations.map((calculation: ICalculationInfo) => {
       return {
         value: calculation.id,
-        display: [calculation.ship.name, calculation.ship.country, ""]
+        display: [calculation.ship.name, calculation.ship.country, moment(calculation.createdDate).fromNow()]
       }
     })
   }
@@ -49,9 +48,9 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
         <P>Select a row from the table to see details of the calculation.</P>
         <div style={{ margin: "30px 0 0 0" }}>
           {calculations.loading &&
-            <StLoading>
-              <Loading text={"Loading calculation"} />
-            </StLoading>
+            <StUserMessage>
+              <UserMessage type={"loading"} text={"Loading calculations"} />
+            </StUserMessage>
           }
           {calculations.data &&
             <CalculationsContainer
@@ -61,13 +60,18 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
               }}
             ></CalculationsContainer>
           }
+          {calculations.error &&
+            <StUserMessage>
+              <UserMessage type={"error"} text={"Loading failed"} />
+            </StUserMessage>
+          }
         </div>
       </StPageWrapper>
     </PageContent >
   );
 };
 
-const StLoading = styled.div`
+const StUserMessage = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0 0;
@@ -82,6 +86,7 @@ const CALCULATIONS_QUERY = gql`
                 name
                 country
             }
+            createdDate
         }
     }
 `;

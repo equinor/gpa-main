@@ -5,6 +5,7 @@ import { EColor } from '../../../common/Color';
 import { ICalculation, IResult } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2, H3 } from '../../elements/Texts';
+import moment from 'moment';
 
 export interface ICalculationContainer {
     calculation: ICalculation;
@@ -15,7 +16,38 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
 
     const [moreResults, showMoreResults] = useState<boolean>(false);
 
-    const header = ["TIME", "WI", "GCV", "DENSITY", "TEMP", "VOLUME", "ENERGY"];
+    const headers = [{
+        title: "TIME",
+        internalName: "time"
+    },
+    {
+        title: "WI",
+        internalName: "wi"
+    },
+    {
+        title: "GCV",
+        internalName: "gcv"
+    },
+    {
+        title: "GCV",
+        internalName: "gcvMass"
+    },
+    {
+        title: "DENSITY",
+        internalName: "density"
+    },
+    {
+        title: "TEMP",
+        internalName: "temp"
+    },
+    {
+        title: "VOLUME",
+        internalName: "volume"
+    },
+    {
+        title: "ENERGY",
+        internalName: "energy"
+    }];
     const initRow: IResult = props.calculation.result[0];
     const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
 
@@ -27,6 +59,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                 result.time.value,
                 result.wi.value,
                 result.gcv.value,
+                result.gcvMass.value,
                 result.density.value,
                 result.temp.value,
                 result.volume.value,
@@ -36,19 +69,27 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
     })
 
     //card result
-    const cardResults: ICardResult[] = header.map((title: string) => {
-        const lTitle = title.toLowerCase() as never;
+    const cardResults: ICardResult[] = headers.map((header) => {
+        const title = header.title as never;
+        const internalName = header.internalName as never;
         return {
             title: title,
-            unit: initRow[lTitle]["unit"],
-            initValue: initRow[lTitle]["value"],
-            endValue: endRow[lTitle]["value"]
+            unit: initRow[internalName]["unit"],
+            initValue: initRow[internalName]["value"],
+            endValue: endRow[internalName]["value"]
         }
     })
 
     return (
         <StCalculationContainer style={props.style}>
-            <H2 style={{ width: "100%" }}>Results</H2>
+            <H2 style={{ width: "100%" }}>
+                Results
+                <span style={{
+                    fontSize: "15px",
+                    color: EColor.GRAY,
+                    margin: "-1px 0 0 10px"
+                }}>{moment(props.calculation.createdDate).fromNow()}</span>
+            </H2>
             <div style={{ display: "flex" }}>
                 {cardResults.map((result: ICardResult, index) => {
                     return (
@@ -77,18 +118,21 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                     }
                 </span>
             </StLinks>
-            {moreResults &&
+            {
+                moreResults &&
                 <>
                     <H3 style={{ width: "100%", margin: "0 0 15px 0" }}>More results</H3>
                     <StStandardTable>
                         <StandardTable
-                            header={header}
+                            header={headers.map((header) => {
+                                return header.title;
+                            })}
                             rows={rows}
                         ></StandardTable>
                     </StStandardTable>
                 </>
             }
-        </StCalculationContainer>
+        </StCalculationContainer >
     )
 }
 
@@ -97,7 +141,9 @@ const StCalculationContainer = styled.div`
 `;
 
 const StCalculation = styled.div`
-    width: 100px;
+    min-width: 100px;
+    padding: 0 10px;
+    box-sizing: border-box;
     height: 140px;
     background-color: ${EColor.LIGHT_GREEN};
     margin: 0 3px 0 0;

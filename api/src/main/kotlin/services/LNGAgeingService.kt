@@ -6,6 +6,7 @@ import com.equinor.neqsim.utils.stringToDouble
 import neqsim.fluidMechanics.flowSystem.twoPhaseFlowSystem.shipSystem.LNGship
 import neqsim.thermo.system.SystemInterface
 import neqsim.thermo.system.SystemSrkEos
+import org.springframework.data.domain.Sort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.time.temporal.ChronoUnit
@@ -16,7 +17,8 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
 
     fun findOne(id: String) = calculationRepository.findByIdOrNull(id.toLong()) ?: throw EntityNotFoundException()
 
-    fun findAll(): MutableIterable<Calculation> = calculationRepository.findAll()
+    fun findAll(): MutableIterable<Calculation> =
+        calculationRepository.findAll(Sort.by(Sort.Direction.DESC, "createdDate"))
 
     fun createCalculation(ship: Ship, fluid: Fluid, transport: Transport, standard: Standard): Calculation {
         val calculation = Calculation(
