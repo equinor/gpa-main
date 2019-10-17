@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
-import { StandardInput, StLabel } from '../../elements/Inputs';
+import { StandardInput, StLabelLeft } from '../../elements/Inputs';
 import { StandardSelect, IOption } from '../../elements/Selects';
 import { FormSection } from '../../ui/FormSection';
 import gql from 'graphql-tag';
@@ -39,9 +39,9 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
           }
           {!ships.loading &&
             <>
-              <StLabel>
+              <StLabelLeft>
                 Stored ship
-              </StLabel>
+              </StLabelLeft>
               <StandardSelect
                 options={options}
                 onChange={(e: any) => {

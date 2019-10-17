@@ -1,7 +1,7 @@
 import { FormSection } from "../../ui/FormSection"
 import React from 'react';
 import styled from 'styled-components/macro';
-import { StandardInput, StLabel } from "../../elements/Inputs";
+import { StandardInput, StLabelLeft } from "../../elements/Inputs";
 import { StandardDatePicker } from "../../elements/Dates";
 import moment from "moment";
 
@@ -84,10 +84,10 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                 </StTransportInput>
                 <StTransportInput style={{ flexDirection: "row", display: "flex" }}>
                     <div style={{ width: "50%" }}>
-                        <StLabel>
+                        <StLabelLeft>
                             <span>From</span>
                             <span>&nbsp;*</span>
-                        </StLabel>
+                        </StLabelLeft>
                         <StandardDatePicker
                             onChange={(e: any) => { props.setTransport({ ...props.transport, fromDate: e }) }}
                             value={new Date(props.transport.fromDate)}
@@ -95,10 +95,10 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         ></StandardDatePicker>
                     </div>
                     <div style={{ width: "50%" }}>
-                        <StLabel>
+                        <StLabelLeft>
                             <span>To</span>
                             <span>&nbsp;*</span>
-                        </StLabel>
+                        </StLabelLeft>
                         <StandardDatePicker
                             onChange={(e: any) => { props.setTransport({ ...props.transport, toDate: e }) }}
                             value={new Date(props.transport.toDate)}

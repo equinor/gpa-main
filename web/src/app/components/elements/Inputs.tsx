@@ -22,16 +22,16 @@ export const StandardInput = (props: IStandardInputProps) => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {/* Labels */}
-      <StLabel htmlFor={props.id} style={props.label2 ? { width: "50%" } : { width: "100%" }}>
+      <StLabelLeft htmlFor={props.id} style={props.label2 ? { width: "50%" } : { width: "100%" }}>
         <span>{props.label}</span>
         {props.required &&
           <span>&nbsp;*</span>
         }
-      </StLabel>
+      </StLabelLeft>
       {props.label2 &&
-        <StLabel2 htmlFor={props.id} style={{ width: "50%" }}>
+        <StLabelRight htmlFor={props.id} style={{ width: "50%" }}>
           <span>{props.label2}</span>
-        </StLabel2>
+        </StLabelRight>
       }
       {/* Text */}
       {props.type === "text" &&
@@ -124,7 +124,7 @@ export const StandardBoolean = (props: IStandardBooleanProps) => {
   )
 }
 
-export const StLabel = styled.label`
+export const StLabelLeft = styled.label`
   display: flex;
   flex-direction: column;
   color: ${EColor.GRAY};
@@ -158,7 +158,7 @@ const StInput = styled.input`
   color: ${EColor.BLACK};
 `;
 
-const StLabel2 = styled(StLabel)`
+const StLabelRight = styled(StLabelLeft)`
   text-align: right;
   > span {
     width: 100%;

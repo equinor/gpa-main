@@ -11,18 +11,16 @@ import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Service
 
 @Service
-class ShipService(private val shipRepository: ShipRepository)  {
+class ShipService(private val shipRepository: ShipRepository) {
     fun findAll(): MutableIterable<Ship> = shipRepository.findAll(Sort.by(Sort.Direction.DESC, "createdDate"))
 
-    fun loadOrPrepareShip(name: String, country: String):Ship {
+    fun loadOrPrepareShip(name: String, country: String): Ship {
         val example = Example.of(Ship(name, country))
-        val ships:List<Ship> = shipRepository.findAll(example);
-        val ship:Ship;
-        ship = if (ships.size == 1) {
+        val ships: List<Ship> = shipRepository.findAll(example);
+        val ship: Ship = if (ships.size == 1)
             ships[0];
-        } else {
+        else
             Ship(name, country);
-        }
         return ship;
     }
 }
