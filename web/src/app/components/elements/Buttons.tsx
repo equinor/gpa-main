@@ -9,23 +9,31 @@ export interface IStandardButtonProps {
     icon?: EIcon;
     onClick?: Function;
     style?: Object;
+    disabled?: boolean;
+}
+
+interface IStStandardButtonProps {
+    disabled?: boolean;
 }
 
 const StStandardButton = styled.button`
     display: flex;
-    cursor: pointer;
-    background-color: ${EColor.GREEN};
+    cursor: ${(props: IStStandardButtonProps) => props.disabled ? "normal" : "pointer"};
+    background-color: ${(props: IStStandardButtonProps) => props.disabled ? EColor.LIGHT_GRAY : EColor.GREEN};
+    color: ${(props: IStStandardButtonProps) => props.disabled ? EColor.GRAY : "white"};
     border-radius: 3px;
-    color: white;
     font-size: 14px;
     border: 0;
     padding: 10px 15px;
     border-radius: 5px;
+    rect {
+        fill: ${(props: IStStandardButtonProps) => props.disabled ? EColor.GRAY : "white"};
+    }
     > span {
         margin: 0px 0 0 10px;
     }
     :hover {
-        background-color: ${EColor.DARK_GREEN}
+        background-color: ${(props: IStStandardButtonProps) => props.disabled ? EColor.LIGHT_GRAY : EColor.DARK_GREEN};
     }
 `;
 
@@ -33,11 +41,12 @@ export const StandardButton = (props: IStandardButtonProps) => {
     return (
         <StStandardButton
             style={props.style}
-            onClick={() => {
-                if (props.onClick) {
+            disabled={props.disabled}
+            onClick={typeof props.onClick !== "undefined" ? () => {
+                if (props.onClick && !props.disabled) {
                     props.onClick();
                 }
-            }}>
+            } : undefined}>
             {props.icon &&
                 <EquinorIcon icon={props.icon} size={16}></EquinorIcon>
             }

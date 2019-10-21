@@ -12,6 +12,8 @@ import useReactRouter from 'use-react-router';
 import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
 import { UserMessage } from '../../elements/UserMessage';
 import styled from 'styled-components';
+import { isFilled } from '../../../utils/functions';
+import { EColor } from '../../../common/Color';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
@@ -43,8 +45,8 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     toDate: "2019-09-20T02:22:07Z"
   });
   const [standard, setStandard] = useState<IStandard>({
-    combustionTemperature: 15,
-    measurementTemperature: 15,
+    combustionTemperature: null,
+    measurementTemperature: null,
     idealGasReferenceState: false
   })
 
@@ -76,11 +78,30 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
           <LiquidSection liquid={liquid} setLiquid={setLiquid} />
           <TransportSection transport={transport} setTransport={setTransport}></TransportSection>
           <StandardSection standard={standard} setStandard={setStandard}></StandardSection>
-          <StandardButton
-            icon={EIcon.SUBMIT}
-            text={"Compute"}
-            style={{ margin: "30px 0 0 0" }}
-          ></StandardButton>
+          <div style={{
+            display: "flex",
+            flexDirection: "row",
+            margin: "30px 0px 0px",
+            alignItems: "center"
+          }}>
+            <StandardButton
+              icon={EIcon.SUBMIT}
+              text={"Compute"}
+              disabled={isDisabled()}
+            ></StandardButton>
+            {isDisabled() &&
+              <p
+                style={{
+                  margin: "3px 0 0 20px",
+                  fontSize: "12px",
+                  color: EColor.GRAY
+                }}
+              >
+                Please fill all the required fields
+                <span style={{ color: "red", fontWeight: "bold" }}>&nbsp;*</span>
+              </p>
+            }
+          </div>
         </form>
       }
       {loading &&
@@ -96,6 +117,25 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
 
     </>
   );
+
+  function isDisabled() {
+    if (
+      !isFilled(ship.name) ||
+      !isFilled(ship.country) ||
+      !isFilled(transport.volume) ||
+      !isFilled(transport.pressure) ||
+      !isFilled(transport.boilOffRate) ||
+      !isFilled(transport.fromDate) ||
+      !isFilled(transport.toDate) ||
+      !isFilled(standard.combustionTemperature) ||
+      !isFilled(standard.measurementTemperature)
+    ) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 };
 
 const StUserMessage = styled.div`

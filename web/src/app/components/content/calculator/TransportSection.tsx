@@ -1,17 +1,12 @@
-import { FormSection } from "../../ui/FormSection"
+import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components/macro';
-import { StandardInput, StLabelLeft } from "../../elements/Inputs";
-import { StandardDatePicker } from "../../elements/Dates";
-import moment from "moment";
 
-export interface ITransport {
-    volume: number,
-    pressure: number,
-    boilOffRate: number,
-    fromDate: string,
-    toDate: string
-}
+import { ITransport } from '../../../common/Interfaces';
+import { isFilled } from '../../../utils/functions';
+import { StandardDatePicker } from '../../elements/Dates';
+import { StandardInput } from '../../elements/Inputs';
+import { FormSection } from '../../ui/FormSection';
 
 export interface ITransportSectionProps {
     transport: ITransport;
@@ -22,7 +17,7 @@ export interface ITransportSectionProps {
 export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
     let daysDiff;
     let hoursDiff;
-    if (props.transport.fromDate && props.transport.toDate) {
+    if (isFilled(props.transport.fromDate) && isFilled(props.transport.toDate)) {
         const from = moment(props.transport.fromDate);
         const to = moment(props.transport.toDate);
         daysDiff = to.diff(from, 'days').toString();
@@ -35,7 +30,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-volume"
                         label="Volume"
-                        label2="m3"
+                        labelRight="m3"
                         onChange={(e: any) => {
                             setTransport("volume", e.target.value);
                         }}
@@ -52,7 +47,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-pressure"
                         label="Pressure"
-                        label2="bara"
+                        labelRight="bar"
                         onChange={(e: any) => {
                             setTransport("pressure", e.target.value);
                         }}
@@ -69,7 +64,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-boilOffRate"
                         label="Boil off rate"
-                        label2="bara"
+                        labelRight="bar"
                         onChange={(e: any) => {
                             setTransport("boilOffRate", e.target.value);
                         }}
@@ -84,35 +79,33 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                 </StTransportInput>
                 <StTransportInput style={{ flexDirection: "row", display: "flex" }}>
                     <div style={{ width: "50%" }}>
-                        <StLabelLeft>
-                            <span>From</span>
-                            <span>&nbsp;*</span>
-                        </StLabelLeft>
                         <StandardDatePicker
+                            id="transportFrom"
                             onChange={(e: any) => { props.setTransport({ ...props.transport, fromDate: e }) }}
-                            value={new Date(props.transport.fromDate)}
+                            value={isFilled(props.transport.fromDate) ? new Date(props.transport.fromDate) : undefined}
                             required={true}
+                            label={"From"}
                         ></StandardDatePicker>
                     </div>
                     <div style={{ width: "50%" }}>
-                        <StLabelLeft>
-                            <span>To</span>
-                            <span>&nbsp;*</span>
-                        </StLabelLeft>
                         <StandardDatePicker
+                            id="transportTo"
                             onChange={(e: any) => { props.setTransport({ ...props.transport, toDate: e }) }}
-                            value={new Date(props.transport.toDate)}
+                            value={isFilled(props.transport.toDate) ? new Date(props.transport.toDate) : undefined}
                             disabled={!props.transport.fromDate}
-                            minDate={new Date(props.transport.fromDate)}
+                            minDate={isFilled(props.transport.fromDate) ? new Date(props.transport.fromDate) : undefined}
                             required={true}
+                            label={"To"}
                         ></StandardDatePicker>
                     </div>
                 </StTransportInput>
-                <StDateInfo>
-                    {props.transport.fromDate < props.transport.toDate && daysDiff && hoursDiff &&
-                        <span><b>{daysDiff}</b> days and <b>{hoursDiff}</b> hours</span>
-                    }
-                </StDateInfo>
+                {isFilled(props.transport.fromDate) && isFilled(props.transport.toDate) &&
+                    <StDateInfo>
+                        {props.transport.fromDate < props.transport.toDate && daysDiff && hoursDiff &&
+                            <span><b>{daysDiff}</b> days and <b>{hoursDiff}</b> hours</span>
+                        }
+                    </StDateInfo>
+                }
             </StTransportInputs>
         </FormSection>
     )

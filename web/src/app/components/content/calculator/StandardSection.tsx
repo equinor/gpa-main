@@ -1,9 +1,10 @@
-import React from "react";
-import { StandardBoolean, StLabelLeft } from "../../elements/Inputs";
-import { FormSection } from "../../ui/FormSection";
-import styled from "styled-components";
-import { StandardSelect } from "../../elements/Selects";
-import { IStandard } from "../../../common/Interfaces";
+import React from 'react';
+import styled from 'styled-components';
+
+import { IStandard } from '../../../common/Interfaces';
+import { StandardBoolean } from '../../elements/Inputs';
+import { StandardSelect } from '../../elements/Selects';
+import { FormSection } from '../../ui/FormSection';
 
 export interface IStandardSectionProps {
     standard: IStandard;
@@ -15,69 +16,77 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
     <FormSection legendText='Standard (ISO6976)' index={4}>
         <StStandardInputs>
             <StStandardInput>
-                <StLabelLeft>
-                    Combustion temperature
-                </StLabelLeft>
                 <StandardSelect
+                    id="combustionTemperature"
+                    label={"Combustion temperature"}
                     options={[
                         {
-                            value: 0,
+                            value: null,
+                            label: "None"
+                        },
+                        {
+                            value: "0",
                             label: "0"
                         },
                         {
-                            value: 15,
+                            value: "15",
                             label: "15"
                         },
                         {
-                            value: 20,
+                            value: "20",
                             label: "20"
                         },
                         {
-                            value: 25,
+                            value: "25",
                             label: "25"
                         },
                         {
-                            value: 60,
+                            value: "60",
                             label: "60"
                         }
                     ]}
                     onChange={(e: any) => {
-                        props.setStandard({ ...props.standard, combustionTemperature: e.value })
+                        props.setStandard({ ...props.standard, combustionTemperature: parseInt(e.value) })
                     }}
-                    value={props.standard.combustionTemperature ? {
+                    value={props.standard.combustionTemperature || props.standard.combustionTemperature === 0 ? {
                         label: props.standard.combustionTemperature.toString(),
                         value: props.standard.combustionTemperature.toString()
                     } : null}
+                    required={true}
                 ></StandardSelect>
             </StStandardInput>
             <StStandardInput>
-                <StLabelLeft>
-                    Measurement temperature
-                </StLabelLeft>
                 <StandardSelect
+                    id="measurementTemperature"
+                    label={"Measurement temperature"}
                     options={[
                         {
-                            value: 0,
+                            value: null,
+                            label: "None"
+                        },
+                        {
+                            value: "0",
                             label: "0"
                         },
                         {
-                            value: 15,
+                            value: "15",
                             label: "15"
                         },
                         {
-                            value: 20,
+                            value: "20",
                             label: "20"
                         },
                         {
-                            value: 60,
+                            value: "60",
                             label: "60"
                         }
                     ]}
-                    onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: e.value }) }}
-                    value={props.standard.measurementTemperature ? {
+                    onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: parseInt(e.value) }) }}
+                    value={props.standard.measurementTemperature || props.standard.measurementTemperature === 0 ? {
                         label: props.standard.measurementTemperature.toString(),
                         value: props.standard.measurementTemperature.toString()
                     } : null}
+                    required={true}
                 ></StandardSelect>
             </StStandardInput>
             <div style={{ width: "100%" }}>

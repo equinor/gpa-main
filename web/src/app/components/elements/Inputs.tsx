@@ -7,7 +7,7 @@ import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 export interface IStandardInputProps {
   id: string;
   label: string;
-  label2?: string;
+  labelRight?: string;
   placeholder: string;
   value: string | number | undefined;
   onChange: Function;
@@ -22,15 +22,15 @@ export const StandardInput = (props: IStandardInputProps) => {
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {/* Labels */}
-      <StLabelLeft htmlFor={props.id} style={props.label2 ? { width: "50%" } : { width: "100%" }}>
+      <StLabel htmlFor={props.id} style={props.labelRight ? { width: "50%" } : { width: "100%" }}>
         <span>{props.label}</span>
         {props.required &&
           <span>&nbsp;*</span>
         }
-      </StLabelLeft>
-      {props.label2 &&
+      </StLabel>
+      {props.labelRight &&
         <StLabelRight htmlFor={props.id} style={{ width: "50%" }}>
-          <span>{props.label2}</span>
+          <span>{props.labelRight}</span>
         </StLabelRight>
       }
       {/* Text */}
@@ -92,6 +92,7 @@ export interface IStandardBooleanProps {
   text: string;
   value: boolean;
   onChange: Function;
+  required?: boolean;
 }
 
 const StStandardBoolean = styled.div`
@@ -101,10 +102,17 @@ const StStandardBoolean = styled.div`
   > svg {
     
   }
-  > span {
+  > span:nth-of-type(1) {
     font-size: 12px;
     padding: 4px 0 0 15px;
     box-sizing: border-box;
+  }
+  > span:nth-of-type(2) {
+    font-size: 12px;
+    padding: 4px 0 0 3px;
+    box-sizing: border-box;
+    color: red;
+    font-weight: bold;
   }
 `;
 
@@ -120,11 +128,14 @@ export const StandardBoolean = (props: IStandardBooleanProps) => {
         <EquinorIcon icon={EIcon.CHECKBOX_ON} size={19}></EquinorIcon>
       }
       <span>{props.text}</span>
+      {props.required &&
+          <span>&nbsp;*</span>
+        }
     </StStandardBoolean>
   )
 }
 
-export const StLabelLeft = styled.label`
+export const StLabel = styled.label`
   display: flex;
   flex-direction: column;
   color: ${EColor.GRAY};
@@ -158,7 +169,7 @@ const StInput = styled.input`
   color: ${EColor.BLACK};
 `;
 
-const StLabelRight = styled(StLabelLeft)`
+export const StLabelRight = styled(StLabel)`
   text-align: right;
   > span {
     width: 100%;
