@@ -47,7 +47,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-pressure"
                         label="Pressure"
-                        labelRight="bara"
+                        labelRight="bar"
                         onChange={(e: any) => {
                             setTransport("pressure", e.target.value);
                         }}
@@ -64,7 +64,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                     <StandardInput
                         id="transport-boilOffRate"
                         label="Boil off rate"
-                        labelRight="bara"
+                        labelRight="bar"
                         onChange={(e: any) => {
                             setTransport("boilOffRate", e.target.value);
                         }}

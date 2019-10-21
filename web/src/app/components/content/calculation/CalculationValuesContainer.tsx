@@ -46,10 +46,10 @@ export const CalculationValuesContainer: React.FunctionComponent<ICalculationVal
                 number={3}
                 title={"Transport"}
                 rows={[
-                    { display: ["Volume (m³)", props.calculation.transport.volume, "Pressure (bara)", props.calculation.transport.pressure, "", "", ""] },
+                    { display: ["Volume (m³)", props.calculation.transport.volume, "Pressure (bar)", props.calculation.transport.pressure, "", "", ""] },
                     {
                         display: [
-                            "Boil off rate (bara)",
+                            "Boil off rate (bar)",
                             props.calculation.transport.boilOffRate,
                             "From",
                             moment(props.calculation.transport.fromDate).format("DD.MM. HH:MM"),
