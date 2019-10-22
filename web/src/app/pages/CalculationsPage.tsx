@@ -30,8 +30,8 @@ interface ICalculationPage {
 
 export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ history }) => {
   const calculations = useQuery<ICalculationsData>(CALCULATIONS_QUERY);
-
   let rows: IStandardTableRow[] = [];
+
   if (calculations.data) {
     rows = calculations.data.calculations.map((calculation: ICalculationInfo) => {
       return {
@@ -50,15 +50,15 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
           {calculations.loading &&
             <StUserMessage>
               <UserMessage type={"loading"} text={"Loading calculations"} />
-            </StUserMessage>
-          }
+            </StUserMessage> 
+          } 
           {calculations.data &&
             <CalculationsContainer
               rows={rows}
               selectRow={(row: IStandardTableRow) => {
                 history.push('/calculation/' + row.value);
               }}
-            ></CalculationsContainer>
+            ></CalculationsContainer> 
           }
           {calculations.error &&
             <StUserMessage>
@@ -77,7 +77,7 @@ const StUserMessage = styled.div`
     margin: 50px 0 0;
 `;
 
-const CALCULATIONS_QUERY = gql`
+export const CALCULATIONS_QUERY = gql`
     {
         calculations {
             id

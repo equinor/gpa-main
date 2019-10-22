@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LiquidSection snapshots 1`] = `
+<div
+  className="FormSection__StFormSection-sc-4jzlq-0 ccofqN"
+>
+  <span
+    className="FormSection__StCircleIcon-sc-4jzlq-2 fppCCB"
+  >
+    <span>
+      2
+    </span>
+  </span>
+  <fieldset
+    className="FormSection__StFieldSet-sc-4jzlq-3 hrgLlN"
+  >
+    <legend
+      className="FormSection__StLegend-sc-4jzlq-1 hjqIMu"
+    >
+      Liquid
+    </legend>
+    <span
+      className="LiquidSection__StLiquidInputs-x68rdr-0 dcIfbi"
+    >
+      <div>
+        <h3
+          className="Texts__H3-teybz3-1 iRQgzB"
+        >
+          Standard gases
+        </h3>
+        <div
+          className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+        >
+          <div
+            style={
+              Object {
+                "display": "flex",
+                "flexWrap": "wrap",
+              }
+            }
+          >
+            <label
+              className="Inputs__StLabel-dfit48-1 bfWHiE"
+              htmlFor="liquid-nitrogen"
+              style={
+                Object {
+                  "width": "100%",
+                }
+              }
+            >
+              <span>
+                nitrogen
+              </span>
+            </label>
+            <input
+              className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+              id="liquid-nitrogen"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onKeyUp={[Function]}
+              placeholder="nitrogen"
+              required={false}
+              step="0.01"
+              type="number"
+              value={5}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "flexGrow": 1,
+            "height": "100%",
+          }
+        }
+      >
+        <h3
+          className="Texts__H3-teybz3-1 iRQgzB"
+        >
+          Light hydrocarbons
+        </h3>
+        <div
+          style={
+            Object {
+              "display": "flex",
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "flexWrap": "wrap",
+              "height": "230px",
+              "justifyContent": "flex-start",
+              "width": "470px",
+            }
+          }
+        >
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-methane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  methane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-methane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="methane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-ethane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  ethane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-ethane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="ethane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-propane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  propane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-propane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="propane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-iButane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  iButane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-iButane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="iButane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-nButane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  nButane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-nButane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="nButane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-iPentane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  iPentane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-iPentane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="iPentane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-nPentane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  nPentane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-nPentane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="nPentane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+          <div
+            className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          >
+            <div
+              style={
+                Object {
+                  "display": "flex",
+                  "flexWrap": "wrap",
+                }
+              }
+            >
+              <label
+                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                htmlFor="liquid-nHexane"
+                style={
+                  Object {
+                    "width": "100%",
+                  }
+                }
+              >
+                <span>
+                  nHexane
+                </span>
+              </label>
+              <input
+                className="Inputs__StInput-dfit48-2 Inputs__StNumberInput-dfit48-5 BTmgF"
+                id="liquid-nHexane"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onKeyUp={[Function]}
+                placeholder="nHexane"
+                required={false}
+                step="0.01"
+                type="number"
+                value={5}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </fieldset>
+</div>
+`;
