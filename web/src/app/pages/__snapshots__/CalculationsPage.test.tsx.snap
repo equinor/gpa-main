@@ -54,7 +54,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
                 b
               </td>
               <td>
-                5 days ago
+                
               </td>
             </tr>
             <tr
@@ -67,7 +67,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
                 ShipCountry
               </td>
               <td>
-                5 days ago
+                
               </td>
             </tr>
           </tbody>

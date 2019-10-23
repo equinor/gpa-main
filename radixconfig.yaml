@@ -7,6 +7,9 @@ spec:
     - name: dev
       build:
         from: master
+    - name: prod
+      build:
+        from: release
   components:
     - name: web
       src: ./web
@@ -16,6 +19,16 @@ spec:
       public: false
       environmentConfig:
         - environment: dev
+          monitoring: false
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "10m"
+            limits:
+              memory: "54Mi"
+              cpu: "20m"
+          replicas: 1
+        - environment: prod
           monitoring: false
           resources:
             requests:
@@ -45,6 +58,16 @@ spec:
               memory: "2048Mi"
               cpu: "500m"
           replicas: 1
+        - environment: prod
+          monitoring: false
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+            limits:
+              memory: "2048Mi"
+              cpu: "500m"
+          replicas: 1
     - name: oauth-proxy
       src: ./oauth-proxy
       ports:
@@ -53,6 +76,16 @@ spec:
       public: true
       environmentConfig:
         - environment: dev
+          monitoring: false
+          resources:
+            requests:
+              memory: "42Mi"
+              cpu: "10m"
+            limits:
+              memory: "50Mi"
+              cpu: "20m"
+          replicas: 1
+        - environment: prod
           monitoring: false
           resources:
             requests:
