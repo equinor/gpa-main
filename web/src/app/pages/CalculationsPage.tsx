@@ -36,7 +36,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
     rows = calculations.data.calculations.map((calculation: ICalculationInfo) => {
       return {
         value: calculation.id,
-        display: [calculation.ship.name, calculation.ship.country, moment(calculation.createdDate).fromNow()]
+        display: [calculation.ship.name, calculation.ship.country, calculation.createdDate ? moment(calculation.createdDate).fromNow() : ""] 
       }
     })
   }

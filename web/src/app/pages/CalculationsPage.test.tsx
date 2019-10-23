@@ -33,7 +33,7 @@ describe("CalculationSPage", () => {
             await wait(0);
             expect(component.toJSON()).toMatchSnapshot();
         });
-    })
+    }) 
 
     //error 
     it("snapshots to error", async () => {
@@ -69,7 +69,7 @@ const mocks = [
                                 "country": "b",
                                 "__typename": "Ship"
                             },
-                            "createdDate": "2019-10-17 17:39:42.113",
+                            "createdDate": null,
                             "__typename": "Calculation"
                         },
                         {
@@ -80,7 +80,7 @@ const mocks = [
                                 "country": "ShipCountry",
                                 "__typename": "Ship"
                             },
-                            "createdDate": "2019-10-17 10:13:01.582",
+                            "createdDate": null,
                             "__typename": "Calculation"
                         }
                     ]
