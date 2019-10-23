@@ -1,5 +1,5 @@
 export function isFilled(val: any) {
-    if ((!val && val !== 0) || val === "" || typeof val === "undefined") {
+    if (val === null || val === "" || typeof val === "undefined") {
         return false;
     }
     else {
