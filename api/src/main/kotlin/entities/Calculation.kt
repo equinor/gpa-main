@@ -16,7 +16,7 @@ class Calculation(
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var standard: Standard,
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE])
+    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinColumn(name = "ship_id")
     var ship: Ship,
 

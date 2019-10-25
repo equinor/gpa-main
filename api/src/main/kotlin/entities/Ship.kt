@@ -14,6 +14,6 @@ class Ship (
 
     @Id @GeneratedValue var id: Long? = null,
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ship")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ship")
     var calculations: MutableSet<Calculation> = mutableSetOf()
 ): Auditable()

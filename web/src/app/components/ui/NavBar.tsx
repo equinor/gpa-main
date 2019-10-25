@@ -7,13 +7,15 @@ export const NavBar = () => {
   return (
     <StNavBar>
       <StHeader>
-        <EquinorIcon icon={EIcon.MENU} size={24} />
+        <Link to="/neqsim">
+          <EquinorIcon icon={EIcon.MENU} size={24} />
+        </Link>
         <span>
-          <Link to="/">Neqsim</Link>
+          <Link to="/neqsim">Neqsim</Link>
         </span>
       </StHeader>
       <div style={{ marginRight: '50px', height: "24px" }}>
-        <EquinorIcon icon={EIcon.USER} size={24} />
+        {/* <EquinorIcon icon={EIcon.USER} size={24} /> */}
       </div>
     </StNavBar >
   );

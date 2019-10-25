@@ -56,14 +56,14 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
         return {
             value: result.id,
             display: [
-                result.time.value,
-                result.wi.value,
-                result.gcv.value,
-                result.gcvMass.value,
-                result.density.value,
-                result.temp.value,
-                result.volume.value,
-                result.energy.value
+                result.time.value.toFixed(1),
+                result.wi.value.toFixed(2),
+                result.gcv.value.toFixed(2),
+                result.gcvMass.value.toFixed(3),
+                result.density.value.toFixed(3),
+                result.temp.value.toFixed(2),
+                result.volume.value.toFixed(2),
+                result.energy.value.toFixed(2)
             ]
         }
     })

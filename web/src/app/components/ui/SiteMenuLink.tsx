@@ -1,5 +1,5 @@
 import React from 'react';
-import { EquinorIcon, EIcon} from '../../assets/svg/EquinorIcon';
+import { EquinorIcon, EIcon } from '../../assets/svg/EquinorIcon';
 import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import { EColor } from '../../common/Color';
@@ -7,12 +7,14 @@ import { EColor } from '../../common/Color';
 interface SiteMenuLinkProps {
   to: string,
   name: string,
-  icon: EIcon,
+  icon?: EIcon,
 }
 
 export const SiteMenuLink: React.FunctionComponent<SiteMenuLinkProps> = ({ to, icon, name }) => (
   <StMenuLink to={to}>
-    <EquinorIcon icon={icon} />
+    {icon &&
+      <EquinorIcon icon={icon} />
+    }
     <span>{name}</span>
   </StMenuLink>
 );

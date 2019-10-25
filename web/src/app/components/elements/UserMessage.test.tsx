@@ -13,4 +13,4 @@ describe("UserMessage", () => {
         ).toJSON();
         expect(tree).toMatchSnapshot();
     })
-});
+}); 
