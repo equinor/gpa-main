@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalculateFormContainer snapshots 1`] = `
+<div
+  className="sc-bdVaJa eURHTd"
+>
+  <div
+    className="sc-bwzfXH ivlFHB"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-htpNat excwEf"
+    />
+    <div
+      className="sc-bxivhb btNEUj"
+    >
+      <span>
+        text
+      </span>
+    </div>
+  </div>
+  <div
+    className="sc-ifAKCX eUrElf"
+  >
+    <p>
+      description
+    </p>
+  </div>
+</div>
+`;

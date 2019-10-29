@@ -26,7 +26,7 @@ const CALCULATE = gql`
 export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
-  const [liquid, setLiquid] = useState<ILiquid>({
+  const [liquid, setLiquid] = useState<ILiquid>({ //shall be 0's
     nitrogen: 0.61,
     methane: 91.93,
     ethane: 5.61,
@@ -37,7 +37,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     nPentane: 0.03,
     nHexane: 0.0,
   });
-  const [transport, setTransport] = useState<ITransport>({
+  const [transport, setTransport] = useState<ITransport>({ //shall be 0's
     volume: 14000,
     pressure: 1.13,
     boilOffRate: 0.15,
@@ -45,8 +45,8 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     toDate: "2019-09-20T02:22:07Z"
   });
   const [standard, setStandard] = useState<IStandard>({
-    combustionTemperature: null,
-    measurementTemperature: null,
+    combustionTemperature: 15, //keep default
+    measurementTemperature: 15, //keep default
     idealGasReferenceState: false
   })
 

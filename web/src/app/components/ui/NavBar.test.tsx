@@ -1,14 +1,17 @@
 import { MockedProvider } from '@apollo/react-testing';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { UserMessage } from './UserMessage';
+import { NavBar } from './NavBar';
 
-describe("UserMessage", () => {
+describe("Navbar", () => {
     it("snapshots", () => {
         const tree = renderer.create(
             <MockedProvider addTypename={false}>
-                <UserMessage text={"text"} type={"loading"} />
+                <Router>
+                    <NavBar />
+                </Router>
             </MockedProvider>
         ).toJSON();
         expect(tree).toMatchSnapshot();
