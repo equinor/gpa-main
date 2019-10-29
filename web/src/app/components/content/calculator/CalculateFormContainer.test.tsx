@@ -1,0 +1,19 @@
+import { MockedProvider } from '@apollo/react-testing';
+import React from 'react';
+import renderer from 'react-test-renderer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { CalculateFormContainer } from './CalculateFormContainer';
+
+
+describe("CalculateFormContainer", () => {
+    it("snapshots", () => {
+        const tree = renderer.create(
+            <MockedProvider addTypename={false}>
+                <Router>
+                    <CalculateFormContainer />
+                </Router>
+            </MockedProvider>
+        ).toJSON();
+        expect(tree).toMatchSnapshot();
+    })
+}); 
