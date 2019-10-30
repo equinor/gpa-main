@@ -15,8 +15,13 @@ export interface ICalculationContainer {
 export const CalculationContainer: React.FunctionComponent<ICalculationContainer> = (props) => {
 
     const [moreResults, showMoreResults] = useState<boolean>(false);
+    const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "compositionDetails">("ageing");
 
-    const headers = [{
+    const initRow: IResult = props.calculation.result[0];
+    const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
+
+    //unit headers
+    const unitHeaders = [{
         title: "TIME",
         internalName: "time"
     },
@@ -47,29 +52,43 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
     {
         title: "ENERGY",
         internalName: "energy"
-    }];
-    const initRow: IResult = props.calculation.result[0];
-    const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
+    }];;
 
-    //table
-    const rows: IStandardTableRow[] = props.calculation.result.map((result: IResult) => {
-        return {
-            value: result.id,
-            display: [
-                result.time.value.toFixed(1),
-                result.wi.value.toFixed(2),
-                result.gcv.value.toFixed(2),
-                result.gcvMass.value.toFixed(3),
-                result.density.value.toFixed(3),
-                result.temp.value.toFixed(2),
-                result.volume.value.toFixed(2),
-                result.energy.value.toFixed(2)
-            ]
-        }
-    })
+    //table more results
+    let tableRows: IStandardTableRow[];
+    let headers: {
+        title: string,
+        internalName: string
+    }[];
+    if (resultType === "compositionDetails") {
+        tableRows = [];
+        headers = [];
+    }
+    else if (resultType === "gasComposition") {
+        tableRows = [];
+        headers = [];
+    }
+    else {
+        tableRows = props.calculation.result.map((result: IResult) => {
+            return {
+                value: result.id,
+                display: [
+                    result.time.value.toFixed(1),
+                    result.wi.value.toFixed(2),
+                    result.gcv.value.toFixed(2),
+                    result.gcvMass.value.toFixed(3),
+                    result.density.value.toFixed(3),
+                    result.temp.value.toFixed(2),
+                    result.volume.value.toFixed(2),
+                    result.energy.value.toFixed(2)
+                ]
+            }
+        })
+        headers = unitHeaders;
+    }
 
     //card result
-    const cardResults: ICardResult[] = headers.map((header) => {
+    const cardResults: ICardResult[] = unitHeaders.map((header) => {
         const title = header.title as never;
         const internalName = header.internalName as never;
         return {
@@ -103,10 +122,6 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                 })}
             </div>
             <StLinks>
-                <span>Get componsition</span>
-                &nbsp;•&nbsp;
-                <span>Export to Excel</span>
-                &nbsp;•&nbsp;
                 <span onClick={() => {
                     showMoreResults(!moreResults);
                 }}>
@@ -121,13 +136,47 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             {
                 moreResults &&
                 <>
-                    <H3 style={{ width: "100%", margin: "0 0 15px 0" }}>More results</H3>
+                    <StMoreResults>
+                        <div style={{
+                            float: "left",
+                            width: "100%"
+                        }}>
+                            <span
+                                className={resultType === "ageing" ? "active" : ""}
+                                onClick={() => {
+                                    setResultType("ageing")
+                                }}
+                            >Ageing</span>
+                            <span
+                                className={resultType === "gasComposition" ? "active" : ""}
+                                onClick={() => {
+                                    setResultType("gasComposition")
+                                }}
+                            >Gas composition</span>
+                            <span
+                                className={resultType === "compositionDetails" ? "active" : ""}
+                                onClick={() => {
+                                    setResultType("compositionDetails")
+                                }}
+                            >Composition details</span>
+                        </div>
+                        {resultType === "ageing" &&
+                            <p>Lorem</p>
+                        }
+                        {resultType === "gasComposition" &&
+                            <p>Lipsum</p>
+                        }
+                        {resultType === "compositionDetails" &&
+                            <p>Dolor</p>
+                        }
+                    </StMoreResults>
                     <StStandardTable>
                         <StandardTable
                             header={headers.map((header) => {
                                 return header.title;
                             })}
-                            rows={rows}
+                            rows={tableRows}
+                            exportToExcel={"ShipAgeing-"+props.calculation.ship.name}
                         ></StandardTable>
                     </StStandardTable>
                 </>
@@ -161,12 +210,41 @@ const StLinks = styled.div`
     margin: 20px 0 30px 0;
     font-size: 16px;
     > span {
+        background-color: ${EColor.LIGHT_GRAY};
+        padding: 10px 15px;
         cursor: pointer;
         text-decoration: underline;
-        margin: 0 10px;
         :hover {
             text-decoration: none;
         }
+    }
+`;
+
+const StMoreResults = styled.div`
+    width: 100%;
+    float: left;
+    span {
+        font-size: 16px;
+        font-weight: 500;
+        color: ${EColor.GRAY};
+        border-bottom: 2px solid ${EColor.LIGHT_GRAY};
+        padding: 10px 15px;
+        float: left;
+        cursor: pointer;
+        &.active {
+            border-bottom: 2px solid ${EColor.GREEN};
+            color: ${EColor.BLACK}
+        }
+        &:hover {
+            background-color: ${EColor.LIGHT_GRAY};
+        }
+    }
+    > p {
+        font-size: 14px;
+        line-height: 24px;
+        color: ${EColor.BLACK};
+        float: left;
+        margin: 10px 0;
     }
 `;
 

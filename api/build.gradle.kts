@@ -28,7 +28,6 @@ allOpen {
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
-    maven { url = uri("https://repo.boundlessgeo.com/main/") }
     mavenLocal()
 }
 
@@ -51,7 +50,7 @@ dependencies {
     implementation(
         group = "com.equinor",
         name = "neqsim",
-        version = "1.0.0"
+        version = "1.1.0"
     )
     implementation("org.flywaydb:flyway-core")
 }
