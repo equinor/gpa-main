@@ -15,7 +15,6 @@ export const NavBar = () => {
         </span>
       </StHeader>
       <div style={{ marginRight: '50px', height: "24px" }}>
-        {/* <EquinorIcon icon={EIcon.USER} size={24} /> */}
       </div>
     </StNavBar >
   );

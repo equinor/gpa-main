@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { EColor } from "../../common/Color";
+import { CSVLink } from "react-csv";
 
 interface IStandardTable {
     header: string[];
@@ -8,6 +9,7 @@ interface IStandardTable {
     rows: IStandardTableRow[];
     selectRow?: Function;
     disableHover?: boolean;
+    exportToExcel?: string; //filename without csv
 }
 
 export interface IStandardTableRow {
@@ -17,47 +19,88 @@ export interface IStandardTableRow {
 
 export const StandardTable = (props: IStandardTable) => {
     return (
-        <StStandardTable>
-            <thead>
-                <tr>
-                    {props.header.map((value, index) => {
-                        return (
-                            <td key={index}>{value}</td>
-                        )
-                    })}
-                </tr>
-                {props.headerSecondary &&
+        <>
+            {props.exportToExcel &&
+                <StExport>
+                    <CSVLink
+                        data={exportData()}
+                        filename={props.exportToExcel + ".csv"}
+                        className="btn btn-primary"
+                        target="_blank"
+                    >
+                        Export to Excel
+                    </CSVLink>
+                </StExport>
+            }
+            <StStandardTable>
+                <thead>
                     <tr>
-                        {props.headerSecondary.map((value, index) => {
+                        {props.header.map((value, index) => {
                             return (
                                 <td key={index}>{value}</td>
                             )
                         })}
                     </tr>
-                }
-            </thead>
-            <tbody>
-                {props.rows.map((row, index) => {
-                    return (
-                        <tr key={index}
-                            onClick={typeof props.selectRow !== "undefined" ? () => {
-                                if (props.selectRow) {
-                                    props.selectRow(row)
-                                }
-                            } : undefined}
-                        >
-                            {row.display.map((cell, index2) => {
+                    {props.headerSecondary &&
+                        <tr>
+                            {props.headerSecondary.map((value, index) => {
                                 return (
-                                    <td key={index2}>{cell}</td>
+                                    <td key={index}>{value}</td>
                                 )
                             })}
                         </tr>
-                    )
-                })}
-            </tbody>
-        </StStandardTable>
+                    }
+                </thead>
+                <tbody>
+                    {props.rows.map((row, index) => {
+                        return (
+                            <tr key={index}
+                                onClick={typeof props.selectRow !== "undefined" ? () => {
+                                    if (props.selectRow) {
+                                        props.selectRow(row)
+                                    }
+                                } : undefined}
+                            >
+                                {row.display.map((cell, index2) => {
+                                    return (
+                                        <td key={index2}>{cell}</td>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </StStandardTable>
+        </>
     )
+
+    function exportData() {
+        const exportData: string[][] = [];
+        exportData.push(props.header);
+        if (props.headerSecondary) {
+            exportData.push(props.headerSecondary);
+        }
+        props.rows.map((row) => {
+            exportData.push(row.display);
+        })
+        return exportData;
+    }
 }
+
+const StExport = styled.div`
+    float: left;
+    width: 100%;
+    text-align: right;
+    padding: 0 0 10px 0;
+    a {
+        color: ${EColor.GREEN};
+        text-decoration: none;
+        font-size: 13px;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+`;
 
 const StStandardTable = styled.table`
     width: 100%;
