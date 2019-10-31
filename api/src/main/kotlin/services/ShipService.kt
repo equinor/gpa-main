@@ -17,10 +17,12 @@ class ShipService(private val shipRepository: ShipRepository) {
     fun loadOrPrepareShip(name: String, country: String): Ship {
         val example = Example.of(Ship(name, country))
         val ships: List<Ship> = shipRepository.findAll(example);
-        val ship: Ship = if (ships.size == 1)
+        return if (ships.size == 1) {
             ships[0];
-        else
-            Ship(name, country);
-        return ship;
+        } else {
+            val ship = Ship(name, country);
+            shipRepository.save(ship)
+            ship
+        }
     }
 }

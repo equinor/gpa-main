@@ -13,7 +13,7 @@ plugins {
 }
 
 
-group = "com.equinor.neqsim"
+group = "com.equinor"
 version = "1.0-SNAPSHOT"
 
 application {

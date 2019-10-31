@@ -58,13 +58,13 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
         for (resultRow in result.drop(1)) {
             calculation.result.add(
                 CalculationStep(
-                    time = stringToDouble(resultRow[1]),
-                    temp = stringToDouble(resultRow[2]),
-                    wi = stringToDouble(resultRow[3]),
-                    gcv = stringToDouble(resultRow[4]),
-                    density = stringToDouble(resultRow[5]),
-                    volume = stringToDouble(resultRow[6]),
-                    energy = stringToDouble(resultRow[7]),
+                    time = stringToDouble(resultRow[0]),
+                    temp = stringToDouble(resultRow[1]),
+                    wi = stringToDouble(resultRow[2]),
+                    gcv = stringToDouble(resultRow[3]),
+                    density = stringToDouble(resultRow[4]),
+                    volume = stringToDouble(resultRow[5]),
+                    energy = stringToDouble(resultRow[6]),
                     calculation = calculation
                 )
             )

@@ -21,7 +21,8 @@ class Calculation(
     var ship: Ship,
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
-    var result: MutableSet<CalculationStep> = mutableSetOf(),
+    @OrderBy("time ASC")
+    var result: MutableList<CalculationStep> = mutableListOf(),
 
     @Id @GeneratedValue var id: Long? = null
 ) : Auditable()
