@@ -80,7 +80,7 @@ export const StandardTable = (props: IStandardTable) => {
         if (props.headerSecondary) {
             exportData.push(props.headerSecondary);
         }
-        props.rows.map((row) => {
+        props.rows.forEach((row) => {
             exportData.push(row.display);
         })
         return exportData;

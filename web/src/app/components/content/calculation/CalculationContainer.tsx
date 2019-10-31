@@ -1,11 +1,11 @@
+import moment from 'moment';
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
 import { EColor } from '../../../common/Color';
 import { ICalculation, IResult } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
-import { H2, H3 } from '../../elements/Texts';
-import moment from 'moment';
+import { H2 } from '../../elements/Texts';
 
 export interface ICalculationContainer {
     calculation: ICalculation;
