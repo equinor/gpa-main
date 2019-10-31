@@ -32,3 +32,5 @@ out/
 data
 
 derby.log
+
+secrets.properties

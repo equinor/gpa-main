@@ -1,4 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.FileInputStream
+import java.util.*
+
+val file = File("secrets.properties")
+val secrets = Properties()
+if (file.exists()) {
+    val fis = FileInputStream("secrets.properties")
+    secrets.load(fis)
+}
 
 plugins {
     kotlin("jvm") version "1.3.50"
@@ -11,6 +20,7 @@ plugins {
 
     application
 }
+
 
 group = "com.equinor.neqsim"
 version = "1.0-SNAPSHOT"
@@ -28,8 +38,14 @@ allOpen {
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
+    maven {
+        url = uri("https://maven.pkg.github.com/equinor/neqsim")
+        credentials {
+            username = secrets.getProperty("gpr.user") as String? ?: System.getenv("GPR_USER")
+            password = secrets.getProperty("gpr.key") as String? ?: System.getenv("GPR_API_KEY")
+        }
+    }
     maven { url = uri("https://repo.boundlessgeo.com/main/") }
-    mavenLocal()
 }
 
 dependencies {
@@ -51,7 +67,7 @@ dependencies {
     implementation(
         group = "com.equinor",
         name = "neqsim",
-        version = "1.0.0"
+        version = "1.2"
     )
     implementation("org.flywaydb:flyway-core")
 }

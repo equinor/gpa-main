@@ -47,6 +47,8 @@ spec:
         - DB_URL
         - DB_USERNAME
         - DB_PASSWORD
+        - GPR_USER
+        - GPR_API_KEY
       environmentConfig:
         - environment: dev
           monitoring: false
