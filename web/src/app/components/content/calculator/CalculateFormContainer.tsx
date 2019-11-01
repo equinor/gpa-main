@@ -106,7 +106,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       }
       {loading &&
         <StUserMessage>
-          <UserMessage type={"loading"} text={"Calculating parameters"} />
+          <UserMessage type={"loading"} text={"Calculating"} />
         </StUserMessage>
       }
       {error &&

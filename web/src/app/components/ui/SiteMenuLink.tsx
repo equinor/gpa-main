@@ -24,16 +24,14 @@ const StMenuLink = styled(NavLink)`
   flex-direction: row;
   padding: 20px 20px 20px 53px;
   align-items: center;
-  color: black;
   text-decoration: none;
   font-family: Equinor,serif; 
   font-weight: 500;
+  color: ${EColor.BLACK};
   > svg, rect {
     margin-right: 30px;
-    fill: #6f6f6f;
   }
   > span {
-    color: #6f6f6f;
   }
   &:hover {
     background-color: ${EColor.LIGHT_GREEN};

@@ -35,11 +35,11 @@ export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props
 
   return (
     <PageContent>
-      <TitleBlock>Calculation</TitleBlock>
+      <TitleBlock>Result</TitleBlock>
       <StPageWrapper>
         {calculation.loading &&
           <StUserMessage>
-            <UserMessage type={"loading"} text={"Loading calculation"} />
+            <UserMessage type={"loading"} text={"Loading result"} />
           </StUserMessage>
         }
         {calculation.data &&
