@@ -11,18 +11,18 @@
 @font-face {
     font-family: Equinor;
     src:
-        local('☻☻'),
-        url(/fonts/Equinor-Bold.woff2) format('woff2'),
-        url(/fonts/assets/fonts/Equinor-Bold.woff) format('woff');
-    font-style: bold;
-    font-weight: 700;
+        local('☻☻☻'),
+        url(/fonts/Equinor-Medium.woff2) format('woff2'),
+        url(/fonts/assets/fonts/Equinor-Medium.woff) format('woff');
+    font-weight: 500;
 }
 
 @font-face {
     font-family: Equinor;
     src:
-        local('☻☻☻'),
-        url(/fonts/Equinor-Medium.woff2) format('woff2'),
-        url(/fonts/assets/fonts/Equinor-Medium.woff) format('woff');
-    font-weight: 500;
+        local('☻☻'),
+        url(/fonts/Equinor-Bold.woff2) format('woff2'),
+        url(/fonts/assets/fonts/Equinor-Bold.woff) format('woff');
+    font-style: bold;
+    font-weight: 700;
 }
