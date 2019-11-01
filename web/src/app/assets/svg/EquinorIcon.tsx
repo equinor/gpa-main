@@ -110,6 +110,21 @@ const Error: React.FC<IconProps> = ({ size }) => (
   </svg>
 )
 
+const Info: React.FC<IconProps> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 5H11V7H9V5Z" fill="#007079" />
+    <path d="M9 9H11V15H9V9Z" fill="#007079" />
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 10C0 4.48 4.47998 0 10 0C15.52 0 20 4.48 20 10C20 15.52 15.52 20 10 20C4.47998 20 0 15.52 0 10ZM2 10C2 14.41 5.58997 18 10 18C14.41 18 18 14.41 18 10C18 5.59 14.41 2 10 2C5.58997 2 2 5.59 2 10Z" fill="#007079" />
+  </svg>
+)
+
+const InBox: React.FC<IconProps> = ({ size }) => (
+  <svg width={size} height={size} viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.8564 0H2.85645C1.75645 0 0.856445 0.9 0.856445 2V16C0.856445 17.1 1.74645 18 2.85645 18H16.8564C17.9564 18 18.8564 17.1 18.8564 16V2C18.8564 0.9 17.9564 0 16.8564 0ZM16.8564 16H2.85645V13H6.41645C7.10645 14.19 8.38645 15 9.86645 15C11.3464 15 12.6164 14.19 13.3164 13H16.8564V16ZM11.8664 11H16.8564V2H2.85645V11H7.86645C7.86645 12.1 8.76645 13 9.86645 13C10.9664 13 11.8664 12.1 11.8664 11Z" fill="#007079" />
+  </svg>
+
+)
+
 export enum EIcon {
   MENU = 'menu',
   USER = 'user',
@@ -120,7 +135,9 @@ export enum EIcon {
   CHECKBOX_OFF = 'checkbox_off',
   SUBMIT = 'submit',
   LOADING = 'loading',
-  ERROR = 'error'
+  ERROR = 'error',
+  INFO = 'info',
+  INBOX = 'inbox'
 }
 
 export const EquinorIcon: React.FunctionComponent<IProps> = (props) => {
@@ -149,6 +166,10 @@ export const EquinorIcon: React.FunctionComponent<IProps> = (props) => {
       return <Loading size={size} />;
     case EIcon.ERROR:
       return <Error size={size} />;
+    case EIcon.INFO:
+      return <Info size={size} />;
+    case EIcon.INBOX:
+      return <InBox size={size} />;
     default:
       throw Error;
   }

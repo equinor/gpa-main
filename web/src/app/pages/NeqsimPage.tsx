@@ -9,7 +9,7 @@ export const NeqsimPage: React.FunctionComponent = () => (
   <PageContent>
     <TitleBlock>Neqsim</TitleBlock>
     <StPageWrapper>
-      <P>Fill the description</P>
+      <P>NeqSim (Non-Equilibrium Simulator) is a tool for estimation of fluid behavior and process design for oil and gas production. The basis for NeqSim is a library of fundamental mathematical models related to phase behavior and physical properties of oil and gas. The Radixs portal is a web-based user interface for NeqSim.</P>
       <div style={{
         display: "flex",
         margin: "25px 0 0 0"
@@ -18,7 +18,11 @@ export const NeqsimPage: React.FunctionComponent = () => (
           image="./ship2.png"
           text="LNG Ageing"
           link="/LNGageing"
-          description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis condimentum erat a ullamcorper. Etiam vel congue risus, ut porta nisl. Vivamus bibendum augue ac tortor dapibus, at egestas nisi auctor. Ut laoreet lorem quis sem ultrices pellentesque. Vestibulum faucibus mollis posuere. Donec vulputate tortor sit amet tellus hendrerit tincidunt. "}
+          description={`The LNG ageing tool calculates the effect of boil off from LNG ships during transport from loading to off-loading. The calculations are based on known volume and composition of loaded LNG. The boil off rate, pressure and ship transport time are used as input for the calculations.
+          \nThe tool will report how volume, composition and energy parameters changes during the voyage.      
+          \nThe energy parameters (GCV, WI) are calculated based on ISO6976 (2016). The used need to set the reference temperature for volume measurements and combustion used for calculation of energy and density of the gas.          
+          \nLNG liquid density is calculated based on ISO6578.
+          `}
         ></TileLink>
       </div>
     </StPageWrapper>

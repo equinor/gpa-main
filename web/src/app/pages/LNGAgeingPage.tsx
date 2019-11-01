@@ -22,8 +22,8 @@ export const LNGAgeingPage: React.FunctionComponent = () => (
         ></TileLink>
         <TileLink
           image="./calc.png"
-          text="Calculations"
-          link="/calculations"
+          text="Results"
+          link="/results"
         ></TileLink>
       </div>
     </StPageWrapper>

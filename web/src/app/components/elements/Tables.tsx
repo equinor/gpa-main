@@ -9,7 +9,7 @@ interface IStandardTable {
     rows: IStandardTableRow[];
     selectRow?: Function;
     disableHover?: boolean;
-    exportToExcel?: string; //filename without csv
+    exportToExcel?: string; //filename without extension
 }
 
 export interface IStandardTableRow {

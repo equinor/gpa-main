@@ -19,6 +19,7 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 <StandardSelect
                     id="combustionTemperature"
                     label={"Combustion temperature"}
+                    labelRight={"°C"}
                     options={[
                         {
                             value: null,
@@ -33,20 +34,20 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                             label: "15"
                         },
                         {
+                            value: "15.5556",
+                            label: "15.56 (60 °F)"
+                        },
+                        {
                             value: "20",
                             label: "20"
                         },
                         {
                             value: "25",
                             label: "25"
-                        },
-                        {
-                            value: "60",
-                            label: "60"
                         }
                     ]}
                     onChange={(e: any) => {
-                        props.setStandard({ ...props.standard, combustionTemperature: parseInt(e.value) })
+                        props.setStandard({ ...props.standard, combustionTemperature: parseFloat(e.value) })
                     }}
                     value={props.standard.combustionTemperature || props.standard.combustionTemperature === 0 ? {
                         label: props.standard.combustionTemperature.toString(),
@@ -59,6 +60,7 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                 <StandardSelect
                     id="measurementTemperature"
                     label={"Measurement temperature"}
+                    labelRight={"°C"}
                     options={[
                         {
                             value: null,
@@ -73,15 +75,15 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                             label: "15"
                         },
                         {
-                            value: "20",
-                            label: "20"
+                            value: "15.5556",
+                            label: "15.56 (60 °F)"
                         },
                         {
-                            value: "60",
-                            label: "60"
+                            value: "20",
+                            label: "20"
                         }
                     ]}
-                    onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: parseInt(e.value) }) }}
+                    onChange={(e: any) => { props.setStandard({ ...props.standard, measurementTemperature: parseFloat(e.value) }) }}
                     value={props.standard.measurementTemperature || props.standard.measurementTemperature === 0 ? {
                         label: props.standard.measurementTemperature.toString(),
                         value: props.standard.measurementTemperature.toString()

@@ -20,38 +20,46 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
     const initRow: IResult = props.calculation.result[0];
     const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
 
-    //unit headers
+    //unit headers and definitions
     const unitHeaders = [{
         title: "TIME",
-        internalName: "time"
+        internalName: "time",
+        fixed: 1
     },
     {
         title: "WI",
-        internalName: "wi"
+        internalName: "wi",
+        fixed: 2
     },
     {
         title: "GCV",
-        internalName: "gcv"
+        internalName: "gcv",
+        fixed: 2
     },
     {
         title: "GCV",
-        internalName: "gcvMass"
+        internalName: "gcvMass",
+        fixed: 3
     },
     {
         title: "DENSITY",
-        internalName: "density"
+        internalName: "density",
+        fixed: 3
     },
     {
         title: "TEMP",
-        internalName: "temp"
+        internalName: "temp",
+        fixed: 2
     },
     {
         title: "VOLUME",
-        internalName: "volume"
+        internalName: "volume",
+        fixed: 2
     },
     {
         title: "ENERGY",
-        internalName: "energy"
+        internalName: "energy",
+        fixed: 2
     }];;
 
     //table more results
@@ -73,14 +81,14 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             return {
                 value: result.id,
                 display: [
-                    result.time.value.toFixed(1),
-                    result.wi.value.toFixed(2),
-                    result.gcv.value.toFixed(2),
-                    result.gcvMass.value.toFixed(3),
-                    result.density.value.toFixed(3),
-                    result.temp.value.toFixed(2),
-                    result.volume.value.toFixed(2),
-                    result.energy.value.toFixed(2)
+                    result.time.value.toFixed(unitHeaders[0].fixed),
+                    result.wi.value.toFixed(unitHeaders[1].fixed),
+                    result.gcv.value.toFixed(unitHeaders[2].fixed),
+                    result.gcvMass.value.toFixed(unitHeaders[3].fixed),
+                    result.density.value.toFixed(unitHeaders[4].fixed),
+                    result.temp.value.toFixed(unitHeaders[5].fixed),
+                    result.volume.value.toFixed(unitHeaders[6].fixed),
+                    result.energy.value.toFixed(unitHeaders[7].fixed)
                 ]
             }
         })
@@ -95,7 +103,8 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             title: title,
             unit: initRow[internalName]["unit"],
             initValue: initRow[internalName]["value"],
-            endValue: endRow[internalName]["value"]
+            endValue: endRow[internalName]["value"],
+            fixed: header.fixed
         }
     })
 
@@ -115,8 +124,8 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                         <StCalculation key={index}>
                             <span style={{ fontSize: "18px", margin: "20px 0 10px 0" }}>{result.title.toUpperCase()}</span>
                             <span style={{ fontSize: "10px" }}>{result.unit}</span>
-                            <span style={{ color: "#73B1B5", fontSize: "14px", margin: "21px 0px 13px 0" }}>{result.initValue}</span>
-                            <span style={{ color: EColor.GREEN, fontSize: "14px", fontWeight: 500 }}>{result.endValue}</span>
+                            <span style={{ color: "#73B1B5", fontSize: "14px", margin: "21px 0px 13px 0" }}>{result.initValue.toFixed(result.fixed)}</span>
+                            <span style={{ color: EColor.GREEN, fontSize: "14px", fontWeight: 500 }}>{result.endValue.toFixed(result.fixed)}</span>
                         </StCalculation>
                     )
                 })}
@@ -158,7 +167,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                                 onClick={() => {
                                     setResultType("compositionDetails")
                                 }}
-                            >Composition details</span>
+                            >Liquid composition</span>
                         </div>
                         {resultType === "ageing" &&
                             <p>Lorem</p>
@@ -175,6 +184,9 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                             header={headers.map((header) => {
                                 return header.title;
                             })}
+                            headerSecondary={headers.map((header=>{
+                                return initRow[header.internalName as never]["unit"];
+                            }))}
                             rows={tableRows}
                             exportToExcel={"ShipAgeing-"+props.calculation.ship.name}
                         ></StandardTable>
@@ -260,4 +272,5 @@ export interface ICardResult {
     unit: any;
     initValue: any;
     endValue: any;
+    fixed: number;
 }
