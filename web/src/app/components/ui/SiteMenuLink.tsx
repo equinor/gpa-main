@@ -27,16 +27,22 @@ const StMenuLink = styled(NavLink)`
   text-decoration: none;
   font-family: Equinor,serif; 
   font-weight: 500;
-  color: ${EColor.BLACK};
+  color: ${EColor.GRAY};
   > svg, rect {
     margin-right: 30px;
-  }
+    path {
+      fill: ${EColor.GRAY};
+    }
+  } 
   > span {
   }
   &:hover {
     background-color: ${EColor.LIGHT_GREEN};
     > svg, rect {
       fill: ${EColor.BLACK};
+      path {
+        fill: ${EColor.BLACK};
+      }
     }
     > span {
       color: ${EColor.BLACK};
@@ -48,6 +54,9 @@ const StMenuLink = styled(NavLink)`
     }
     > svg, rect {
       fill: ${EColor.GREEN};
+      path {
+        fill: ${EColor.GREEN};
+      }
     }
   }
 `;

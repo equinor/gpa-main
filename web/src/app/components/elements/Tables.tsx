@@ -63,7 +63,9 @@ export const StandardTable = (props: IStandardTable) => {
                             >
                                 {row.display.map((cell, index2) => {
                                     return (
-                                        <td key={index2}>{cell}</td>
+                                        <td key={index2}>
+                                            {parseFloat(cell) === 0 ? 0 : cell}
+                                        </td>
                                     )
                                 })}
                             </tr>
@@ -108,7 +110,7 @@ const StStandardTable = styled.table`
     > thead {
         tr {
             background-color: ${EColor.LIGHT_GRAY};
-            border-bottom: 2px solid  #DCDCDC;
+            border-bottom: 1px solid  #DCDCDC;
         }
         tr:first-child {
             text-align: left;

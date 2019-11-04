@@ -58,13 +58,35 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
         for (resultRow in result.drop(1)) {
             calculation.result.add(
                 CalculationStep(
+                    //ageing
                     time = stringToDouble(resultRow[0]),
                     temp = stringToDouble(resultRow[1]),
                     wi = stringToDouble(resultRow[2]),
                     gcv = stringToDouble(resultRow[3]),
+                    gcvmass = stringToDouble(resultRow[16]),
                     density = stringToDouble(resultRow[4]),
                     volume = stringToDouble(resultRow[5]),
-                    energy = stringToDouble(resultRow[6]),
+                    energy = stringToDouble(resultRow[15]),
+                    //liquid
+                    xmethane = stringToDouble(resultRow[6]),
+                    xethane = stringToDouble(resultRow[7]),
+                    xpropane = stringToDouble(resultRow[8]),
+                    xic4 = stringToDouble(resultRow[9]),
+                    xnc4 = stringToDouble(resultRow[10]),
+                    xic5 = stringToDouble(resultRow[11]),
+                    xnc5 = stringToDouble(resultRow[12]),
+                    xnc6 = stringToDouble(resultRow[13]),
+                    xnitrogen = stringToDouble(resultRow[14]),
+                    //gas
+                    ymethane = stringToDouble(resultRow[17]),
+                    yethane = stringToDouble(resultRow[18]),
+                    ypropane = stringToDouble(resultRow[19]),
+                    yic4 = stringToDouble(resultRow[20]),
+                    ync4 = stringToDouble(resultRow[21]),
+                    yic5 = stringToDouble(resultRow[22]),
+                    ync5 = stringToDouble(resultRow[23]),
+                    ync6 = stringToDouble(resultRow[24]),
+                    ynitrogen = stringToDouble(resultRow[25]),
                     calculation = calculation
                 )
             )
