@@ -1,16 +1,16 @@
 import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import React from 'react';
 import { match } from 'react-router';
+import styled from 'styled-components';
 
 import { ICalculation, IResult } from '../common/Interfaces';
+import { CALCULATION_QUERY } from '../common/queries/CalculationQuery';
 import { CalculationContainer } from '../components/content/calculation/CalculationContainer';
 import { CalculationValuesContainer } from '../components/content/calculation/CalculationValuesContainer';
+import { UserMessage } from '../components/elements/UserMessage';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
 import { StPageWrapper } from './CalculatorPage';
-import { UserMessage } from '../components/elements/UserMessage';
-import styled from 'styled-components';
 
 interface ICalculationWithResult extends ICalculation {
   result: IResult[];
@@ -67,106 +67,4 @@ const StUserMessage = styled.div`
     display: flex;
     justify-content: center;
     margin: 50px 0 0;
-`;
-
-const CALCULATION_QUERY = gql`
-  query Calculation ($id: ID!) {
-      calculation(id: $id) {
-            id
-            ship {
-                id
-                name
-                country
-            }
-            fluid {
-                id
-                nitrogen {
-                    value
-                    unit
-                }
-                methane {
-                    value
-                    unit
-                }
-                ethane {
-                    value
-                    unit
-                }
-                propane {
-                    value
-                    unit
-                }
-                iButane {
-                    value
-                    unit
-                }
-                nButane {
-                    value
-                    unit
-                }
-                iPentane {
-                    value
-                    unit
-                }
-                nPentane {
-                    value
-                    unit
-                }
-                nHexane {
-                    value
-                    unit
-                }
-            }
-            transport {
-                id
-                volume
-                pressure
-                boilOffRate
-                fromDate
-                toDate
-            }
-            standard {
-                id
-                combustionTemperature
-                measurementTemperature
-                idealGasReferenceState
-            }
-            result {
-              id
-              time {
-                value 
-                unit
-              }
-              wi {
-                value 
-                unit
-              }
-              gcv(isMass: false){
-                unit
-                value
-              }
-              gcvMass:gcv(isMass: true) {
-                unit
-                value
-              }
-              density {
-                value 
-                unit
-              }
-              temp {
-                value 
-                unit
-              }
-              volume {
-                value 
-                unit
-              }
-              energy {
-                value 
-                unit
-              }
-            }
-            createdDate
-        }
-      }
 `;

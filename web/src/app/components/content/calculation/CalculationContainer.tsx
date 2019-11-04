@@ -6,6 +6,7 @@ import { EColor } from '../../../common/Color';
 import { ICalculation, IResult } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2 } from '../../elements/Texts';
+import { agingHeaders, liquidHeaders, gasHeaders } from '../../../common/tableHeaders/CalculationHeaders';
 
 export interface ICalculationContainer {
     calculation: ICalculation;
@@ -15,52 +16,10 @@ export interface ICalculationContainer {
 export const CalculationContainer: React.FunctionComponent<ICalculationContainer> = (props) => {
 
     const [moreResults, showMoreResults] = useState<boolean>(false);
-    const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "compositionDetails">("ageing");
+    const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "liquidComposition">("ageing");
 
     const initRow: IResult = props.calculation.result[0];
     const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
-
-    //unit headers and definitions
-    const unitHeaders = [{
-        title: "TIME",
-        internalName: "time",
-        fixed: 1
-    },
-    {
-        title: "WI",
-        internalName: "wi",
-        fixed: 2
-    },
-    {
-        title: "GCV",
-        internalName: "gcv",
-        fixed: 2
-    },
-    {
-        title: "GCV",
-        internalName: "gcvMass",
-        fixed: 3
-    },
-    {
-        title: "DENSITY",
-        internalName: "density",
-        fixed: 3
-    },
-    {
-        title: "TEMP",
-        internalName: "temp",
-        fixed: 2
-    },
-    {
-        title: "VOLUME",
-        internalName: "volume",
-        fixed: 2
-    },
-    {
-        title: "ENERGY",
-        internalName: "energy",
-        fixed: 2
-    }];;
 
     //table more results
     let tableRows: IStandardTableRow[];
@@ -68,35 +27,67 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
         title: string,
         internalName: string
     }[];
-    if (resultType === "compositionDetails") {
-        tableRows = [];
-        headers = [];
+    if (resultType === "liquidComposition") {
+        tableRows = props.calculation.result.map((result: IResult) => {
+            return {
+                value: result.id,
+                display: [
+                    result.time.value.toFixed(liquidHeaders[0].fixed),
+                    result.xnitrogen.value.toFixed(liquidHeaders[1].fixed),
+                    result.xmethane.value.toFixed(liquidHeaders[2].fixed),
+                    result.xethane.value.toFixed(liquidHeaders[3].fixed),
+                    result.xpropane.value.toFixed(liquidHeaders[4].fixed),
+                    result.xic4.value.toFixed(liquidHeaders[5].fixed),
+                    result.xnc4.value.toFixed(liquidHeaders[6].fixed),
+                    result.xic5.value.toFixed(liquidHeaders[7].fixed),
+                    result.xnc5.value.toFixed(liquidHeaders[8].fixed),
+                    result.xnc6.value.toFixed(liquidHeaders[9].fixed)
+                ]
+            }
+        })
+        headers = liquidHeaders;
     }
     else if (resultType === "gasComposition") {
-        tableRows = [];
-        headers = [];
+        tableRows = props.calculation.result.map((result: IResult) => {
+            return {
+                value: result.id,
+                display: [
+                    result.time.value.toFixed(gasHeaders[0].fixed),
+                    result.ynitrogen.value.toFixed(gasHeaders[1].fixed),
+                    result.ymethane.value.toFixed(gasHeaders[2].fixed),
+                    result.yethane.value.toFixed(gasHeaders[3].fixed),
+                    result.ypropane.value.toFixed(gasHeaders[4].fixed),
+                    result.yic4.value.toFixed(gasHeaders[5].fixed),
+                    result.ync4.value.toFixed(gasHeaders[6].fixed),
+                    result.yic5.value.toFixed(gasHeaders[7].fixed),
+                    result.ync5.value.toFixed(gasHeaders[8].fixed),
+                    result.ync6.value.toFixed(gasHeaders[9].fixed)
+                ]
+            }
+        })
+        headers = gasHeaders;
     }
     else {
         tableRows = props.calculation.result.map((result: IResult) => {
             return {
                 value: result.id,
                 display: [
-                    result.time.value.toFixed(unitHeaders[0].fixed),
-                    result.wi.value.toFixed(unitHeaders[1].fixed),
-                    result.gcv.value.toFixed(unitHeaders[2].fixed),
-                    result.gcvMass.value.toFixed(unitHeaders[3].fixed),
-                    result.density.value.toFixed(unitHeaders[4].fixed),
-                    result.temp.value.toFixed(unitHeaders[5].fixed),
-                    result.volume.value.toFixed(unitHeaders[6].fixed),
-                    result.energy.value.toFixed(unitHeaders[7].fixed)
+                    result.time.value.toFixed(agingHeaders[0].fixed),
+                    result.wi.value.toFixed(agingHeaders[1].fixed),
+                    result.gcv.value.toFixed(agingHeaders[2].fixed),
+                    result.gcvmass.value.toFixed(agingHeaders[3].fixed),
+                    result.density.value.toFixed(agingHeaders[4].fixed),
+                    result.temp.value.toFixed(agingHeaders[5].fixed),
+                    result.volume.value.toFixed(agingHeaders[6].fixed),
+                    result.energy.value.toFixed(agingHeaders[7].fixed)
                 ]
             }
         })
-        headers = unitHeaders;
+        headers = agingHeaders;
     }
 
     //card result
-    const cardResults: ICardResult[] = unitHeaders.map((header) => {
+    const cardResults: ICardResult[] = agingHeaders.map((header) => {
         const title = header.title as never;
         const internalName = header.internalName as never;
         return {
@@ -163,20 +154,20 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                                 }}
                             >Gas composition</span>
                             <span
-                                className={resultType === "compositionDetails" ? "active" : ""}
+                                className={resultType === "liquidComposition" ? "active" : ""}
                                 onClick={() => {
-                                    setResultType("compositionDetails")
+                                    setResultType("liquidComposition")
                                 }}
                             >Liquid composition</span>
                         </div>
                         {resultType === "ageing" &&
-                            <p>Lorem</p>
+                            <p>Ageing text</p>
                         }
                         {resultType === "gasComposition" &&
-                            <p>Lipsum</p>
+                            <p>Gas text</p>
                         }
-                        {resultType === "compositionDetails" &&
-                            <p>Dolor</p>
+                        {resultType === "liquidComposition" &&
+                            <p>Liquid text</p>
                         }
                     </StMoreResults>
                     <StStandardTable>
@@ -184,11 +175,11 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                             header={headers.map((header) => {
                                 return header.title;
                             })}
-                            headerSecondary={headers.map((header=>{
+                            headerSecondary={headers.map((header => {
                                 return initRow[header.internalName as never]["unit"];
                             }))}
                             rows={tableRows}
-                            exportToExcel={"ShipAgeing-"+props.calculation.ship.name}
+                            exportToExcel={"ShipAgeing-" + props.calculation.ship.name}
                         ></StandardTable>
                     </StStandardTable>
                 </>

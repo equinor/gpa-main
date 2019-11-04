@@ -15,8 +15,11 @@ export const SiteMenuHeader: React.FunctionComponent<ISiteMenuHeader> = (props) 
 const StSiteMenuHeader = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 10px 10px 10px 53px;
-  color: ${EColor.GRAY};
+  padding: 15px 10px 15px 50px;
+  box-sizing: border-box;
+  margin: 0 50px;
+  border-bottom: 1px solid #e4e4e4;
+  color: ${EColor.BLACK};
   align-items: center;
   text-decoration: none;
   font-family: Equinor,serif; 

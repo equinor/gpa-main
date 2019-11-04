@@ -2,10 +2,29 @@ type CalculationStep {
     id: ID!
     time: MetricType!
     wi: MetricType!
-    gcv(isMass: Boolean): MetricType!
+    gcv: MetricType!
+    gcvmass: MetricType!
     density: MetricType!
     temp: MetricType!
     volume: MetricType!
     energy: MetricType!
+    xmethane: MetricType!
+    xethane: MetricType!
+    xpropane: MetricType!
+    xic4: MetricType!
+    xnc4: MetricType!
+    xic5: MetricType!
+    xnc5: MetricType!
+    xnc6: MetricType!
+    xnitrogen: MetricType!
+    ymethane: MetricType!
+    yethane: MetricType!
+    ypropane: MetricType!
+    yic4: MetricType!
+    ync4: MetricType!
+    yic5: MetricType!
+    ync5: MetricType!
+    ync6: MetricType!
+    ynitrogen: MetricType!
     createdDate: String
 }

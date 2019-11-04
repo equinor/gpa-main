@@ -63,7 +63,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     onCompleted: (
       r: any
     ) => {
-      history.push('/calculation/' + r.addCalculation.id);
+      history.push('/result/' + r.addCalculation.id);
     }
   });
 

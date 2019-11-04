@@ -46,11 +46,29 @@ export interface IResult {
     density: IMetric;
     energy: IMetric;
     gcv: IMetric;
-    gcvMass: IMetric;
+    gcvmass: IMetric;
     temp: IMetric;
     time: IMetric;
     volume: IMetric;
     wi: IMetric;
+    xmethane: IMetric;
+    xethane: IMetric;
+    xpropane: IMetric;
+    xic4: IMetric;
+    xnc4: IMetric;
+    xic5: IMetric;
+    xnc5: IMetric;
+    xnc6: IMetric;
+    xnitrogen: IMetric;
+    ymethane: IMetric;
+    yethane: IMetric;
+    ypropane: IMetric;
+    yic4: IMetric;
+    ync4: IMetric;
+    yic5: IMetric;
+    ync5: IMetric;
+    ync6: IMetric;
+    ynitrogen: IMetric;
 }
 
 //Calculation
