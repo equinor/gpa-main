@@ -30,9 +30,6 @@ export const CalculationPage: React.FunctionComponent<ICalculationPage> = (props
   const calculation = useQuery<ICalculationData, { id: string }>(CALCULATION_QUERY, {
     variables: {
       id: props.match.params["id"]
-    },
-    onCompleted: (e)=>{
-      console.log(e.calculation);
     }
   });
 
