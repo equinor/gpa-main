@@ -59,7 +59,6 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
         for (resultRow in result.drop(1)) {
             calculation.result.add(
                 CalculationStep(
-                    //ageing
                     time = stringToDouble(resultRow[0]),
                     temp = stringToDouble(resultRow[1]),
                     wi = stringToDouble(resultRow[2]),
@@ -68,26 +67,28 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
                     density = stringToDouble(resultRow[4]),
                     volume = stringToDouble(resultRow[5]),
                     energy = stringToDouble(resultRow[15]) / 1000,
-                    //liquid
-                    xmethane = stringToDouble(resultRow[6]),
-                    xethane = stringToDouble(resultRow[7]),
-                    xpropane = stringToDouble(resultRow[8]),
-                    xic4 = stringToDouble(resultRow[9]),
-                    xnc4 = stringToDouble(resultRow[10]),
-                    xic5 = stringToDouble(resultRow[11]),
-                    xnc5 = stringToDouble(resultRow[12]),
-                    xnc6 = stringToDouble(resultRow[13]),
-                    xnitrogen = stringToDouble(resultRow[14]),
-                    //gas
-                    ymethane = stringToDouble(resultRow[17]),
-                    yethane = stringToDouble(resultRow[18]),
-                    ypropane = stringToDouble(resultRow[19]),
-                    yic4 = stringToDouble(resultRow[20]),
-                    ync4 = stringToDouble(resultRow[21]),
-                    yic5 = stringToDouble(resultRow[22]),
-                    ync5 = stringToDouble(resultRow[23]),
-                    ync6 = stringToDouble(resultRow[24]),
-                    ynitrogen = stringToDouble(resultRow[25]),
+                    gas = Fluid(
+                        methane = stringToDouble(resultRow[17]),
+                        ethane = stringToDouble(resultRow[18]),
+                        propane = stringToDouble(resultRow[19]),
+                        iButane = stringToDouble(resultRow[20]),
+                        nButane = stringToDouble(resultRow[21]),
+                        iPentane = stringToDouble(resultRow[22]),
+                        nPentane = stringToDouble(resultRow[23]),
+                        nHexane = stringToDouble(resultRow[24]),
+                        nitrogen = stringToDouble(resultRow[25])
+                    ),
+                    liquid = Fluid(
+                        methane = stringToDouble(resultRow[6]),
+                        ethane = stringToDouble(resultRow[7]),
+                        propane = stringToDouble(resultRow[8]),
+                        iButane = stringToDouble(resultRow[9]),
+                        nButane = stringToDouble(resultRow[10]),
+                        iPentane = stringToDouble(resultRow[11]),
+                        nPentane = stringToDouble(resultRow[12]),
+                        nHexane = stringToDouble(resultRow[13]),
+                        nitrogen = stringToDouble(resultRow[14])
+                    ),
                     calculation = calculation
                 )
             )

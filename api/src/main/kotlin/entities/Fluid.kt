@@ -27,7 +27,6 @@ class Fluid (
     @Id
     var id: Long? = null,
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "fluid")
     var calculation: Calculation? = null
 ): Auditable()

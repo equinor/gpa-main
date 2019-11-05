@@ -1,0 +1,49 @@
+ALTER TABLE calculation_step
+DROP COLUMN xMethane,
+DROP COLUMN xMethane_unit,
+DROP COLUMN xEthane,
+DROP COLUMN xEthane_unit,
+DROP COLUMN xPropane,
+DROP COLUMN xPropane_unit,
+DROP COLUMN xIC4,
+DROP COLUMN xIC4_unit,
+DROP COLUMN xNC4,
+DROP COLUMN xNC4_unit,
+DROP COLUMN xIC5,
+DROP COLUMN xIC5_unit,
+DROP COLUMN xNC5,
+DROP COLUMN xNC5_unit,
+DROP COLUMN xNC6,
+DROP COLUMN xNC6_unit,
+DROP COLUMN xNitrogen,
+DROP COLUMN xNitrogen_unit,
+
+DROP COLUMN yMethane,
+DROP COLUMN yMethane_unit,
+DROP COLUMN yEthane,
+DROP COLUMN yEthane_unit,
+DROP COLUMN yPropane,
+DROP COLUMN yPropane_unit,
+DROP COLUMN yIC4,
+DROP COLUMN yIC4_unit,
+DROP COLUMN yNC4,
+DROP COLUMN yNC4_unit,
+DROP COLUMN yIC5,
+DROP COLUMN yIC5_unit,
+DROP COLUMN yNC5,
+DROP COLUMN yNC5_unit,
+DROP COLUMN yNC6,
+DROP COLUMN yNC6_unit,
+DROP COLUMN yNitrogen,
+DROP COLUMN yNitrogen_unit ;
+
+ALTER TABLE fluid
+DROP COLUMN calculation_id;
+
+ALTER TABLE calculation
+ADD COLUMN fluid_id int8;
+
+ALTER TABLE calculation_step
+ADD COLUMN gas_id int8,
+ADD COLUMN liquid_id int8,
+;

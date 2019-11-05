@@ -29,7 +29,7 @@ export const App = () => (
         <SiteMenuHeader name="LNG Ageing"></SiteMenuHeader>
         <SiteMenuLink to="/LNGageing" name="About" icon={EIcon.INFO}/>
         <SiteMenuLink to="/calculator" name="Calculator" icon={EIcon.CALCULATOR}/>
-        <SiteMenuLink to="/results" name="Calculations" icon={EIcon.RESULT}/>
+        <SiteMenuLink to="/results" name="Results" icon={EIcon.RESULT}/>
       </SiteMenu>
       <Switch>
         <Redirect exact from="/" to="/LNGageing"/>

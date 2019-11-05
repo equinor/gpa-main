@@ -8,9 +8,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener::class)
 class Calculation(
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
-    var fluid: Fluid,
-
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     var transport: Transport,
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
@@ -19,6 +16,10 @@ class Calculation(
     @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinColumn(name = "ship_id")
     var ship: Ship,
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
+    @JoinColumn(name = "fluid_id")
+    var fluid: Fluid,
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "calculation", cascade = [CascadeType.ALL])
     @OrderBy("time ASC")
