@@ -22,13 +22,13 @@ class CalculationStep (
     var energy: Double,
     var energy_unit: String = "GJ",
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     @JoinColumn(name = "gas_id")
-    var gas: Fluid? = null,
+    var gas: Fluid,
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     @JoinColumn(name = "liquid_id")
-    var liquid: Fluid? = null,
+    var liquid: Fluid,
 
     @Id @GeneratedValue var id: Long? = null,
 

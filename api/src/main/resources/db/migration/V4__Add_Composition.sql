@@ -1,45 +1,26 @@
 ALTER TABLE calculation_step
-DROP COLUMN gcv2,
-DROP COLUMN gcv2_unit;
+    DROP COLUMN gcv2,
+    DROP COLUMN gcv2_unit;
 
 ALTER TABLE calculation_step
-ADD COLUMN gcvMass float8,
-ADD COLUMN gcvMass_unit varchar(255),
+    ADD COLUMN gcvMass      float8,
+    ADD COLUMN gcvMass_unit varchar(255);
 
-ADD COLUMN xMethane float8,
-ADD COLUMN xMethane_unit varchar(255),
-ADD COLUMN xEthane float8,
-ADD COLUMN xEthane_unit varchar(255),
-ADD COLUMN xPropane float8,
-ADD COLUMN xPropane_unit varchar(255),
-ADD COLUMN xIC4 float8,
-ADD COLUMN xIC4_unit varchar(255),
-ADD COLUMN xNC4 float8,
-ADD COLUMN xNC4_unit varchar(255),
-ADD COLUMN xIC5 float8,
-ADD COLUMN xIC5_unit varchar(255),
-ADD COLUMN xNC5 float8,
-ADD COLUMN xNC5_unit varchar(255),
-ADD COLUMN xNC6 float8,
-ADD COLUMN xNC6_unit varchar(255),
-ADD COLUMN xNitrogen float8,
-ADD COLUMN xNitrogen_unit varchar(255),
+ALTER TABLE fluid
+    DROP COLUMN calculation_id,
+    ADD COLUMN id int8 not null,
+    ADD CONSTRAINT PK_fluid primary key (id);
 
-ADD COLUMN yMethane float8,
-ADD COLUMN yMethane_unit varchar(255),
-ADD COLUMN yEthane float8,
-ADD COLUMN yEthane_unit varchar(255),
-ADD COLUMN yPropane float8,
-ADD COLUMN yPropane_unit varchar(255),
-ADD COLUMN yIC4 float8,
-ADD COLUMN yIC4_unit varchar(255),
-ADD COLUMN yNC4 float8,
-ADD COLUMN yNC4_unit varchar(255),
-ADD COLUMN yIC5 float8,
-ADD COLUMN yIC5_unit varchar(255),
-ADD COLUMN yNC5 float8,
-ADD COLUMN yNC5_unit varchar(255),
-ADD COLUMN yNC6 float8,
-ADD COLUMN yNC6_unit varchar(255),
-ADD COLUMN yNitrogen float8,
-ADD COLUMN yNitrogen_unit varchar(255);
+ALTER TABLE calculation
+    ADD COLUMN fluid_id int8;
+
+ALTER TABLE calculation_step
+    ADD COLUMN gas_id    int8,
+    ADD COLUMN liquid_id int8;
+
+alter table calculation
+    add constraint FK_calculation_fluid foreign key (fluid_id) references fluid;
+
+alter table calculation_step
+    add constraint FK_gas_fluid foreign key (gas_id) references fluid,
+    add constraint FK_liquid_fluid foreign key (liquid_id) references fluid;

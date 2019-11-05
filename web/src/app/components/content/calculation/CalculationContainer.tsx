@@ -1,191 +1,204 @@
 import moment from 'moment';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components/macro';
 
-import { EColor } from '../../../common/Color';
-import { ICalculation, IResult } from '../../../common/Interfaces';
-import { IStandardTableRow, StandardTable } from '../../elements/Tables';
-import { H2 } from '../../elements/Texts';
-import { agingHeaders, liquidHeaders, gasHeaders } from '../../../common/tableHeaders/CalculationHeaders';
+import {EColor} from '../../../common/Color';
+import {ICalculation, IResult} from '../../../common/Interfaces';
+import {IStandardTableRow, StandardTable} from '../../elements/Tables';
+import {H2} from '../../elements/Texts';
+import {agingHeaders, fluidHeaders} from '../../../common/tableHeaders/CalculationHeaders';
 
 export interface ICalculationContainer {
-    calculation: ICalculation;
-    style?: Object;
+  calculation: ICalculation;
+  style?: Object;
 }
 
 export const CalculationContainer: React.FunctionComponent<ICalculationContainer> = (props) => {
 
-    const [moreResults, showMoreResults] = useState<boolean>(false);
-    const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "liquidComposition">("ageing");
+  const [moreResults, showMoreResults] = useState<boolean>(false);
+  const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "liquidComposition">("ageing");
 
-    const initRow: IResult = props.calculation.result[0];
-    const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
+  const initRow: IResult = props.calculation.result[0];
+  const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
 
-    //table more results
-    let tableRows: IStandardTableRow[];
-    let headers: {
-        title: string,
-        internalName: string
-    }[];
-    if (resultType === "liquidComposition") {
-        tableRows = props.calculation.result.map((result: IResult) => {
-            return {
-                value: result.id,
-                display: [
-                    result.time.value.toFixed(liquidHeaders[0].fixed),
-                    result.xnitrogen.value.toFixed(liquidHeaders[1].fixed),
-                    result.xmethane.value.toFixed(liquidHeaders[2].fixed),
-                    result.xethane.value.toFixed(liquidHeaders[3].fixed),
-                    result.xpropane.value.toFixed(liquidHeaders[4].fixed),
-                    result.xic4.value.toFixed(liquidHeaders[5].fixed),
-                    result.xnc4.value.toFixed(liquidHeaders[6].fixed),
-                    result.xic5.value.toFixed(liquidHeaders[7].fixed),
-                    result.xnc5.value.toFixed(liquidHeaders[8].fixed),
-                    result.xnc6.value.toFixed(liquidHeaders[9].fixed)
-                ]
-            }
-        })
-        headers = liquidHeaders;
-    }
-    else if (resultType === "gasComposition") {
-        tableRows = props.calculation.result.map((result: IResult) => {
-            return {
-                value: result.id,
-                display: [
-                    result.time.value.toFixed(gasHeaders[0].fixed),
-                    result.ynitrogen.value.toFixed(gasHeaders[1].fixed),
-                    result.ymethane.value.toFixed(gasHeaders[2].fixed),
-                    result.yethane.value.toFixed(gasHeaders[3].fixed),
-                    result.ypropane.value.toFixed(gasHeaders[4].fixed),
-                    result.yic4.value.toFixed(gasHeaders[5].fixed),
-                    result.ync4.value.toFixed(gasHeaders[6].fixed),
-                    result.yic5.value.toFixed(gasHeaders[7].fixed),
-                    result.ync5.value.toFixed(gasHeaders[8].fixed),
-                    result.ync6.value.toFixed(gasHeaders[9].fixed)
-                ]
-            }
-        })
-        headers = gasHeaders;
-    }
-    else {
-        tableRows = props.calculation.result.map((result: IResult) => {
-            return {
-                value: result.id,
-                display: [
-                    result.time.value.toFixed(agingHeaders[0].fixed),
-                    result.wi.value.toFixed(agingHeaders[1].fixed),
-                    result.gcv.value.toFixed(agingHeaders[2].fixed),
-                    result.gcvmass.value.toFixed(agingHeaders[3].fixed),
-                    result.density.value.toFixed(agingHeaders[4].fixed),
-                    result.temp.value.toFixed(agingHeaders[5].fixed),
-                    result.volume.value.toFixed(agingHeaders[6].fixed),
-                    result.energy.value.toFixed(agingHeaders[7].fixed)
-                ]
-            }
-        })
-        headers = agingHeaders;
-    }
-
-    //card result
-    const cardResults: ICardResult[] = agingHeaders.map((header) => {
-        const title = header.title as never;
-        const internalName = header.internalName as never;
+  //table more results
+  let tableRows: IStandardTableRow[];
+  let headers: {
+    title: string,
+    internalName: string
+  }[];
+  switch (resultType) {
+    case "liquidComposition":
+      tableRows = props.calculation.result.map((result: IResult) => {
+        const {liquid: fluid} = result;
         return {
-            title: title,
-            unit: initRow[internalName]["unit"],
-            initValue: initRow[internalName]["value"],
-            endValue: endRow[internalName]["value"],
-            fixed: header.fixed
+          value: result.id,
+          display: [
+            result.time.value.toFixed(fluidHeaders[0].fixed),
+            fluid.nitrogen.value.toFixed(fluidHeaders[1].fixed),
+            fluid.methane.value.toFixed(fluidHeaders[2].fixed),
+            fluid.ethane.value.toFixed(fluidHeaders[3].fixed),
+            fluid.propane.value.toFixed(fluidHeaders[4].fixed),
+            fluid.iButane.value.toFixed(fluidHeaders[5].fixed),
+            fluid.nButane.value.toFixed(fluidHeaders[6].fixed),
+            fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
+            fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
+            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed)
+          ]
         }
-    })
+      });
+      headers = fluidHeaders;
+      break;
+    case "gasComposition":
+      tableRows = props.calculation.result.map((result: IResult) => {
+        const {gas: fluid} = result;
+        return {
+          value: result.id,
+          display: [
+            result.time.value.toFixed(fluidHeaders[0].fixed),
+            fluid.nitrogen.value.toFixed(fluidHeaders[1].fixed),
+            fluid.methane.value.toFixed(fluidHeaders[2].fixed),
+            fluid.ethane.value.toFixed(fluidHeaders[3].fixed),
+            fluid.propane.value.toFixed(fluidHeaders[4].fixed),
+            fluid.iButane.value.toFixed(fluidHeaders[5].fixed),
+            fluid.nButane.value.toFixed(fluidHeaders[6].fixed),
+            fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
+            fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
+            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed)
+          ]
+        }
+      });
+      headers = fluidHeaders;
+      break;
+    default:
+      tableRows = props.calculation.result.map((result: IResult) => {
+        return {
+          value: result.id,
+          display: [
+            result.time.value.toFixed(agingHeaders[0].fixed),
+            result.wi.value.toFixed(agingHeaders[1].fixed),
+            result.gcv.value.toFixed(agingHeaders[2].fixed),
+            result.gcvmass.value.toFixed(agingHeaders[3].fixed),
+            result.density.value.toFixed(agingHeaders[4].fixed),
+            result.temp.value.toFixed(agingHeaders[5].fixed),
+            result.volume.value.toFixed(agingHeaders[6].fixed),
+            result.energy.value.toFixed(agingHeaders[7].fixed)
+          ]
+        }
+      });
+      headers = agingHeaders;
+      break;
 
-    return (
-        <StCalculationContainer style={props.style}>
-            <H2 style={{ width: "100%" }}>
-                Results
-                <span style={{
-                    fontSize: "15px",
-                    color: EColor.GRAY,
-                    margin: "-1px 0 0 10px"
-                }}>{moment(props.calculation.createdDate).fromNow()}</span>
-            </H2>
-            <div style={{ display: "flex" }}>
-                {cardResults.map((result: ICardResult, index) => {
-                    return (
-                        <StCalculation key={index}>
-                            <span style={{ fontSize: "18px", margin: "20px 0 10px 0" }}>{result.title.toUpperCase()}</span>
-                            <span style={{ fontSize: "10px" }}>{result.unit}</span>
-                            <span style={{ color: "#73B1B5", fontSize: "14px", margin: "21px 0px 13px 0" }}>{result.initValue.toFixed(result.fixed)}</span>
-                            <span style={{ color: EColor.GREEN, fontSize: "14px", fontWeight: 500 }}>{result.endValue.toFixed(result.fixed)}</span>
-                        </StCalculation>
-                    )
-                })}
-            </div>
-            <StLinks>
+  }
+
+  //card result
+  const cardResults: ICardResult[] = agingHeaders.map((header) => {
+    const title = header.title as never;
+    const internalName = header.internalName as never;
+    return {
+      title: title,
+      unit: initRow[internalName]["unit"],
+      initValue: initRow[internalName]["value"],
+      endValue: endRow[internalName]["value"],
+      fixed: header.fixed
+    }
+  })
+
+  return (
+    <StCalculationContainer style={props.style}>
+      <H2 style={{width: "100%"}}>
+        Results
+        <span style={{
+          fontSize: "15px",
+          color: EColor.GRAY,
+          margin: "-1px 0 0 10px"
+        }}>{moment(props.calculation.createdDate).fromNow()}</span>
+      </H2>
+      <div style={{display: "flex"}}>
+        {cardResults.map((result: ICardResult, index) => {
+          return (
+            <StCalculation key={index}>
+              <span style={{fontSize: "18px", margin: "20px 0 10px 0"}}>{result.title.toUpperCase()}</span>
+              <span style={{fontSize: "10px"}}>{result.unit}</span>
+              <span style={{
+                color: "#73B1B5",
+                fontSize: "14px",
+                margin: "21px 0px 13px 0"
+              }}>{result.initValue.toFixed(result.fixed)}</span>
+              <span style={{
+                color: EColor.GREEN,
+                fontSize: "14px",
+                fontWeight: 500
+              }}>{result.endValue.toFixed(result.fixed)}</span>
+            </StCalculation>
+          )
+        })}
+      </div>
+      <StLinks>
                 <span onClick={() => {
-                    showMoreResults(!moreResults);
+                  showMoreResults(!moreResults);
                 }}>
                     {!moreResults &&
-                        <>Show more results</>
+                    <>Show more results</>
                     }
-                    {moreResults &&
-                        <>Hide more results</>
-                    }
+                  {moreResults &&
+                  <>Hide more results</>
+                  }
                 </span>
-            </StLinks>
-            {
-                moreResults &&
-                <>
-                    <StMoreResults>
-                        <div style={{
-                            float: "left",
-                            width: "100%"
-                        }}>
+      </StLinks>
+      {
+        moreResults &&
+        <>
+          <StMoreResults>
+            <div style={{
+              float: "left",
+              width: "100%"
+            }}>
                             <span
-                                className={resultType === "ageing" ? "active" : ""}
-                                onClick={() => {
-                                    setResultType("ageing")
-                                }}
+                              className={resultType === "ageing" ? "active" : ""}
+                              onClick={() => {
+                                setResultType("ageing")
+                              }}
                             >Ageing</span>
-                            <span
-                                className={resultType === "gasComposition" ? "active" : ""}
-                                onClick={() => {
-                                    setResultType("gasComposition")
-                                }}
-                            >Gas composition</span>
-                            <span
-                                className={resultType === "liquidComposition" ? "active" : ""}
-                                onClick={() => {
-                                    setResultType("liquidComposition")
-                                }}
-                            >Liquid composition</span>
-                        </div>
-                        {resultType === "ageing" &&
-                            <p>Ageing text</p>
-                        }
-                        {resultType === "gasComposition" &&
-                            <p>Gas text</p>
-                        }
-                        {resultType === "liquidComposition" &&
-                            <p>Liquid text</p>
-                        }
-                    </StMoreResults>
-                    <StStandardTable>
-                        <StandardTable
-                            header={headers.map((header) => {
-                                return header.title;
-                            })}
-                            headerSecondary={headers.map((header => {
-                                return initRow[header.internalName as never]["unit"];
-                            }))}
-                            rows={tableRows}
-                            exportToExcel={"ShipAgeing-" + props.calculation.ship.name}
-                        ></StandardTable>
-                    </StStandardTable>
-                </>
+              <span
+                className={resultType === "gasComposition" ? "active" : ""}
+                onClick={() => {
+                  setResultType("gasComposition")
+                }}
+              >Gas composition</span>
+              <span
+                className={resultType === "liquidComposition" ? "active" : ""}
+                onClick={() => {
+                  setResultType("liquidComposition")
+                }}
+              >Liquid composition</span>
+            </div>
+            {resultType === "ageing" &&
+            <p>Ageing text</p>
             }
-        </StCalculationContainer >
-    )
+            {resultType === "gasComposition" &&
+            <p>Gas text</p>
+            }
+            {resultType === "liquidComposition" &&
+            <p>Liquid text</p>
+            }
+          </StMoreResults>
+          <StStandardTable>
+            <StandardTable
+              header={headers.map((header) => {
+                return header.title;
+              })}
+              headerSecondary={headers.map((header => {
+                return initRow[header.internalName as never]["unit"];
+              }))}
+              rows={tableRows}
+              exportToExcel={"ShipAgeing-" + props.calculation.ship.name}
+            ></StandardTable>
+          </StStandardTable>
+        </>
+      }
+    </StCalculationContainer>
+  )
 }
 
 const StCalculationContainer = styled.div`
@@ -259,9 +272,9 @@ const StStandardTable = styled.div`
 `;
 
 export interface ICardResult {
-    title: string;
-    unit: any;
-    initValue: any;
-    endValue: any;
-    fixed: number;
+  title: string;
+  unit: any;
+  initValue: any;
+  endValue: any;
+  fixed: number;
 }

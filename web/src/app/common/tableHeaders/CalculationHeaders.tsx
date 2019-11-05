@@ -39,7 +39,7 @@ export const agingHeaders = [{
     fixed: 2
 }];
 
-export const liquidHeaders = [
+export const fluidHeaders = [
     {
         title: "TIME",
         internalName: "time",
@@ -47,100 +47,47 @@ export const liquidHeaders = [
     },
     {
         title: "NITROGEN",
-        internalName: "xnitrogen",
+        internalName: "nitrogen",
         fixed: 5
     },
     {
         title: "METHANE",
-        internalName: "xmethane",
+        internalName: "methane",
         fixed: 5
     },
     {
         title: "ETHANE",
-        internalName: "xethane",
+        internalName: "ethane",
         fixed: 5
     },
     {
         title: "PROPANE",
-        internalName: "xpropane",
+        internalName: "propane",
         fixed: 5
     },
     {
         title: "iBUTANE",
-        internalName: "xic4",
+        internalName: "ibutane",
         fixed: 5
     },
     {
         title: "nBUTANE",
-        internalName: "xnc4",
+        internalName: "nbutane",
         fixed: 5
     },
     {
         title: "iPENTANE",
-        internalName: "xic5",
+        internalName: "ipentane",
         fixed: 5
     },
     {
         title: "nPENTANE",
-        internalName: "xnc5",
+        internalName: "npentane",
         fixed: 5
     },
     {
         title: "nHEXANE",
-        internalName: "xnc6",
-        fixed: 5
-    }
-];
-
-export const gasHeaders = [
-    {
-        title: "TIME",
-        internalName: "time",
-        fixed: 1
-    },
-    {
-        title: "NITROGEN",
-        internalName: "ynitrogen",
-        fixed: 5
-    },
-    {
-        title: "METHANE",
-        internalName: "ymethane",
-        fixed: 5
-    },
-    {
-        title: "ETHANE",
-        internalName: "yethane",
-        fixed: 5
-    },
-    {
-        title: "PROPANE",
-        internalName: "ypropane",
-        fixed: 5
-    },
-    {
-        title: "iBUTANE",
-        internalName: "yic4",
-        fixed: 5
-    },
-    {
-        title: "nBUTANE",
-        internalName: "ync4",
-        fixed: 5
-    },
-    {
-        title: "iPENTANE",
-        internalName: "yic5",
-        fixed: 5
-    },
-    {
-        title: "nPENTANE",
-        internalName: "ync5",
-        fixed: 5
-    },
-    {
-        title: "nHEXANE",
-        internalName: "ync6",
+        internalName: "nhexane",
         fixed: 5
     }
 ];

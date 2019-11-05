@@ -96,77 +96,83 @@ export const CALCULATION_QUERY = gql`
                 value 
                 unit
               }
-              xmethane {
-                value 
-                unit
+              liquid {
+                  id
+                  nitrogen {
+                      value
+                      unit
+                  }
+                  methane {
+                      value
+                      unit
+                  }
+                  ethane {
+                      value
+                      unit
+                  }
+                  propane {
+                      value
+                      unit
+                  }
+                  iButane {
+                      value
+                      unit
+                  }
+                  nButane {
+                      value
+                      unit
+                  }
+                  iPentane {
+                      value
+                      unit
+                  }
+                  nPentane {
+                      value
+                      unit
+                  }
+                  nHexane {
+                      value
+                      unit
+                  }
               }
-              xethane {
-                value 
-                unit
-              }
-              xpropane {
-                value 
-                unit
-              }
-              xic4 {
-                value 
-                unit
-              }
-              xnc4 {
-                value 
-                unit
-              }
-              xic5 {
-                value 
-                unit
-              }
-              xnc5 {
-                value 
-                unit
-              }
-              xnc6 {
-                value 
-                unit
-              }
-              xnitrogen {
-                value 
-                unit
-              }
-              ymethane {
-                value 
-                unit
-              }
-              yethane {
-                value 
-                unit
-              }
-              ypropane {
-                value 
-                unit
-              }
-              yic4 {
-                value 
-                unit
-              }
-              ync4 {
-                value 
-                unit
-              }
-              yic5 {
-                value 
-                unit
-              }
-              ync5 {
-                value 
-                unit
-              }
-              ync6 {
-                value 
-                unit
-              }
-              ynitrogen {
-                value 
-                unit
+              gas {
+                  id
+                  nitrogen {
+                      value
+                      unit
+                  }
+                  methane {
+                      value
+                      unit
+                  }
+                  ethane {
+                      value
+                      unit
+                  }
+                  propane {
+                      value
+                      unit
+                  }
+                  iButane {
+                      value
+                      unit
+                  }
+                  nButane {
+                      value
+                      unit
+                  }
+                  iPentane {
+                      value
+                      unit
+                  }
+                  nPentane {
+                      value
+                      unit
+                  }
+                  nHexane {
+                      value
+                      unit
+                  }
               }
             }
             createdDate

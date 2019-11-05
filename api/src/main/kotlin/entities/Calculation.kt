@@ -17,7 +17,7 @@ class Calculation(
     @JoinColumn(name = "ship_id")
     var ship: Ship,
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     @JoinColumn(name = "fluid_id")
     var fluid: Fluid,
 

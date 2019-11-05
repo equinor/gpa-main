@@ -28,7 +28,6 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
             standard = standard
         )
         ship.calculations.add(calculation)
-        fluid.calculation = calculation
         transport.calculation = calculation
         standard.calculation = calculation
 
