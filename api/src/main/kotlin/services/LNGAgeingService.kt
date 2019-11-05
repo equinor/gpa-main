@@ -38,12 +38,13 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
         system.addComponent("methane", fluid.methane)
         system.addComponent("ethane", fluid.ethane)
         system.addComponent("propane", fluid.propane)
-        system.addComponent("iButane", fluid.iButane)
-        system.addComponent("nButane", fluid.nButane)
-        system.addComponent("iPentane", fluid.iPentane)
-        system.addComponent("nPentane", fluid.nPentane)
-        system.addComponent("nHexane", fluid.nHexane)
-        val lngShip = LNGship(system, transport.volume, transport.boilOffRate).apply {
+        system.addComponent("i-butane", fluid.iButane)
+        system.addComponent("n-butane", fluid.nButane)
+        system.addComponent("i-pentane", fluid.iPentane)
+        system.addComponent("n-pentane", fluid.nPentane)
+        system.addComponent("n-hexane", fluid.nHexane)
+        system.mixingRule = 2
+        val lngShip = LNGship(system, transport.volume, transport.boilOffRate / 100.0).apply {
             standardISO6976.energyRefT = standard.combustionTemperature
             standardISO6976.volRefT = standard.measurementTemperature
             standardISO6976.referenceState = if (standard.idealGasReferenceState) "ideal" else "real"
@@ -64,7 +65,7 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
                     gcv = stringToDouble(resultRow[3]),
                     density = stringToDouble(resultRow[4]),
                     volume = stringToDouble(resultRow[5]),
-                    energy = stringToDouble(resultRow[6]),
+                    energy = stringToDouble(resultRow[15]),
                     calculation = calculation
                 )
             )

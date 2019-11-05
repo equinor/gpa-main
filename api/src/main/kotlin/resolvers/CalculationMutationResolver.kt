@@ -23,8 +23,8 @@ class CalculationMutationResolver(
     ): Calculation {
         val ship = shipService.loadOrPrepareShip(shipInput.name, shipInput.country)
         val fluid = Fluid(
-            nitrogen = fluidInput.methane.value,
-            nitrogen_unit = fluidInput.methane.unit,
+            nitrogen = fluidInput.nitrogen.value,
+            nitrogen_unit = fluidInput.nitrogen.unit,
             methane = fluidInput.methane.value,
             methane_unit = fluidInput.methane.unit,
             ethane = fluidInput.ethane.value,
