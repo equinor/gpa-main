@@ -1,12 +1,12 @@
 import moment from 'moment';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
-import {EColor} from '../../../common/Color';
-import {ICalculation, IResult} from '../../../common/Interfaces';
-import {IStandardTableRow, StandardTable} from '../../elements/Tables';
-import {H2} from '../../elements/Texts';
-import {agingHeaders, fluidHeaders} from '../../../common/tableHeaders/CalculationHeaders';
+import { EColor } from '../../../common/Color';
+import { ICalculation, IResult, IFluid } from '../../../common/Interfaces';
+import { IStandardTableRow, StandardTable } from '../../elements/Tables';
+import { H2 } from '../../elements/Texts';
+import { agingHeaders, fluidHeaders } from '../../../common/tableHeaders/CalculationHeaders';
 
 export interface ICalculationContainer {
   calculation: ICalculation;
@@ -19,6 +19,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
   const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "liquidComposition">("ageing");
 
   const initRow: IResult = props.calculation.result[0];
+  const initRowFluid: IFluid = props.calculation.result[0].gas;
   const endRow: IResult = props.calculation.result[props.calculation.result.length - 1];
 
   //table more results
@@ -30,7 +31,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
   switch (resultType) {
     case "liquidComposition":
       tableRows = props.calculation.result.map((result: IResult) => {
-        const {liquid: fluid} = result;
+        const { liquid: fluid } = result;
         return {
           value: result.id,
           display: [
@@ -51,7 +52,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       break;
     case "gasComposition":
       tableRows = props.calculation.result.map((result: IResult) => {
-        const {gas: fluid} = result;
+        const { gas: fluid } = result;
         return {
           value: result.id,
           display: [
@@ -106,7 +107,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
 
   return (
     <StCalculationContainer style={props.style}>
-      <H2 style={{width: "100%"}}>
+      <H2 style={{ width: "100%" }}>
         Results
         <span style={{
           fontSize: "15px",
@@ -114,12 +115,12 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
           margin: "-1px 0 0 10px"
         }}>{moment(props.calculation.createdDate).fromNow()}</span>
       </H2>
-      <div style={{display: "flex"}}>
+      <div style={{ display: "flex" }}>
         {cardResults.map((result: ICardResult, index) => {
           return (
             <StCalculation key={index}>
-              <span style={{fontSize: "18px", margin: "20px 0 10px 0"}}>{result.title.toUpperCase()}</span>
-              <span style={{fontSize: "10px"}}>{result.unit}</span>
+              <span style={{ fontSize: "18px", margin: "20px 0 10px 0" }}>{result.title.toUpperCase()}</span>
+              <span style={{ fontSize: "10px" }}>{result.unit}</span>
               <span style={{
                 color: "#73B1B5",
                 fontSize: "14px",
@@ -135,16 +136,16 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
         })}
       </div>
       <StLinks>
-                <span onClick={() => {
-                  showMoreResults(!moreResults);
-                }}>
-                    {!moreResults &&
-                    <>Show more results</>
-                    }
-                  {moreResults &&
-                  <>Hide more results</>
-                  }
-                </span>
+        <span onClick={() => {
+          showMoreResults(!moreResults);
+        }}>
+          {!moreResults &&
+            <>Show more results</>
+          }
+          {moreResults &&
+            <>Hide more results</>
+          }
+        </span>
       </StLinks>
       {
         moreResults &&
@@ -154,12 +155,12 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
               float: "left",
               width: "100%"
             }}>
-                            <span
-                              className={resultType === "ageing" ? "active" : ""}
-                              onClick={() => {
-                                setResultType("ageing")
-                              }}
-                            >Ageing</span>
+              <span
+                className={resultType === "ageing" ? "active" : ""}
+                onClick={() => {
+                  setResultType("ageing")
+                }}
+              >Ageing</span>
               <span
                 className={resultType === "gasComposition" ? "active" : ""}
                 onClick={() => {
@@ -174,13 +175,13 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
               >Liquid composition</span>
             </div>
             {resultType === "ageing" &&
-            <p>Ageing text</p>
+              <p>Ageing text</p>
             }
             {resultType === "gasComposition" &&
-            <p>Gas text</p>
+              <p>Gas text</p>
             }
             {resultType === "liquidComposition" &&
-            <p>Liquid text</p>
+              <p>Liquid text</p>
             }
           </StMoreResults>
           <StStandardTable>
@@ -189,7 +190,21 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                 return header.title;
               })}
               headerSecondary={headers.map((header => {
-                return initRow[header.internalName as never]["unit"];
+                //get and display units
+                //ageing
+                if (resultType === "ageing") {
+                  return initRow[header.internalName as never]["unit"];
+                }
+                //gas, liquid
+                else {
+                  //time from result
+                  if (header.internalName === "time") {
+                    return initRow[header.internalName as never]["unit"];
+                  }
+                  else {
+                    return initRowFluid[header.internalName as never]["unit"];
+                  }
+                }
               }))}
               rows={tableRows}
               exportToExcel={"ShipAgeing-" + props.calculation.ship.name}

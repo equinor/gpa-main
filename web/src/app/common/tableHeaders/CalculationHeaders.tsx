@@ -67,27 +67,27 @@ export const fluidHeaders = [
     },
     {
         title: "iBUTANE",
-        internalName: "ibutane",
+        internalName: "iButane",
         fixed: 5
     },
     {
         title: "nBUTANE",
-        internalName: "nbutane",
+        internalName: "nButane",
         fixed: 5
     },
     {
         title: "iPENTANE",
-        internalName: "ipentane",
+        internalName: "iPentane",
         fixed: 5
     },
     {
         title: "nPENTANE",
-        internalName: "npentane",
+        internalName: "nPentane",
         fixed: 5
     },
     {
         title: "nHEXANE",
-        internalName: "nhexane",
+        internalName: "nHexane",
         fixed: 5
     }
 ];

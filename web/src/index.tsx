@@ -7,9 +7,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {App} from "./App";
 import ApolloClient from 'apollo-boost';
+import fetch from 'unfetch';
 import {ApolloProvider} from '@apollo/react-hooks';
 
 const client = new ApolloClient({
+  fetchOptions: { fetch }, 
   uri: '/api/graphql'
 });
 
@@ -20,7 +22,7 @@ const render = (Component:any) => {
       <App/>
     </Router>
   </ApolloProvider>,
-    document.getElementById('root')
+    document.getElementById('root') 
   );
 };
 
