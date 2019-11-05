@@ -49,7 +49,7 @@ export const CalculationValuesContainer: React.FunctionComponent<ICalculationVal
                     { display: ["Volume (m³)", props.calculation.transport.volume, "Pressure (bar)", props.calculation.transport.pressure, "", "", ""] },
                     {
                         display: [
-                            "Boil off rate (bar)",
+                            "Boil off rate (Vol% per day)",
                             props.calculation.transport.boilOffRate,
                             "From",
                             moment(props.calculation.transport.fromDate).format("DD.MM. HH:MM"),
