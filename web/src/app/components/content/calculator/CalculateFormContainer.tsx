@@ -39,7 +39,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   });
   const [transport, setTransport] = useState<ITransport>({ //shall be 0's
     volume: 140000,
-    pressure: 1.013,
+    pressure: 1.13,
     boilOffRate: 0.15,
     fromDate: "2019-09-17T01:01:00Z",
     toDate: "2019-09-20T01:01:01Z"
