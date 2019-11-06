@@ -113,7 +113,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
     function setTransport(name: keyof ITransport, value: any, toFixed?: boolean) {
         let transport: ITransport = props.transport;
         if (value !== "") {
-            const formattedValue = toFixed ? parseFloat(parseFloat(value).toFixed(2)) : parseFloat(value);
+            const formattedValue = toFixed ? parseFloat(parseFloat(value).toFixed(3)) : parseFloat(value);
             transport[name] = formattedValue as never;
             props.setTransport({ ...props.transport });
         }

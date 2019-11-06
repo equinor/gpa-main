@@ -43,7 +43,7 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
         system.addComponent("n-pentane", fluid.nPentane)
         system.addComponent("n-hexane", fluid.nHexane)
         system.mixingRule = 2
-        val lngShip = LNGship(system, transport.volume, transport.boilOffRate / 10000.0).apply {
+        val lngShip = LNGship(system, transport.volume, transport.boilOffRate / 100.0).apply {
             standardISO6976.energyRefT = standard.combustionTemperature
             standardISO6976.volRefT = standard.measurementTemperature
             standardISO6976.referenceState = if (standard.idealGasReferenceState) "ideal" else "real"
