@@ -4,7 +4,7 @@ import { createMemoryHistory } from 'history';
 import React from 'react';
 import renderer, { act } from 'react-test-renderer';
 
-import { CALCULATIONS_QUERY, CalculationsPage } from './CalculationsPage';
+import {CalculationsPage, CALCULATIONS_QUERY } from './CalculationsPage';
 
 describe("CalculationSPage", () => {
     //loading

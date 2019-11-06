@@ -28,7 +28,6 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
             standard = standard
         )
         ship.calculations.add(calculation)
-        fluid.calculation = calculation
         transport.calculation = calculation
         standard.calculation = calculation
 
@@ -63,9 +62,32 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
                     temp = stringToDouble(resultRow[1]),
                     wi = stringToDouble(resultRow[2]),
                     gcv = stringToDouble(resultRow[3]),
+                    gcvmass = stringToDouble(resultRow[16]),
                     density = stringToDouble(resultRow[4]),
                     volume = stringToDouble(resultRow[5]),
-                    energy = stringToDouble(resultRow[15]),
+                    energy = stringToDouble(resultRow[15]) / 1000,
+                    gas = Fluid(
+                        methane = stringToDouble(resultRow[17]),
+                        ethane = stringToDouble(resultRow[18]),
+                        propane = stringToDouble(resultRow[19]),
+                        iButane = stringToDouble(resultRow[20]),
+                        nButane = stringToDouble(resultRow[21]),
+                        iPentane = stringToDouble(resultRow[22]),
+                        nPentane = stringToDouble(resultRow[23]),
+                        nHexane = stringToDouble(resultRow[24]),
+                        nitrogen = stringToDouble(resultRow[25])
+                    ),
+                    liquid = Fluid(
+                        methane = stringToDouble(resultRow[6]),
+                        ethane = stringToDouble(resultRow[7]),
+                        propane = stringToDouble(resultRow[8]),
+                        iButane = stringToDouble(resultRow[9]),
+                        nButane = stringToDouble(resultRow[10]),
+                        iPentane = stringToDouble(resultRow[11]),
+                        nPentane = stringToDouble(resultRow[12]),
+                        nHexane = stringToDouble(resultRow[13]),
+                        nitrogen = stringToDouble(resultRow[14])
+                    ),
                     calculation = calculation
                 )
             )

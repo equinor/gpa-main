@@ -28,6 +28,7 @@
     "moment": "2.24.0",
     "react": "^16.9.0",
     "react-apollo": "^3.1.0",
+    "react-app-polyfill": "^1.0.4",
     "react-csv": "^1.1.2",
     "react-dom": "^16.9.0",
     "react-flatpickr": "3.9.1",
@@ -52,12 +53,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 11"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "proxy": "http://localhost:8080",

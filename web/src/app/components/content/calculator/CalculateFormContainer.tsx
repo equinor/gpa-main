@@ -38,11 +38,11 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     nHexane: 0.0,
   });
   const [transport, setTransport] = useState<ITransport>({ //shall be 0's
-    volume: 14000,
+    volume: 140000,
     pressure: 1.13,
-    boilOffRate: 0.0015,
-    fromDate: "2019-09-17T03:01:07Z",
-    toDate: "2019-09-20T02:22:07Z"
+    boilOffRate: 0.15,
+    fromDate: "2019-09-17T01:01:00Z",
+    toDate: "2019-09-20T01:01:01Z"
   });
   const [standard, setStandard] = useState<IStandard>({
     combustionTemperature: 15, //keep default
@@ -63,7 +63,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     onCompleted: (
       r: any
     ) => {
-      history.push('/calculation/' + r.addCalculation.id);
+      history.push('/result/' + r.addCalculation.id);
     }
   });
 
@@ -106,7 +106,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       }
       {loading &&
         <StUserMessage>
-          <UserMessage type={"loading"} text={"Calculating parameters"} />
+          <UserMessage type={"loading"} text={"Calculating"} />
         </StUserMessage>
       }
       {error &&

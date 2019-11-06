@@ -1,3 +1,5 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
 import "./app/utils/css/reset.css";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -20,7 +22,7 @@ const render = (Component:any) => {
       <App/>
     </Router>
   </ApolloProvider>,
-    document.getElementById('root')
+    document.getElementById('root') 
   );
 };
 
