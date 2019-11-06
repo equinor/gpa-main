@@ -29,17 +29,17 @@ class CalculationStepResolver(): GraphQLResolver<CalculationStep> {
         )
     }
 
-    fun gcv(calculationStep: CalculationStep, isMass: Boolean): MetricType {
-        //TODO: missing proper calculation
-        if (isMass) {
-            return MetricType(
-                value = calculationStep.gcv * 10,
-                unit = calculationStep.gcv_unit
-            )
-        }
+    fun gcv(calculationStep: CalculationStep): MetricType {
         return MetricType(
             value = calculationStep.gcv,
             unit = calculationStep.gcv_unit
+        )
+    }
+
+    fun gcvmass(calculationStep: CalculationStep): MetricType {
+        return MetricType(
+            value = calculationStep.gcvmass,
+            unit = calculationStep.gcvmass_unit
         )
     }
 

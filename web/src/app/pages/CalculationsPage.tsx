@@ -43,7 +43,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
 
   return (
     <PageContent>
-      <TitleBlock>Calculations</TitleBlock>
+      <TitleBlock>Results</TitleBlock>
       <StPageWrapper>
         <P>Select a row from the table to see details of the calculation.</P>
         <div style={{ margin: "30px 0 0 0" }}>
@@ -56,7 +56,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
             <CalculationsContainer
               rows={rows}
               selectRow={(row: IStandardTableRow) => {
-                history.push('/calculation/' + row.value);
+                history.push('/result/' + row.value);
               }}
             ></CalculationsContainer> 
           }

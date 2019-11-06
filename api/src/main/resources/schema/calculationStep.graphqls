@@ -2,10 +2,13 @@ type CalculationStep {
     id: ID!
     time: MetricType!
     wi: MetricType!
-    gcv(isMass: Boolean): MetricType!
+    gcv: MetricType!
+    gcvmass: MetricType!
     density: MetricType!
     temp: MetricType!
     volume: MetricType!
     energy: MetricType!
     createdDate: String
+    liquid: Fluid
+    gas: Fluid
 }

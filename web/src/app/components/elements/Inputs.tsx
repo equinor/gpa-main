@@ -20,16 +20,16 @@ export const StandardInput = (props: IStandardInputProps) => {
   const [invalid, setInvalid] = useState<boolean>(false);
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
       {/* Labels */}
-      <StLabel htmlFor={props.id} style={props.labelRight ? { width: "50%" } : { width: "100%" }}>
+      <StLabel htmlFor={props.id}>
         <span>{props.label}</span>
         {props.required &&
           <span>&nbsp;*</span>
         }
       </StLabel>
       {props.labelRight &&
-        <StLabelRight htmlFor={props.id} style={{ width: "50%" }}>
+        <StLabelRight htmlFor={props.id}>
           <span>{props.labelRight}</span>
         </StLabelRight>
       }

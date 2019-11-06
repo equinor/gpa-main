@@ -11,6 +11,8 @@ class CalculationStep (
     var wi_unit: String = "MJ/m^3",
     var gcv: Double,
     var gcv_unit: String = "MJ/m^3",
+    var gcvmass: Double,
+    var gcvmass_unit: String = "MJ/kg",
     var density: Double,
     var density_unit: String = "kg/m^3",
     var temp: Double,
@@ -18,7 +20,15 @@ class CalculationStep (
     var volume: Double,
     var volume_unit: String = "m^3",
     var energy: Double,
-    var energy_unit: String = "MJ",
+    var energy_unit: String = "GJ",
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "gas_id")
+    var gas: Fluid,
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "liquid_id")
+    var liquid: Fluid,
 
     @Id @GeneratedValue var id: Long? = null,
 

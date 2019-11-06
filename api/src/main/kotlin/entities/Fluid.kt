@@ -25,9 +25,6 @@ class Fluid (
     var nHexane_unit: String = "mol/sec",
 
     @Id
-    var id: Long? = null,
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    var calculation: Calculation? = null
+    @GeneratedValue
+    var id: Long? = null
 ): Auditable()

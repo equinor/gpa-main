@@ -8,7 +8,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
   >
     <h1>
-      Calculations
+      Results
     </h1>
   </div>
   <div
@@ -28,7 +28,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
     >
       <div>
         <table
-          className="Tables__StStandardTable-sc-5p5bny-0 iYTCaP"
+          className="Tables__StStandardTable-sc-5p5bny-1 cwLkBj"
         >
           <thead>
             <tr>
@@ -86,7 +86,7 @@ exports[`CalculationSPage snapshots to error 1`] = `
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
   >
     <h1>
-      Calculations
+      Results
     </h1>
   </div>
   <div
@@ -141,7 +141,7 @@ exports[`CalculationSPage snapshots to loading 1`] = `
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
   >
     <h1>
-      Calculations
+      Results
     </h1>
   </div>
   <div

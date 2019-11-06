@@ -36,17 +36,13 @@ exports[`LiquidSection snapshots 1`] = `
               Object {
                 "display": "flex",
                 "flexWrap": "wrap",
+                "justifyContent": "space-between",
               }
             }
           >
             <label
               className="Inputs__StLabel-dfit48-1 bfWHiE"
               htmlFor="liquid-nitrogen"
-              style={
-                Object {
-                  "width": "100%",
-                }
-              }
             >
               <span>
                 nitrogen
@@ -101,17 +97,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-methane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   methane
@@ -139,17 +131,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-ethane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   ethane
@@ -177,17 +165,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-propane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   propane
@@ -215,17 +199,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-iButane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   iButane
@@ -253,17 +233,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-nButane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   nButane
@@ -291,17 +267,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-iPentane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   iPentane
@@ -329,17 +301,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-nPentane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   nPentane
@@ -367,17 +335,13 @@ exports[`LiquidSection snapshots 1`] = `
                 Object {
                   "display": "flex",
                   "flexWrap": "wrap",
+                  "justifyContent": "space-between",
                 }
               }
             >
               <label
                 className="Inputs__StLabel-dfit48-1 bfWHiE"
                 htmlFor="liquid-nHexane"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
               >
                 <span>
                   nHexane

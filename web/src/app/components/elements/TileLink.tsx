@@ -79,4 +79,5 @@ const StDescription = styled.div`
     font-size: 16px;
     line-height: 24px;
     padding: 0px 10px 10px 20px;
+    white-space: pre-wrap;
 `;

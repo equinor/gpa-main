@@ -46,11 +46,13 @@ export interface IResult {
     density: IMetric;
     energy: IMetric;
     gcv: IMetric;
-    gcvMass: IMetric;
+    gcvmass: IMetric;
     temp: IMetric;
     time: IMetric;
     volume: IMetric;
     wi: IMetric;
+    liquid: IFluid;
+    gas: IFluid;
 }
 
 //Calculation
