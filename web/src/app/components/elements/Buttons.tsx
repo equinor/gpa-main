@@ -26,7 +26,7 @@ const StStandardButton = styled.button`
     border: 0;
     padding: 10px 15px;
     border-radius: 5px;
-    rect {
+    rect, path {
         fill: ${(props: IStStandardButtonProps) => props.disabled ? EColor.GRAY : "white"};
     }
     > span {

@@ -32,7 +32,7 @@ export const StandardTable = (props: IStandardTable) => {
                     </CSVLink>
                 </StExport>
             }
-            <StStandardTable>
+            <StStandardTable disableHover={props.disableHover}>
                 <thead>
                     <tr>
                         {props.header.map((value, index) => {
@@ -130,7 +130,7 @@ const StStandardTable = styled.table`
         tr {
             border-bottom: 1px solid  #DCDCDC;
             :hover {
-                background-color: ${(props: IStTable) => props.disableHover ? "" : EColor.LIGHT_GREEN};
+                background-color: ${(props: IStTable) => props.disableHover ? EColor.LIGHT_GRAY : EColor.LIGHT_GREEN};
                 cursor: ${(props: IStTable) => props.disableHover ? "" : "pointer"};
             }
         }

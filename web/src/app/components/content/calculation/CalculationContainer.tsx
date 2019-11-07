@@ -16,7 +16,7 @@ export interface ICalculationContainer {
 export const CalculationContainer: React.FunctionComponent<ICalculationContainer> = (props) => {
 
   const [moreResults, showMoreResults] = useState<boolean>(false);
-  const [resultType, setResultType] = useState<"ageing" | "gasComposition" | "liquidComposition">("ageing");
+  const [resultType, setResultType] = useState<"ShipAgeing" | "GasComposition" | "LiquidComposition">("ShipAgeing");
 
   const initRow: IResult = props.calculation.result[0];
   const initRowFluid: IFluid = props.calculation.result[0].gas;
@@ -29,7 +29,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
     internalName: string
   }[];
   switch (resultType) {
-    case "liquidComposition":
+    case "LiquidComposition":
       tableRows = props.calculation.result.map((result: IResult) => {
         const { liquid: fluid } = result;
         return {
@@ -50,7 +50,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       });
       headers = fluidHeaders;
       break;
-    case "gasComposition":
+    case "GasComposition":
       tableRows = props.calculation.result.map((result: IResult) => {
         const { gas: fluid } = result;
         return {
@@ -156,32 +156,32 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
               width: "100%"
             }}>
               <span
-                className={resultType === "ageing" ? "active" : ""}
+                className={resultType === "ShipAgeing" ? "active" : ""}
                 onClick={() => {
-                  setResultType("ageing")
+                  setResultType("ShipAgeing")
                 }}
               >Ageing</span>
               <span
-                className={resultType === "gasComposition" ? "active" : ""}
+                className={resultType === "GasComposition" ? "active" : ""}
                 onClick={() => {
-                  setResultType("gasComposition")
+                  setResultType("GasComposition")
                 }}
               >Gas composition</span>
               <span
-                className={resultType === "liquidComposition" ? "active" : ""}
+                className={resultType === "LiquidComposition" ? "active" : ""}
                 onClick={() => {
-                  setResultType("liquidComposition")
+                  setResultType("LiquidComposition")
                 }}
               >Liquid composition</span>
             </div>
-            {resultType === "ageing" &&
-              <p>Ageing text</p>
+            {resultType === "ShipAgeing" &&
+              <p>ISO6976 (2016) are used for calculating WI and GCV.  The LNG liquid density is calculated based on ISO6578.</p>
             }
-            {resultType === "gasComposition" &&
-              <p>Gas text</p>
+            {resultType === "GasComposition" &&
+              <p>Composition of boil-off gas is calculated based on SRK-EoS with classic mixing rule.</p>
             }
-            {resultType === "liquidComposition" &&
-              <p>Liquid text</p>
+            {resultType === "LiquidComposition" &&
+              <p>Liquid is assumed to be at the boiling point. Bubble point temperature is calculated based on SRK-EoS with classic mixing rule.</p>
             }
           </StMoreResults>
           <StStandardTable>
@@ -192,7 +192,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
               headerSecondary={headers.map((header => {
                 //get and display units
                 //ageing
-                if (resultType === "ageing") {
+                if (resultType === "ShipAgeing") {
                   return initRow[header.internalName as never]["unit"];
                 }
                 //gas, liquid
@@ -207,7 +207,8 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                 }
               }))}
               rows={tableRows}
-              exportToExcel={"ShipAgeing-" + props.calculation.ship.name}
+              exportToExcel={resultType + "-" + props.calculation.ship.name}
+              disableHover={true}
             ></StandardTable>
           </StStandardTable>
         </>

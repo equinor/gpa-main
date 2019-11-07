@@ -2,10 +2,10 @@
 
 exports[`Navbar snapshots 1`] = `
 <nav
-  className="NavBar__StNavBar-qlt09m-0 lcHAjn"
+  className="NavBar__StNavBar-qlt09m-0 fbmlKN"
 >
   <div
-    className="NavBar__StHeader-qlt09m-1 iCbITo"
+    className="NavBar__StHeader-qlt09m-1 bXkhBU"
   >
     <a
       href="/neqsim"
@@ -14,35 +14,16 @@ exports[`Navbar snapshots 1`] = `
       <svg
         fill="none"
         height={24}
-        viewBox="0 0 16 16"
+        viewBox="0 0 24 24"
         width={24}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <mask
-          height="16"
-          id="mask0"
-          mask-type="alpha"
-          maskUnits="userSpaceOnUse"
-          width="16"
-          x="0"
-          y="0"
-        >
-          <path
-            clipRule="evenodd"
-            d="M2 5.33333V4H14V5.33333H2ZM2 8.66667H14V7.33333H2V8.66667ZM2 12H14V10.6667H2V12Z"
-            fill="#007079"
-            fillRule="evenodd"
-          />
-        </mask>
-        <g
-          mask="url(#mask0)"
-        >
-          <rect
-            fill="#007079"
-            height="16"
-            width="16"
-          />
-        </g>
+        <path
+          clipRule="evenodd"
+          d="M3 8V6H21V8H3ZM3 13H21V11H3V13ZM3 18H21V16H3V18Z"
+          fill="#007079"
+          fillRule="evenodd"
+        />
       </svg>
     </a>
     <span>

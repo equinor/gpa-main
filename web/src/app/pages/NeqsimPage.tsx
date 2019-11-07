@@ -18,10 +18,7 @@ export const NeqsimPage: React.FunctionComponent = () => (
           image="./ship2.png"
           text="LNG Ageing"
           link="/LNGageing"
-          description={`The LNG ageing tool calculates the effect of boil off from LNG ships during transport from loading to off-loading. The calculations are based on known volume and composition of loaded LNG. The boil off rate, pressure and ship transport time are used as input for the calculations.
-          \nThe tool will report how volume, composition and energy parameters changes during the voyage.      
-          \nThe energy parameters (GCV, WI) are calculated based on ISO6976 (2016). The used need to set the reference temperature for volume measurements and combustion used for calculation of energy and density of the gas.          
-          \nLNG liquid density is calculated based on ISO6578.
+          description={`The LNG ageing tool calculates the effect of boil off from LNG ships during transport from loading to off-loading. The calculations are based on known volume and composition of loaded LNG. The boil off rate, pressure and ship transport time are used as input for the calculations...
           `}
         ></TileLink>
       </div>

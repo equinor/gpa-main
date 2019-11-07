@@ -81,7 +81,7 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
           <div style={{
             display: "flex",
             flexDirection: "row",
-            margin: "30px 0px 0px",
+            margin: "35px 0px 0px",
             alignItems: "center"
           }}>
             <StandardButton

@@ -2,7 +2,7 @@
 
 exports[`CalculationSPage snapshots to data 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 gmSAqU"
+  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
 >
   <div
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
@@ -12,7 +12,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 fDiQKY"
+    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
   >
     <p
       className="Texts__P-teybz3-2 grKhWK"
@@ -28,7 +28,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
     >
       <div>
         <table
-          className="Tables__StStandardTable-sc-5p5bny-1 cwLkBj"
+          className="Tables__StStandardTable-sc-5p5bny-1 jmmnft"
         >
           <thead>
             <tr>
@@ -80,7 +80,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
 
 exports[`CalculationSPage snapshots to error 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 gmSAqU"
+  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
 >
   <div
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
@@ -90,7 +90,7 @@ exports[`CalculationSPage snapshots to error 1`] = `
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 fDiQKY"
+    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
   >
     <p
       className="Texts__P-teybz3-2 grKhWK"
@@ -135,7 +135,7 @@ exports[`CalculationSPage snapshots to error 1`] = `
 
 exports[`CalculationSPage snapshots to loading 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 gmSAqU"
+  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
 >
   <div
     className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
@@ -145,7 +145,7 @@ exports[`CalculationSPage snapshots to loading 1`] = `
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 fDiQKY"
+    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
   >
     <p
       className="Texts__P-teybz3-2 grKhWK"

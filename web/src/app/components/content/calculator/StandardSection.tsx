@@ -107,6 +107,7 @@ const StStandardInputs = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    margin: 10px 0 0 0;
 `;
 
 const StStandardInput = styled.div`
