@@ -12,10 +12,10 @@ exports[`LiquidSection snapshots 1`] = `
     </span>
   </span>
   <fieldset
-    className="FormSection__StFieldSet-sc-4jzlq-3 hrgLlN"
+    className="FormSection__StFieldSet-sc-4jzlq-3 flTkdv"
   >
     <legend
-      className="FormSection__StLegend-sc-4jzlq-1 hjqIMu"
+      className="FormSection__StLegend-sc-4jzlq-1 fvKqdS"
     >
       Liquid
     </legend>
@@ -30,6 +30,7 @@ exports[`LiquidSection snapshots 1`] = `
         </h3>
         <div
           className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+          style={Object {}}
         >
           <div
             style={
@@ -41,7 +42,7 @@ exports[`LiquidSection snapshots 1`] = `
             }
           >
             <label
-              className="Inputs__StLabel-dfit48-1 bfWHiE"
+              className="Inputs__StLabel-dfit48-1 fWudmg"
               htmlFor="liquid-nitrogen"
             >
               <span>
@@ -77,20 +78,11 @@ exports[`LiquidSection snapshots 1`] = `
           Light hydrocarbons
         </h3>
         <div
-          style={
-            Object {
-              "display": "flex",
-              "flexDirection": "column",
-              "flexGrow": 1,
-              "flexWrap": "wrap",
-              "height": "230px",
-              "justifyContent": "flex-start",
-              "width": "470px",
-            }
-          }
+          className="LiquidSection__StMatrixContainer-x68rdr-2 cHibXw"
         >
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -102,7 +94,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-methane"
               >
                 <span>
@@ -125,6 +117,7 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -136,7 +129,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-ethane"
               >
                 <span>
@@ -159,6 +152,11 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={
+              Object {
+                "marginBottom": "0px",
+              }
+            }
           >
             <div
               style={
@@ -170,7 +168,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-propane"
               >
                 <span>
@@ -193,6 +191,7 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -204,7 +203,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-iButane"
               >
                 <span>
@@ -227,6 +226,7 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -238,7 +238,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-nButane"
               >
                 <span>
@@ -261,6 +261,11 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={
+              Object {
+                "marginBottom": "0px",
+              }
+            }
           >
             <div
               style={
@@ -272,7 +277,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-iPentane"
               >
                 <span>
@@ -295,6 +300,7 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -306,7 +312,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-nPentane"
               >
                 <span>
@@ -329,6 +335,7 @@ exports[`LiquidSection snapshots 1`] = `
           </div>
           <div
             className="LiquidSection__StLiquidInput-x68rdr-1 cTiNfU"
+            style={Object {}}
           >
             <div
               style={
@@ -340,7 +347,7 @@ exports[`LiquidSection snapshots 1`] = `
               }
             >
               <label
-                className="Inputs__StLabel-dfit48-1 bfWHiE"
+                className="Inputs__StLabel-dfit48-1 fWudmg"
                 htmlFor="liquid-nHexane"
               >
                 <span>

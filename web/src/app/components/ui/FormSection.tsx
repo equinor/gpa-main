@@ -43,6 +43,7 @@ const StLegend = styled.legend`
   height: 42px;
   font-size: 24px;
   font-family: Equinor,serif;
+  line-height: 45px; /*Edge*/
 `;
 
 export const StCircleIcon = styled.span`
@@ -65,5 +66,6 @@ export const StCircleIcon = styled.span`
 
 const StFieldSet = styled.fieldset`
   display: flex;
+  flex-direction: column;
   width: 100%;
 `;

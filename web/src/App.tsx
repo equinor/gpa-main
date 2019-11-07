@@ -25,7 +25,7 @@ export const App = () => (
     <NavBar/>
     <SiteContent>
       <SiteMenu>
-        <SiteMenuLink to="/neqsim" name="Neqsim" icon={EIcon.INBOX}/>
+        <SiteMenuLink to="/neqsim" name="Home" icon={EIcon.INBOX}/>
         <SiteMenuHeader name="LNG Ageing"></SiteMenuHeader>
         <SiteMenuLink to="/LNGageing" name="About" icon={EIcon.INFO}/>
         <SiteMenuLink to="/calculator" name="Calculator" icon={EIcon.CALCULATOR}/>

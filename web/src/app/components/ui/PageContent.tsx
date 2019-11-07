@@ -13,6 +13,7 @@ const StPageContent = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: row;
+  align-content: flex-start;
   flex-wrap: wrap;
   font-family: Equinor, serif;
   color: ${EColor.BLACK};

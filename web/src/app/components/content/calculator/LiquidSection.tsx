@@ -43,7 +43,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
         </div>
         <div style={{ flexGrow: 1, height: "100%" }}>
           <H3>Light hydrocarbons</H3>
-          <div style={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', height: '230px', width: "470px", justifyContent: 'flex-start', flexDirection: "column" }}>
+          <StMatrixContainer>
             {
               (Object.keys(props.liquid) as Array<keyof typeof props.liquid>).map((componentName, index) => componentName !== 'nitrogen' && (
                 <LiquidComponentInput
@@ -60,7 +60,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
                 />
               ))
             }
-          </div>
+          </StMatrixContainer>
         </div>
       </StLiquidInputs>
     </FormSection>
@@ -91,7 +91,9 @@ interface ILiquidComponentInputProps {
 
 const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
   return (
-    <StLiquidInput>
+    <StLiquidInput style={
+      props.componentName === "propane" || props.componentName === "iPentane" ? {marginBottom: "0px"} : {}
+    }>
       <StandardInput
         id={`liquid-${props.componentName}`}
         label={props.componentName}
@@ -121,4 +123,14 @@ const StLiquidInputs = styled.span`
 const StLiquidInput = styled.div`
       margin: 0 30px 15px 0;
       width: 135px;
+`;
+
+const StMatrixContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap; 
+  height: 220px; 
+  width: 470px;
+  justify-content: flex-start;
+  flex-direction: column;
 `;

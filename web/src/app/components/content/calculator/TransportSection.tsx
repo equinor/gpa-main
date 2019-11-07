@@ -128,7 +128,8 @@ const StTransportInputs = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 635px;
+    margin: 10px 0 0 0;
 `;
 const StTransportInput = styled.div`
     width: 225px;

@@ -145,6 +145,7 @@ export const StLabel = styled.label`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  height: 23px;
   > span:nth-child(2) {
     font-weight: bold;
     color: ${EColor.DANGER_RED}
