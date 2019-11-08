@@ -47,7 +47,8 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   const [standard, setStandard] = useState<IStandard>({
     combustionTemperature: 15, //keep default
     measurementTemperature: 15, //keep default
-    idealGasReferenceState: false
+    idealGasReferenceState: false,
+    standardVersion: "2016"
   })
 
   const [addCalculation, { loading, error }] = useMutation<ICalculation, { ship: IShip, liquid: IFluid, transport: ITransport, standard: IStandard }>(CALCULATE, {
@@ -128,7 +129,8 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       !isFilled(transport.fromDate) ||
       !isFilled(transport.toDate) ||
       !isFilled(standard.combustionTemperature) ||
-      !isFilled(standard.measurementTemperature)
+      !isFilled(standard.measurementTemperature) ||
+      !isFilled(standard.standardVersion)
     ) {
       return true;
     }

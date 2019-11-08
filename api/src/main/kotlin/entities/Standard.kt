@@ -8,6 +8,7 @@ class Standard (
     var combustionTemperature: Double,
     var measurementTemperature: Double,
     var idealGasReferenceState: Boolean,
+    var standardVersion: String,
 
     @Id @GeneratedValue var id: Long? = null,
 

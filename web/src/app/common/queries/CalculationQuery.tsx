@@ -61,6 +61,7 @@ export const CALCULATION_QUERY = gql`
                 combustionTemperature
                 measurementTemperature
                 idealGasReferenceState
+                standardVersion
             }
             result {
               id
