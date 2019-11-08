@@ -20,13 +20,13 @@ export const LNGAgeingPage: React.FunctionComponent = () => (
         margin: "25px 0 0 0"
       }}>
         <TileLink
-          image="./ship.png"
+          image="./ship-min.png"
           text="Calculator"
           link="/calculator"
           style={{ margin: "0 25px 0 0" }}
         ></TileLink>
         <TileLink
-          image="./calc.png"
+          image="./calc-min.png"
           text="Results"
           link="/results"
         ></TileLink>

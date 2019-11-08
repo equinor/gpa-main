@@ -15,7 +15,7 @@ export const NeqsimPage: React.FunctionComponent = () => (
         margin: "25px 0 0 0"
       }}>
         <TileLink
-          image="./ship2.png"
+          image="./ship2-min.png"
           text="LNG Ageing"
           link="/LNGageing"
           description={`The LNG ageing tool calculates the effect of boil off from LNG ships during transport from loading to off-loading. The calculations are based on known volume and composition of loaded LNG. The boil off rate, pressure and ship transport time are used as input for the calculations...
