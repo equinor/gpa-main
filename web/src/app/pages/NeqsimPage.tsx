@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components/macro';
 
 import { P } from '../components/elements/Texts';
+import { TileLink } from '../components/elements/TileLink';
 import { PageContent } from '../components/ui/PageContent';
 import { TitleBlock } from '../components/ui/TitleBlock';
-import { TileLink } from '../components/elements/TileLink';
-export const NeqsimPage: React.FunctionComponent = () => (
-  <PageContent>
+
+export const NeqsimPage: React.FunctionComponent = () => {
+  return <PageContent>
     <TitleBlock>Neqsim</TitleBlock>
     <StPageWrapper>
       <P>NeqSim (Non-Equilibrium Simulator) is a tool for estimation of fluid behavior and process design for oil and gas production. The basis for NeqSim is a library of fundamental mathematical models related to phase behavior and physical properties of oil and gas. The Radixs portal is a web-based user interface for NeqSim.</P>
@@ -24,7 +25,7 @@ export const NeqsimPage: React.FunctionComponent = () => (
       </div>
     </StPageWrapper>
   </PageContent>
-);
+};
 
 export const StPageWrapper = styled.div`
   padding: 30px;

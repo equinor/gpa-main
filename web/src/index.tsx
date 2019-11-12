@@ -1,28 +1,57 @@
+import './app/utils/css/reset.css';
+import './index.css';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import "./app/utils/css/reset.css";
-import "./index.css";
-import * as serviceWorker from "./serviceWorker";
 
-import {BrowserRouter as Router} from "react-router-dom";
-import React from "react";
-import ReactDOM from "react-dom";
-import {App} from "./App";
+import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from '@apollo/react-hooks';
+import React from 'react';
+import AzureAD, { AuthenticationState } from 'react-aad-msal';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import App from './App';
+import { authProvider } from './app/auth/authProvider';
+import { StateProvider } from './app/context/Context';
+import * as serviceWorker from './serviceWorker';
 
 const client = new ApolloClient({
+  request: async operation => {
+    const token = await authProvider.getAccessToken();
+    operation.setContext({
+      headers: {
+        authorization: token ? `Bearer ${token.accessToken}` : '',
+      },
+    });
+  },
   uri: '/api/graphql'
 });
 
-const render = (Component:any) => {
+const render = (Component: any) => {
   return ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Router>
-      <App/>
-    </Router>
-  </ApolloProvider>,
-    document.getElementById('root') 
+    <AzureAD provider={authProvider} forceLogin={true}>
+      {({ accountInfo, authenticationState }: any) => {
+        if (authenticationState === AuthenticationState.Authenticated) {
+          return (
+            <StateProvider accountInfo={accountInfo.account}>
+              <ApolloProvider client={client}>
+                <Router>
+                  <App />
+                </Router>
+              </ApolloProvider>
+            </StateProvider>
+          )
+        }
+        else {
+          //must return value
+          return (
+            <></>
+          )
+        }
+      }}
+    </AzureAD>
+    ,
+    document.getElementById('root')
   );
 };
 
