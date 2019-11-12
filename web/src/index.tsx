@@ -43,10 +43,7 @@ const render = (Component: any) => {
           )
         }
         else {
-          //must return value
-          return (
-            <></>
-          )
+          return null;
         }
       }}
     </AzureAD>

@@ -13,7 +13,7 @@ const config: any = {
 };
 
 const authenticationParameters = {
-    scopes: ['openid'], //TODO: Check scope
+    scopes: ['openid'],
 }
 
 export const authProvider = new MsalAuthProvider(config, authenticationParameters, LoginType.Redirect)

@@ -49,8 +49,6 @@ const App = () => (
   </div>
 );
 
-// const [{ }, dispatch]: [IAppState, any] = useStateValue();
-
 export default withAuthentication(App, {
   provider: authProvider
 });

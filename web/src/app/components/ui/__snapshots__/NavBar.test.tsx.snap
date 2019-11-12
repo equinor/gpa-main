@@ -5,7 +5,7 @@ exports[`Navbar snapshots 1`] = `
   className="NavBar__StNavBar-qlt09m-0 fbmlKN"
 >
   <div
-    className="NavBar__StHeader-qlt09m-1 bXkhBU"
+    className="NavBar__StHeader-qlt09m-1 cEJAzB"
   >
     <a
       href="/neqsim"
@@ -42,6 +42,8 @@ exports[`Navbar snapshots 1`] = `
         "marginRight": "50px",
       }
     }
-  />
+  >
+    testName
+  </div>
 </nav>
 `;

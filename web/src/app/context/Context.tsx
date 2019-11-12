@@ -36,11 +36,13 @@ export const appState = {
     accountInfo: {}
 };
 
-export enum ReducerActions {
-    USER_LOGGED_IN = "USER_LOGGED_IN"
+export enum EReducerActions {
 }
 
-export const appReducer = (state: IAppState, action: any) => {
+export const appReducer = (state: IAppState, action: {
+    type: EReducerActions,
+    payload: any
+}) => {
     switch (action.type) {
         default:
             return state;
