@@ -3,6 +3,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import { MockedProvider } from '@apollo/react-testing';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { App } from './App';
+import 'jest-styled-components';
 
 describe("Application", () => {
   it('renders without crashing', () => {

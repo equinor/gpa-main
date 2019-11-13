@@ -1,18 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CalculateFormContainer snapshots 1`] = `
+.c0 {
+  height: 230px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  width: 230px;
+  height: 230px;
+  background-color: #F7F7F7;
+  color: #303030;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  text-align: center;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c1:hover {
+  background-color: #007079;
+  color: white;
+}
+
+.c2 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 170px;
+  background-Image: url('');
+}
+
+.c3 {
+  margin: 22px 0 0 0;
+  font-size: 18px;
+}
+
+.c4 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0px 10px 10px 20px;
+  white-space: pre-wrap;
+}
+
 <div
-  className="sc-bdVaJa eURHTd"
+  className="c0"
 >
   <div
-    className="sc-bwzfXH ivlFHB"
+    className="c1"
     onClick={[Function]}
   >
     <div
-      className="sc-htpNat excwEf"
+      className="c2"
     />
     <div
-      className="sc-bxivhb btNEUj"
+      className="c3"
     >
       <span>
         text
@@ -20,7 +81,7 @@ exports[`CalculateFormContainer snapshots 1`] = `
     </div>
   </div>
   <div
-    className="sc-ifAKCX eUrElf"
+    className="c4"
   >
     <p>
       description

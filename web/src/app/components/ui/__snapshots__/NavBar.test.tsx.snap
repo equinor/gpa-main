@@ -1,11 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navbar snapshots 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  min-height: 64px;
+  border-bottom: 2px solid #f7f7f7;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-left: 50px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: Equinor,serif;
+}
+
+.c1 img.logo {
+  width: 80px;
+  height: 55px;
+  margin: 3px 0;
+  object-fit: cover;
+}
+
+.c1 > span {
+  margin: 2px 0 0 25px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.c1 > span > a,
+.c1 > span a:hover {
+  color: black;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 <nav
-  className="NavBar__StNavBar-qlt09m-0 fbmlKN"
+  className="c0"
 >
   <div
-    className="NavBar__StHeader-qlt09m-1 bXkhBU"
+    className="c1"
   >
     <a
       href="/neqsim"
