@@ -49,7 +49,7 @@ export const CalculationsPage: React.FunctionComponent<ICalculationPage> = ({ hi
         <div style={{ margin: "30px 0 0 0" }}>
           {calculations.loading &&
             <StUserMessage>
-              <UserMessage type={"loading"} text={"Loading calculations"} />
+              <UserMessage type={"loading"} text={"Loading results"} />
             </StUserMessage> 
           } 
           {calculations.data &&

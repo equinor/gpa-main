@@ -1,19 +1,19 @@
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import useReactRouter from 'use-react-router';
 
 import { EIcon } from '../../../assets/svg/EquinorIcon';
+import { EColor } from '../../../common/Color';
+import { ICalculation, IFluid, IShip, IStandard, ITransport } from '../../../common/Interfaces';
+import { isFilled } from '../../../utils/functions';
 import { StandardButton } from '../../elements/Buttons';
+import { UserMessage } from '../../elements/UserMessage';
 import { ILiquid, LiquidSection } from './LiquidSection';
 import { ShipSection } from './ShipSection';
 import { StandardSection } from './StandardSection';
 import { TransportSection } from './TransportSection';
-import useReactRouter from 'use-react-router';
-import { IShip, ITransport, IStandard, ICalculation, IFluid } from '../../../common/Interfaces';
-import { UserMessage } from '../../elements/UserMessage';
-import styled from 'styled-components';
-import { isFilled } from '../../../utils/functions';
-import { EColor } from '../../../common/Color';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
