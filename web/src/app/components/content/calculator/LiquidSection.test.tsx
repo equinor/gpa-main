@@ -1,6 +1,7 @@
 import { MockedProvider } from '@apollo/react-testing';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
 import { ILiquid, LiquidSection } from './LiquidSection';
 

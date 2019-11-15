@@ -3,6 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { TileLink } from './TileLink';
+import 'jest-styled-components';
 
 describe("CalculateFormContainer", () => {
     it("snapshots", () => {
