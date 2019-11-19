@@ -1,7 +1,10 @@
 package com.equinor.neqsim.resolvers
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
-import com.equinor.neqsim.entities.*
+import com.equinor.neqsim.entities.Calculation
+import com.equinor.neqsim.entities.Fluid
+import com.equinor.neqsim.entities.Standard
+import com.equinor.neqsim.entities.Transport
 import com.equinor.neqsim.services.LNGAgeingService
 import com.equinor.neqsim.services.ShipService
 import com.equinor.neqsim.utils.FluidInput
@@ -54,7 +57,8 @@ class CalculationMutationResolver(
         val standard = Standard(
             combustionTemperature = standardInput.combustionTemperature,
             measurementTemperature = standardInput.measurementTemperature,
-            idealGasReferenceState = standardInput.idealGasReferenceState
+            idealGasReferenceState = standardInput.idealGasReferenceState,
+            standardVersion = standardInput.standardVersion
         )
 
         return lngAgeingService.createCalculation(ship, fluid, transport, standard)
@@ -69,7 +73,8 @@ data class ShipInput(
 class StandardInput(
     val combustionTemperature: Double,
     val measurementTemperature: Double,
-    val idealGasReferenceState: Boolean
+    val idealGasReferenceState: Boolean,
+    val standardVersion: String
 )
 
 class TransportInput(

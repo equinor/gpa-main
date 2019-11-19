@@ -68,7 +68,8 @@ export const CalculationValuesContainer: React.FunctionComponent<ICalculationVal
                     {
                         display: [
                             "Combustion temperature", props.calculation.standard.combustionTemperature,
-                            "Measurement temperature", props.calculation.standard.measurementTemperature
+                            "Measurement temperature", props.calculation.standard.measurementTemperature,
+                            "Standard version", props.calculation.standard.standardVersion
                         ]
                     },
                     { display: ["Ideal gas reference state", props.calculation.standard.idealGasReferenceState ? "Yes" : "No", "", ""] }

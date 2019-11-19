@@ -91,6 +91,28 @@ export const StandardSection: React.FC<IStandardSectionProps> = (props) => (
                     required={true}
                 ></StandardSelect>
             </StStandardInput>
+            <StStandardInput>
+                <StandardSelect
+                    id="standardVersion"
+                    label={"Standard version"}
+                    options={[
+                        {
+                            value: "1995",
+                            label: "1995"
+                        },
+                        {
+                            value: "2016",
+                            label: "2016"
+                        }
+                    ]}
+                    onChange={(e: any) => { props.setStandard({ ...props.standard, standardVersion: e.value }) }}
+                    value={props.standard.standardVersion ? {
+                        label: props.standard.standardVersion,
+                        value: props.standard.standardVersion
+                    } : null}
+                    required={true}
+                ></StandardSelect>
+            </StStandardInput>
             <div style={{ width: "100%" }}>
                 <StandardBoolean
                     value={props.standard.idealGasReferenceState}

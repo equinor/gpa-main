@@ -49,6 +49,8 @@ class LNGAgeingService(private val calculationRepository: CalculationRepository)
             standardISO6976.referenceState = if (standard.idealGasReferenceState) "ideal" else "real"
             endTime = transport.fromDate.until(transport.toDate, ChronoUnit.HOURS).toDouble()
         }
+        lngShip.useStandardVersion("", standard.standardVersion)
+
         lngShip.createSystem()
         lngShip.init()
         lngShip.solveSteadyState(0)
