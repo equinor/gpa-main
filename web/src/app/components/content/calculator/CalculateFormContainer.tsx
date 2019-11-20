@@ -27,15 +27,15 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
   const [liquid, setLiquid] = useState<ILiquid>({ //shall be 0's
-    nitrogen: 0.61,
-    methane: 91.93,
-    ethane: 5.61,
-    propane: 1.96,
-    iButane: 0.12,
-    nButane: 0.89,
-    iPentane: 0.18,
-    nPentane: 0.03,
-    nHexane: 0.0,
+    nitrogen: 0.610,
+    methane: 91.930,
+    ethane: 5.610,
+    propane: 1.960,
+    iButane: 0.120,
+    nButane: 0.890,
+    iPentane: 0.180,
+    nPentane: 0.030,
+    nHexane: 0.00,
   });
   const [transport, setTransport] = useState<ITransport>({ //shall be 0's
     volume: 140000,
@@ -122,7 +122,6 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   function isDisabled() {
     if (
       !isFilled(ship.name) ||
-      !isFilled(ship.country) ||
       !isFilled(transport.volume) ||
       !isFilled(transport.pressure) ||
       !isFilled(transport.boilOffRate) ||
@@ -130,7 +129,16 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       !isFilled(transport.toDate) ||
       !isFilled(standard.combustionTemperature) ||
       !isFilled(standard.measurementTemperature) ||
-      !isFilled(standard.standardVersion)
+      !isFilled(standard.standardVersion) ||
+      !isFilled(liquid.nitrogen) ||
+      !isFilled(liquid.methane) ||
+      !isFilled(liquid.ethane) ||
+      !isFilled(liquid.propane) ||
+      !isFilled(liquid.iButane) ||
+      !isFilled(liquid.nButane) ||
+      !isFilled(liquid.iPentane) ||
+      !isFilled(liquid.nPentane) ||
+      !isFilled(liquid.nHexane)
     ) {
       return true;
     }

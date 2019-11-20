@@ -6,12 +6,12 @@ export const agingHeaders = [{
 {
     title: "WI",
     internalName: "wi",
-    fixed: 2
+    fixed: 3
 },
 {
     title: "GCV",
     internalName: "gcv",
-    fixed: 2
+    fixed: 3
 },
 {
     title: "GCV",
@@ -26,17 +26,17 @@ export const agingHeaders = [{
 {
     title: "TEMP",
     internalName: "temp",
-    fixed: 2
+    fixed: 3
 },
 {
     title: "VOLUME",
     internalName: "volume",
-    fixed: 2
+    fixed: 3
 },
 {
     title: "ENERGY",
     internalName: "energy",
-    fixed: 2
+    fixed: 3
 }];
 
 export const fluidHeaders = [

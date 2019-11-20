@@ -28,7 +28,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
     <FormSection legendText='Liquid' index={2}>
       <StLiquidInputs>
         <div>
-          <H3>Standard gases</H3>
+          <H3>LNG compositions</H3>
           <LiquidComponentInput
             componentName='nitrogen'
             componentValue={props.liquid.nitrogen}
@@ -38,11 +38,11 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
             onBlur={(value: any) => {
               setLiquid("nitrogen", value, true);
             }}
-            required={false}
+            required={true}
           />
         </div>
         <div style={{ flexGrow: 1, height: "100%" }}>
-          <H3>Light hydrocarbons</H3>
+          <H3>&nbsp;</H3>
           <StMatrixContainer>
             {
               (Object.keys(props.liquid) as Array<keyof typeof props.liquid>).map((componentName, index) => componentName !== 'nitrogen' && (
@@ -56,20 +56,23 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
                   onBlur={(value: any) => {
                     setLiquid(componentName, value, true);
                   }}
-                  required={false}
+                  required={true}
                 />
               ))
             }
           </StMatrixContainer>
         </div>
       </StLiquidInputs>
+      <StSum>
+        <span style={getSum() === 100 ? {} : { color: "red" }}> Sum: <b>{getSum()}</b></span>
+      </StSum>
     </FormSection>
   )
 
   function setLiquid(name: keyof ILiquid, value: any, toFixed?: boolean) {
     let liquid: ILiquid = props.liquid;
     if (value !== "") {
-      const formattedValue = toFixed ? parseFloat(parseFloat(value).toFixed(2)) : parseFloat(value);
+      const formattedValue = toFixed ? parseFloat(parseFloat(value).toFixed(3)) : parseFloat(value);
       liquid[name] = formattedValue as never;
       props.setLiquid({ ...props.liquid });
     }
@@ -77,6 +80,22 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
       liquid[name] = null as never;
       props.setLiquid({ ...props.liquid });
     }
+  }
+
+  function getSum() {
+    let liquid: ILiquid = props.liquid;
+    var precision = 1000000;
+    return (
+      liquid.nitrogen * precision +
+      liquid.methane * precision +
+      liquid.ethane * precision +
+      liquid.propane * precision +
+      liquid.iButane * precision +
+      liquid.nButane * precision +
+      liquid.iPentane * precision +
+      liquid.nPentane * precision +
+      liquid.nHexane
+    ) / precision;
   }
 }
 
@@ -92,7 +111,7 @@ interface ILiquidComponentInputProps {
 const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
   return (
     <StLiquidInput style={
-      props.componentName === "propane" || props.componentName === "iPentane" ? {marginBottom: "0px"} : {}
+      props.componentName === "propane" || props.componentName === "iPentane" ? { marginBottom: "0px" } : {}
     }>
       <StandardInput
         id={`liquid-${props.componentName}`}
@@ -107,6 +126,7 @@ const LiquidComponentInput: React.FC<ILiquidComponentInputProps> = (props) => {
           props.onBlur(e.target.value)
         }}
         required={props.required}
+        step={"0.001"}
       ></StandardInput>
     </StLiquidInput>
   );
@@ -133,4 +153,8 @@ const StMatrixContainer = styled.div`
   width: 470px;
   justify-content: flex-start;
   flex-direction: column;
+`;
+
+const StSum = styled.div`
+  margin: 15px 0 0 0;
 `;

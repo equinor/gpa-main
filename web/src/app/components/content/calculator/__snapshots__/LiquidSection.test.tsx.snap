@@ -159,6 +159,10 @@ exports[`LiquidSection snapshots 1`] = `
   flex-direction: column;
 }
 
+.c10 {
+  margin: 15px 0 0 0;
+}
+
 <div
   className="c0"
 >
@@ -184,7 +188,7 @@ exports[`LiquidSection snapshots 1`] = `
         <h3
           className="c5"
         >
-          Standard gases
+          LNG compositions
         </h3>
         <div
           className="c6"
@@ -206,6 +210,9 @@ exports[`LiquidSection snapshots 1`] = `
               <span>
                 nitrogen
               </span>
+              <span>
+                 *
+              </span>
             </label>
             <input
               className="c8"
@@ -214,8 +221,8 @@ exports[`LiquidSection snapshots 1`] = `
               onChange={[Function]}
               onKeyUp={[Function]}
               placeholder="nitrogen"
-              required={false}
-              step="0.01"
+              required={true}
+              step="0.001"
               type="number"
               value={5}
             />
@@ -233,7 +240,7 @@ exports[`LiquidSection snapshots 1`] = `
         <h3
           className="c5"
         >
-          Light hydrocarbons
+           
         </h3>
         <div
           className="c9"
@@ -258,6 +265,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   methane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -266,8 +276,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="methane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -293,6 +303,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   ethane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -301,8 +314,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="ethane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -332,6 +345,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   propane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -340,8 +356,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="propane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -367,6 +383,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   iButane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -375,8 +394,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="iButane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -402,6 +421,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   nButane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -410,8 +432,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="nButane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -441,6 +463,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   iPentane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -449,8 +474,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="iPentane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -476,6 +501,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   nPentane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -484,8 +512,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="nPentane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -511,6 +539,9 @@ exports[`LiquidSection snapshots 1`] = `
                 <span>
                   nHexane
                 </span>
+                <span>
+                   *
+                </span>
               </label>
               <input
                 className="c8"
@@ -519,8 +550,8 @@ exports[`LiquidSection snapshots 1`] = `
                 onChange={[Function]}
                 onKeyUp={[Function]}
                 placeholder="nHexane"
-                required={false}
-                step="0.01"
+                required={true}
+                step="0.001"
                 type="number"
                 value={5}
               />
@@ -529,6 +560,22 @@ exports[`LiquidSection snapshots 1`] = `
         </div>
       </div>
     </span>
+    <div
+      className="c10"
+    >
+      <span
+        style={
+          Object {
+            "color": "red",
+          }
+        }
+      >
+         Sum: 
+        <b>
+          40.000005
+        </b>
+      </span>
+    </div>
   </fieldset>
 </div>
 `;
