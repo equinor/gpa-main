@@ -58,6 +58,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         value={props.transport.pressure}
                         type="number"
                         required={true}
+                        step={"0.01"}
                     ></StandardInput>
                 </StTransportInput>
                 <StTransportInput>
@@ -75,6 +76,7 @@ export const TransportSection: React.FC<ITransportSectionProps> = (props) => {
                         value={props.transport.boilOffRate}
                         type="number"
                         required={true}
+                        step={"0.01"}
                     ></StandardInput>
                 </StTransportInput>
                 <StTransportInput style={{ flexDirection: "row", display: "flex" }}>

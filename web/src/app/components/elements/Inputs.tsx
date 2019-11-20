@@ -15,6 +15,7 @@ export interface IStandardInputProps {
   onKeyUp?: Function;
   type: "text" | "number";
   required?: boolean;
+  step?: string; //step for number input
 }
 export const StandardInput = (props: IStandardInputProps) => {
   const [invalid, setInvalid] = useState<boolean>(false);
@@ -78,7 +79,7 @@ export const StandardInput = (props: IStandardInputProps) => {
           onKeyUp={(e) => {
             if (props.onKeyUp) props.onKeyUp(e);
           }}
-          step="0.01"
+          step={props.step ? props.step : "1"}
           required={props.required}
           invalid={invalid}
         />

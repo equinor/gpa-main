@@ -7,6 +7,7 @@ import { ICalculation, IResult, IFluid } from '../../../common/Interfaces';
 import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2 } from '../../elements/Texts';
 import { agingHeaders, fluidHeaders } from '../../../common/tableHeaders/CalculationHeaders';
+import * as _ from "lodash";
 
 export interface ICalculationContainer {
   calculation: ICalculation;
@@ -44,11 +45,16 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             fluid.nButane.value.toFixed(fluidHeaders[6].fixed),
             fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
             fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
-            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed)
+            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed),
+            getTotal(result, "fluid")
           ]
         }
       });
-      headers = fluidHeaders;
+      headers = _.clone(fluidHeaders);
+      headers.push({
+        title: "Sum",
+        internalName: "none"
+      });
       break;
     case "GasComposition":
       tableRows = props.calculation.result.map((result: IResult) => {
@@ -65,11 +71,16 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             fluid.nButane.value.toFixed(fluidHeaders[6].fixed),
             fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
             fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
-            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed)
+            fluid.nHexane.value.toFixed(fluidHeaders[9].fixed),
+            getTotal(result, "gas")
           ]
         }
       });
-      headers = fluidHeaders;
+      headers = _.clone(fluidHeaders);
+      headers.push({
+        title: "Sum",
+        internalName: "none"
+      });
       break;
     default:
       tableRows = props.calculation.result.map((result: IResult) => {
@@ -201,6 +212,9 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                   if (header.internalName === "time") {
                     return initRow[header.internalName as never]["unit"];
                   }
+                  else if (header.internalName === "none") {
+                    return "";
+                  }
                   else {
                     return initRowFluid[header.internalName as never]["unit"];
                   }
@@ -215,6 +229,26 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       }
     </StCalculationContainer>
   )
+
+  function getTotal(result: IResult, type: "gas" | "fluid") {
+    let fluid: any = {};
+    if (type === "gas") {
+      fluid = result["gas"];
+    }
+    else if (type === "fluid") {
+      fluid = result["liquid"];
+    }
+    var precision = 10000000000000;
+    return (fluid.nitrogen.value * precision +
+      fluid.methane.value * precision +
+      fluid.ethane.value * precision +
+      fluid.propane.value * precision +
+      fluid.iButane.value * precision +
+      fluid.nButane.value * precision +
+      fluid.iPentane.value * precision +
+      fluid.nPentane.value * precision +
+      fluid.nHexane.value) / precision;
+  }
 }
 
 const StCalculationContainer = styled.div`
