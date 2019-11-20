@@ -122,7 +122,6 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   function isDisabled() {
     if (
       !isFilled(ship.name) ||
-      !isFilled(ship.country) ||
       !isFilled(transport.volume) ||
       !isFilled(transport.pressure) ||
       !isFilled(transport.boilOffRate) ||
@@ -130,7 +129,16 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
       !isFilled(transport.toDate) ||
       !isFilled(standard.combustionTemperature) ||
       !isFilled(standard.measurementTemperature) ||
-      !isFilled(standard.standardVersion)
+      !isFilled(standard.standardVersion) ||
+      !isFilled(liquid.nitrogen) ||
+      !isFilled(liquid.methane) ||
+      !isFilled(liquid.ethane) ||
+      !isFilled(liquid.propane) ||
+      !isFilled(liquid.iButane) ||
+      !isFilled(liquid.nButane) ||
+      !isFilled(liquid.iPentane) ||
+      !isFilled(liquid.nPentane) ||
+      !isFilled(liquid.nHexane)
     ) {
       return true;
     }

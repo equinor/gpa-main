@@ -27,7 +27,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
   let tableRows: IStandardTableRow[];
   let headers: {
     title: string,
-    internalName: string
+    internalName: any
   }[];
   switch (resultType) {
     case "LiquidComposition":
@@ -53,7 +53,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       headers = _.clone(fluidHeaders);
       headers.push({
         title: "Sum",
-        internalName: "none"
+        internalName: null
       });
       break;
     case "GasComposition":
@@ -79,7 +79,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       headers = _.clone(fluidHeaders);
       headers.push({
         title: "Sum",
-        internalName: "none"
+        internalName: null
       });
       break;
     default:
@@ -212,7 +212,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
                   if (header.internalName === "time") {
                     return initRow[header.internalName as never]["unit"];
                   }
-                  else if (header.internalName === "none") {
+                  else if (!header.internalName) {
                     return "";
                   }
                   else {
