@@ -3,6 +3,7 @@ import React from 'react';
 import { FormSection } from '../../ui/FormSection';
 import { H3 } from '../../elements/Texts';
 import { StandardInput } from '../../elements/Inputs';
+import { getPrecisionSumLiquidInput } from '../../../utils/functions';
 
 
 export interface ILiquid {
@@ -64,7 +65,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
         </div>
       </StLiquidInputs>
       <StSum>
-        <span style={getSum() === 100 ? {} : { color: "red" }}> Sum: <b>{getSum()}</b></span>
+        <span style={getPrecisionSumLiquidInput(props.liquid) === 100 ? {} : { color: "red" }}> Sum: <b>{getPrecisionSumLiquidInput(props.liquid)}</b></span>
       </StSum>
     </FormSection>
   )
@@ -80,22 +81,6 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
       liquid[name] = null as never;
       props.setLiquid({ ...props.liquid });
     }
-  }
-
-  function getSum() {
-    let liquid: ILiquid = props.liquid;
-    var precision = 1000000;
-    return (
-      liquid.nitrogen * precision +
-      liquid.methane * precision +
-      liquid.ethane * precision +
-      liquid.propane * precision +
-      liquid.iButane * precision +
-      liquid.nButane * precision +
-      liquid.iPentane * precision +
-      liquid.nPentane * precision +
-      liquid.nHexane * precision 
-    ) / precision;
   }
 }
 

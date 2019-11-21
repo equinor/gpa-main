@@ -8,6 +8,7 @@ import { IStandardTableRow, StandardTable } from '../../elements/Tables';
 import { H2 } from '../../elements/Texts';
 import { agingHeaders, fluidHeaders } from '../../../common/tableHeaders/CalculationHeaders';
 import * as _ from "lodash";
+import { getPrecisionSumLiquid } from '../../../utils/functions';
 
 export interface ICalculationContainer {
   calculation: ICalculation;
@@ -46,7 +47,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
             fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
             fluid.nHexane.value.toFixed(fluidHeaders[9].fixed),
-            getTotal(result, "fluid")
+            getPrecisionSumLiquid(result, "fluid")
           ]
         }
       });
@@ -72,7 +73,7 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
             fluid.iPentane.value.toFixed(fluidHeaders[7].fixed),
             fluid.nPentane.value.toFixed(fluidHeaders[8].fixed),
             fluid.nHexane.value.toFixed(fluidHeaders[9].fixed),
-            getTotal(result, "gas")
+            getPrecisionSumLiquid(result, "gas")
           ]
         }
       });
@@ -229,27 +230,6 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       }
     </StCalculationContainer>
   )
-
-  function getTotal(result: IResult, type: "gas" | "fluid") {
-    let fluid: any = {};
-    if (type === "gas") {
-      fluid = result["gas"];
-    }
-    else if (type === "fluid") {
-      fluid = result["liquid"];
-    }
-    var precision = 10000000000000;
-    return (fluid.nitrogen.value * precision +
-      fluid.methane.value * precision +
-      fluid.ethane.value * precision +
-      fluid.propane.value * precision +
-      fluid.iButane.value * precision +
-      fluid.nButane.value * precision +
-      fluid.iPentane.value * precision +
-      fluid.nPentane.value * precision +
-      fluid.nHexane.value * precision
-      ) / precision;
-  }
 }
 
 const StCalculationContainer = styled.div`
