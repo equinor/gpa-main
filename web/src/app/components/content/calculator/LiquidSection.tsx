@@ -94,7 +94,7 @@ export const LiquidSection: React.FC<ILiquidSectionProps> = (props) => {
       liquid.nButane * precision +
       liquid.iPentane * precision +
       liquid.nPentane * precision +
-      liquid.nHexane
+      liquid.nHexane * precision 
     ) / precision;
   }
 }

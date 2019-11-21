@@ -247,7 +247,8 @@ export const CalculationContainer: React.FunctionComponent<ICalculationContainer
       fluid.nButane.value * precision +
       fluid.iPentane.value * precision +
       fluid.nPentane.value * precision +
-      fluid.nHexane.value) / precision;
+      fluid.nHexane.value * precision
+      ) / precision;
   }
 }
 
