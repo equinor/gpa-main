@@ -3,7 +3,7 @@ import { ILiquid } from "../components/content/calculator/LiquidSection";
 
 // check filled input
 export function isFilled(val: any) {
-    if (val === null || val === "" || typeof val === "undefined") {
+    if (val === null || val === "" || typeof val === "undefined" || Number.isNaN(val)) {
         return false;
     }
     else {

@@ -5,6 +5,7 @@ describe("Functions", () => {
         expect(isFilled(null)).toEqual(false);
         expect(isFilled(undefined)).toEqual(false);
         expect(isFilled("")).toEqual(false);
+        expect(isFilled(NaN)).toEqual(false);
     })
     it("isFilled shall return true", () => {
         expect(isFilled(" ")).toEqual(true);

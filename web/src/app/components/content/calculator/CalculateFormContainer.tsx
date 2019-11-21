@@ -14,6 +14,7 @@ import { UserMessage } from '../../elements/UserMessage';
 import styled from 'styled-components';
 import { isFilled } from '../../../utils/functions';
 import { EColor } from '../../../common/Color';
+import moment from 'moment';
 
 const CALCULATE = gql`
     mutation Calculate($ship: ShipInput!, $liquid: FluidInput!, $transport: TransportInput!, $standard: StandardInput!) {
@@ -26,7 +27,7 @@ const CALCULATE = gql`
 export const CalculateFormContainer: React.FunctionComponent<any> = () => {
   const { history } = useReactRouter();
   const [ship, setShip] = useState<IShip>({ name: '', country: '' });
-  const [liquid, setLiquid] = useState<ILiquid>({ //shall be 0's
+  const [liquid, setLiquid] = useState<ILiquid>({ //shall be nulls?
     nitrogen: 0.610,
     methane: 91.930,
     ethane: 5.610,
@@ -35,14 +36,14 @@ export const CalculateFormContainer: React.FunctionComponent<any> = () => {
     nButane: 0.890,
     iPentane: 0.180,
     nPentane: 0.030,
-    nHexane: 0.00,
+    nHexane: 0.05,
   });
-  const [transport, setTransport] = useState<ITransport>({ //shall be 0's
+  const [transport, setTransport] = useState<ITransport>({ //shall be 0's?
     volume: 140000,
     pressure: 1.13,
     boilOffRate: 0.15,
-    fromDate: "2019-09-17T01:01:00Z",
-    toDate: "2019-09-20T01:01:01Z"
+    fromDate: new Date().toISOString(),
+    toDate: moment(new Date()).add(7, "days").toISOString()
   });
   const [standard, setStandard] = useState<IStandard>({
     combustionTemperature: 15, //keep default
