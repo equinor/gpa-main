@@ -28,4 +28,4 @@ git push
 -> pull request (tests for client are automatically run on pull request)
 
 ### 2) Deploy to the environments
-Project automatically deployed from master and release branch
+Project is automatically deployed from master and release branch
