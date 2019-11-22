@@ -29,3 +29,7 @@ git push
 
 ### 2) Deploy to the environments
 Project is automatically deployed from master and release branch (playground and production)
+
+## Secrets
+API: DB URL, USERNAME, PASSWORD
+OAUTH: Application ID and Secret, Web url set
