@@ -94,21 +94,27 @@ Yes, we used EDS to design the prototypes. Then we coded the components ourselve
 
 ### Security and information management
 1. __Do you know who the information owner is?__ 
-?  
+
+Not sure, but probably Jingshi Ruan Yang (for LNG Ageing)  
 
 2. __What is the classification of the information handled by the software (open, internal, restricted, confidential)?__ 
-? Internal
+
+Internal - source code is open, but LNG ship compositions more like internal
 
 3. __Have you assessed how the information classification impact the security in the software?__ 
+
 ? To be assessed
 
 4. __Has a Security Risk Assessment been performed (ordered in Services@Equinor as "Information Risk Assessment)?__ 
+
 No
 
 5. __If you will move data into the Data Lake Legal Risk Assessment(s) must be performed; one LRA for moving data into the lake, another LRA for exposing data from the lake through an API. Have you done this, if relevant?__ 
+
 ? N/A //Is it relevant to Radix cloud?
 
 6. __Will you (or have you) ordered a penetration test?__ 
+
 No
 
 ### Operations
