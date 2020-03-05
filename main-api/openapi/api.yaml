@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  title: GPA API
+  description: REST API for Gas processing apps
+  version: 0.1.0
+
+servers:
+  - url: '/api/v1'
+
+tags:
+  - name: lng
+    description: LNG Ageing calculation
+paths:
+  /lng/ships:
+    get:
+      tags:
+        - lng
+      summary: Returns a list of ships.
+      responses:
+        '200':
+          description: A list of ships.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ship'
+
+components:
+  schemas:
+    Ship:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
