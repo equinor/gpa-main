@@ -14,9 +14,10 @@ paths:
   /lng/ships:
     get:
       operationId: get_ships
+      x-openapi-router-controller: controllers.lng_controller
       tags:
         - lng
-      summary: Returns a list of ships.
+      summary: Get a list of ships.
       responses:
         '200':
           description: A list of ships.
@@ -29,6 +30,7 @@ paths:
   /lng/calculations:
     get:
       operationId: get_calculations
+      x-openapi-router-controller: controllers.lng_controller
       tags:
         - lng
       summary: Get a list of LNG Ageing calculations
@@ -41,9 +43,25 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Calculation'
+    post:
+      operationId: calculate
+      x-openapi-router-controller: controllers.lng_controller
+      tags:
+        - lng
+      summary: Calculate LNG Ageing
+      requestBody:
+        $ref: '#/components/requestBodies/CalculationBody'
+      responses:
+        '200':
+          description: LNG Ageing calculation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calculation'
   /lng/calculations/{calculationId}:
     get:
       operationId: get_calculation
+      x-openapi-router-controller: controllers.lng_controller
       tags:
         - lng
       summary: Get LNG Ageing calculation
@@ -63,6 +81,14 @@ paths:
                 $ref: '#/components/schemas/Calculation'
 
 components:
+  requestBodies:
+    CalculationBody:
+      required: true
+      description: Object containing all info for a calculation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CalculationBody'
   schemas:
     Ship:
       type: object
@@ -185,3 +211,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CalculationStep'
+    CalculationBody:
+      type: object
+      properties:
+        ship:
+          $ref: '#/components/schemas/Ship'
+        fluid:
+          $ref: '#/components/schemas/Fluid'
+        transport:
+          $ref: '#/components/schemas/Transport'
+        standard:
+          $ref: '#/components/schemas/Standard'
+      required:
+        - ship
+        - fluid
+        - transport
+        - standard
