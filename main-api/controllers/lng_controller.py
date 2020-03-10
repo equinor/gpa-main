@@ -37,13 +37,13 @@ def get_calculation(calculation_id):  # noqa: E501
         id=calculation_id,
         ship=Ship(
             name='Ship1',
-            country='Norway'
+            country='Norway',
         ),
         fluid=Fluid(
             id='fluid1',
             nitrogen=Metric(
                 value=3.6,
-                unit='volume'
+                unit='volume',
             )
         ),
         transport=Transport(
@@ -53,6 +53,7 @@ def get_calculation(calculation_id):  # noqa: E501
         standard=Standard(
             id='standard1',
             combustion_temperature=20.3,
+            
         ),
         result=[CalculationStep(
             id='calculationStep1',

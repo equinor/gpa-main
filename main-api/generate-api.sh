@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
+mkdir -p gen
+docker run --rm \
+    -v ${PWD}:/local \
+    --user $(id -u):$(id -g) \
+    openapitools/openapi-generator-cli generate \
     -i /local/openapi/api.yaml \
     -g python-flask \
     -o /local/gen/api \
-    --additional-properties=packageName=gpa_api,packageVersion=0.1.0
+    --additional-properties=packageName=gpa_api,packageVersion=${API_VERSION}
