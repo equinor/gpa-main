@@ -2,7 +2,7 @@
 ## Setting up development environment
 ### 1) Clone the libraries
 Project:
-git clone https://github.com/equinor/neqsimweb2
+git clone https://github.com/equinor/gpa-main
 
 Dependency:
 git clone https://github.com/equinor/neqsim
