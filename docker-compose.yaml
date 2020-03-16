@@ -3,27 +3,53 @@ version: "3"
 volumes:
   postgres:
 
+networks:
+  lng:
+  frontend:
+
 services:
-  api:
-    image: neqsim-api
-    build: api
+  proxy:
+    build: proxy
     ports:
-      - "8080:8080"
+      - "80:80"
+    networks:
+      - frontend
     depends_on:
-      - db
+      - web
+      - api
     environment:
-      - DB_URL=jdbc:postgresql://db:5432/neqsim
+      - TZ=Europe/Oslo
+
+  web:
+    image: gpa-web
+    build: web
+    networks:
+      - frontend
+
+  api:
+    image: gpa-api
+    build: main-api
+    networks:
+      - frontend
+      - lng
+
+  lng:
+    image: lng-api
+    build: lng
+    networks:
+      - lng
+      - frontend
+    depends_on:
+      - lngdb
+    environment:
+      - DB_URL=jdbc:postgresql://lngdb:5432/neqsim
       - DB_USERNAME=neqsim
       - DB_PASSWORD=${POSTGRES_PASSWORD}
 
-  web:
-    image: neqsim-web
-    build: web
-    ports:
-      - "80:80"
-
-  db:
+  lngdb:
     image: postgres:10-alpine
+    networks:
+      - lng
     ports:
       - "5432:5432"
     volumes:

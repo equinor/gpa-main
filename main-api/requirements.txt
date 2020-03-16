@@ -1,1 +1,1 @@
-./gen/api
+gpa-api==0.0.1
