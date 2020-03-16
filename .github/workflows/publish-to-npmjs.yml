@@ -1,0 +1,51 @@
+name: Publish GPA API to npmjs
+
+on:
+  create:
+    tags:
+      - v*
+
+jobs:
+  build-n-publish:
+    name: Publish GPA API to npmjs
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+          registry-url: https://registry.npmjs.org/
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+      - name: Generate gpa-api typescript
+        working-directory: './main-api'
+        env:
+          API_VERSION: ${{ steps.get_version.outputs.VERSION }}
+        run: ./generate-web.sh
+      - name: Install dependencies
+        working-directory: './main-api/gen/web'
+        env:
+          NPM_TOKEN: ${{ secrets.npm_token }}
+        run: npm install
+      - name: Check if pre-release
+        id: check_pre_release
+        run: echo ::set-output name=is_pre_release::${{ contains(steps.get_version.outputs.VERSION, '-') }}
+      - name: Get the tag
+        id: get_tag
+        env:
+          API_VERSION: ${{ steps.get_version.outputs.VERSION }}
+        if: steps.check_pre_release.outputs.is_pre_release  == 'true'
+        run: v=${API_VERSION##*-}; echo ::set-output name=TAG::${v%[[:digit:]]}
+      - name: Publish pre-release
+        env:
+          NPM_TOKEN: ${{ secrets.npm_token }}
+        working-directory: './main-api/gen/web'
+        if: steps.check_pre_release.outputs.is_pre_release  == 'true'
+        run: npm publish --access public --tag ${{ steps.get_tag.outputs.TAG }}
+      - name: Publish release
+        env:
+          NPM_TOKEN: ${{ secrets.npm_token }}
+        working-directory: './main-api/gen/web'
+        if: steps.check_pre_release.outputs.is_pre_release == 'false'
+        run: npm publish --access public

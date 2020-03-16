@@ -1,0 +1,229 @@
+openapi: 3.0.1
+info:
+  title: GPA API
+  description: REST API for Gas processing apps
+  version: 0.1.0
+
+servers:
+  - url: '/api/v1'
+
+tags:
+  - name: lng
+    description: LNG Ageing calculation
+paths:
+  /lng/ships:
+    get:
+      operationId: get_ships
+      x-openapi-router-controller: controllers.lng_controller
+      tags:
+        - lng
+      summary: Get a list of ships.
+      responses:
+        '200':
+          description: A list of ships.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ship'
+  /lng/calculations:
+    get:
+      operationId: get_calculations
+      x-openapi-router-controller: controllers.lng_controller
+      tags:
+        - lng
+      summary: Get a list of LNG Ageing calculations
+      responses:
+        '200':
+          description: A list of LNG Ageing calculations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Calculation'
+    post:
+      operationId: calculate
+      x-openapi-router-controller: controllers.lng_controller
+      tags:
+        - lng
+      summary: Calculate LNG Ageing
+      requestBody:
+        $ref: '#/components/requestBodies/CalculationBody'
+      responses:
+        '200':
+          description: LNG Ageing calculation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calculation'
+  /lng/calculations/{calculationId}:
+    get:
+      operationId: get_calculation
+      x-openapi-router-controller: controllers.lng_controller
+      tags:
+        - lng
+      summary: Get LNG Ageing calculation
+      parameters:
+        - name: calculationId
+          in: path
+          description: 'The ID of the calculation'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A LNG Ageing calculation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Calculation'
+
+components:
+  requestBodies:
+    CalculationBody:
+      required: true
+      description: Object containing all info for a calculation
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CalculationBody'
+  schemas:
+    Ship:
+      type: object
+      properties:
+        name:
+          type: string
+        country:
+          type: string
+    Transport:
+      type: object
+      properties:
+        id:
+          type: string
+        volume:
+          type: number
+        pressure:
+          type: number
+        boilOffRate:
+          type: number
+        fromDate:
+          type: string
+          format: 'date-time'
+        toDate:
+          type: string
+          format: 'date-time'
+        createdDate:
+          type: string
+          format: 'date-time'
+    Standard:
+      type: object
+      properties:
+        id:
+          type: string
+        combustionTemperature:
+          type: number
+        measurementTemperature:
+          type: number
+        idealGasReferenceState:
+          type: number
+        standardVersion:
+          type: string
+        createdDate:
+          type: string
+          format: 'date-time'
+    Metric:
+      type: object
+      properties:
+        value:
+          type: number
+        unit:
+          type: string
+    Fluid:
+      type: object
+      properties:
+        id:
+          type: string
+        nitrogen:
+          $ref: '#/components/schemas/Metric'
+        methane:
+          $ref: '#/components/schemas/Metric'
+        ethane:
+          $ref: '#/components/schemas/Metric'
+        propane:
+          $ref: '#/components/schemas/Metric'
+        iButane:
+          $ref: '#/components/schemas/Metric'
+        nButane:
+          $ref: '#/components/schemas/Metric'
+        iPentane:
+          $ref: '#/components/schemas/Metric'
+        nPentane:
+          $ref: '#/components/schemas/Metric'
+        nHexane:
+          $ref: '#/components/schemas/Metric'
+        createdDate:
+          type: string
+          format: 'date-time'
+    CalculationStep:
+      type: object
+      properties:
+        id:
+          type: string
+        time:
+          $ref: '#/components/schemas/Metric'
+        wi:
+          $ref: '#/components/schemas/Metric'
+        gcv:
+          $ref: '#/components/schemas/Metric'
+        gcvMass:
+          $ref: '#/components/schemas/Metric'
+        density:
+          $ref: '#/components/schemas/Metric'
+        temp:
+          $ref: '#/components/schemas/Metric'
+        volume:
+          $ref: '#/components/schemas/Metric'
+        energy:
+          $ref: '#/components/schemas/Metric'
+        createdDate:
+          type: string
+          format: 'date-time'
+        liquid:
+          $ref: '#/components/schemas/Fluid'
+        gas:
+          $ref: '#/components/schemas/Fluid'
+    Calculation:
+      type: object
+      properties:
+        id:
+          type: string
+        ship:
+          $ref: '#/components/schemas/Ship'
+        fluid:
+          $ref: '#/components/schemas/Fluid'
+        transport:
+          $ref: '#/components/schemas/Transport'
+        standard:
+          $ref: '#/components/schemas/Standard'
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalculationStep'
+    CalculationBody:
+      type: object
+      properties:
+        ship:
+          $ref: '#/components/schemas/Ship'
+        fluid:
+          $ref: '#/components/schemas/Fluid'
+        transport:
+          $ref: '#/components/schemas/Transport'
+        standard:
+          $ref: '#/components/schemas/Standard'
+      required:
+        - ship
+        - fluid
+        - transport
+        - standard
