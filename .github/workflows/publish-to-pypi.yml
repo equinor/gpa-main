@@ -1,9 +1,9 @@
 name: Publish GPA API to PyPI
 
 on:
-  create:
+  push:
     tags:
-      - v*
+      - refs/tags/v*
 
 jobs:
   build-n-publish:
