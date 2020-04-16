@@ -79,6 +79,62 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Calculation'
+  /hg/fluids:
+    get:
+      operationId: get_fluids
+      x-openapi-router-controller: controllers.hg_controller
+      tags:
+        - hg
+      summary: Get hg fluids
+      responses:
+        '200':
+          description: All hg fluids
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HgFluid'
+    post:
+      operationId: create_fluid
+      x-openapi-router-controller: controllers.hg_controller
+      tags:
+        - hg
+      summary: Create hg fluid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HgFluid'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HgFluid'
+  /hg/fluids/{fluidId}:
+    get:
+      operationId: get_fluid
+      x-openapi-router-controller: controllers.hg_controller
+      tags:
+        - hg
+      summary: Get fluid
+      parameters:
+        - name: fluidId
+          in: path
+          description: The id of the fluid
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The fluid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HgFluid'
 
 components:
   requestBodies:
@@ -227,3 +283,34 @@ components:
         - fluid
         - transport
         - standard
+    HgFluid:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/HgComponent'
+        createdDate:
+          type: string
+          format: 'date-time'
+    HgComponent:
+      type: object
+      properties:
+        value:
+          type: number
+        component_type:
+          $ref: '#/components/schemas/HgComponentType'
+    HgComponentType:
+      type: string
+      enum:
+        - nitrogen
+        - methane
+        - ethane
+        - propane
+        - iButane
+        - nButane
+
