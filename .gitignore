@@ -29,3 +29,7 @@ yarn-error.log*
 .vscode
 
 data
+
+*.iml
+
+.mypy_cache

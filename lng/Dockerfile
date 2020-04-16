@@ -1,6 +1,6 @@
 FROM maven:3-jdk-8 as neqsim
 
-RUN git clone --single-branch --depth 1 https://github.com/equinor/neqsim && cd neqsim && mvn install -Drevision=2.0.1
+RUN git clone -b 'develop' --single-branch --depth 1 https://github.com/equinor/neqsim && cd neqsim && mvn install -Drevision=2.0.1
 
 FROM gradle:5.6-jdk11 as builder
 COPY --from=neqsim /root/.m2 /root/.m2
