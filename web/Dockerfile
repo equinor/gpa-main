@@ -25,3 +25,4 @@ FROM nginx
 
 COPY --from=builder /code/build /var/www/data
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+

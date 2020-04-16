@@ -7,7 +7,19 @@ git clone https://github.com/equinor/gpa-main
 Dependency:
 git clone https://github.com/equinor/neqsim
 
-### 2) Run the project
+### 2) Install pre-commit
+
+Optionally create a virtualenv (recommended)
+
+```shell script
+pip install pre-commit
+# or
+pip install -r main-api/requirements.txt
+# then
+pre-commit install
+```
+
+### 3) Run the project
 Database: /
 docker-compose up db
 
@@ -18,7 +30,7 @@ Client: /web
 npm install
 npm start
 
-### 3) Run tests
+### 4) Run tests
 Client: /web
 npm test
 
