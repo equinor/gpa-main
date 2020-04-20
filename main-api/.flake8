@@ -1,0 +1,6 @@
+[flake8]
+ignore =
+    # Ignore line too long errors, let black handle it
+    E501,
+    # flake8 complains about whitespace removed by black
+    E231,

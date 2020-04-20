@@ -1,11 +1,13 @@
-version: "3"
+version: "3.4"
 
 volumes:
-  postgres:
+  lngdb:
+  maindb:
 
 networks:
   lng:
   frontend:
+  main:
 
 services:
   proxy:
@@ -22,20 +24,54 @@ services:
 
   web:
     image: gpa-web
-    build: web
+    build:
+      context: web
+      target: builder
+    volumes:
+      - './web:/code'
+    command: npm start
     networks:
       - frontend
 
   api:
     image: gpa-api
-    build: main-api
+    build:
+      context: main-api
+      args:
+        - GPA_USER=${UID:-1000}
+        - GPA_GROUP=${GID:-1000}
+    depends_on:
+      - db
+    volumes:
+      - './main-api/:/usr/src/app'
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_URI=postgresql://gpa:${POSTGRES_PASSWORD}@db:5432/gpa
     networks:
       - frontend
+      - main
       - lng
+
+  db:
+    image: postgres:10-alpine
+    networks:
+      - main
+    ports:
+      - "5433:5432"
+    volumes:
+      - "maindb:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_USER=gpa
+      - POSTGRES_DB=gpa
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
   lng:
     image: lng-api
     build: lng
+    ports:
+      - "8080:8080"
     networks:
       - lng
       - frontend
@@ -53,7 +89,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "postgres:/var/lib/postgresql/data"
+      - "lngdb:/var/lib/postgresql/data"
     environment:
       - POSTGRES_USER=neqsim
       - POSTGRES_DB=neqsim
