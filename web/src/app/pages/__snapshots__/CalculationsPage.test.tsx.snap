@@ -2,20 +2,20 @@
 
 exports[`CalculationSPage snapshots to data 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
+  className="PageContent__StPageContent-sc-1hov9g8-0 hKffIi"
 >
   <div
-    className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
+    className="TitleBlock__StTitleBlock-sc-13pkgsm-0 cJutXF"
   >
     <h1>
       Results
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
+    className="CalculatorPage__StPageWrapper-j4r7p1-0 fVwMHu"
   >
     <p
-      className="Texts__P-teybz3-2 grKhWK"
+      className="Texts__P-sc-1rxjhxp-2 gvEjmS"
     >
       Select a row from the table to see details of the calculation.
     </p>
@@ -28,7 +28,7 @@ exports[`CalculationSPage snapshots to data 1`] = `
     >
       <div>
         <table
-          className="Tables__StStandardTable-sc-5p5bny-1 jmmnft"
+          className="Tables__StStandardTable-sc-1go5j8x-1 kGJGAI"
         >
           <thead>
             <tr>
@@ -80,20 +80,20 @@ exports[`CalculationSPage snapshots to data 1`] = `
 
 exports[`CalculationSPage snapshots to error 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
+  className="PageContent__StPageContent-sc-1hov9g8-0 hKffIi"
 >
   <div
-    className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
+    className="TitleBlock__StTitleBlock-sc-13pkgsm-0 cJutXF"
   >
     <h1>
       Results
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
+    className="CalculatorPage__StPageWrapper-j4r7p1-0 fVwMHu"
   >
     <p
-      className="Texts__P-teybz3-2 grKhWK"
+      className="Texts__P-sc-1rxjhxp-2 gvEjmS"
     >
       Select a row from the table to see details of the calculation.
     </p>
@@ -105,10 +105,10 @@ exports[`CalculationSPage snapshots to error 1`] = `
       }
     >
       <div
-        className="sc-bZQynM iBlShU"
+        className="sc-fzowVh iVgtZG"
       >
         <div
-          className="sc-bdVaJa cRNkdB"
+          className="sc-AxjAm RWZXz"
           type="error"
         >
           <svg
@@ -135,20 +135,20 @@ exports[`CalculationSPage snapshots to error 1`] = `
 
 exports[`CalculationSPage snapshots to loading 1`] = `
 <div
-  className="PageContent__StPageContent-sc-1m5vq8g-0 kNVjng"
+  className="PageContent__StPageContent-sc-1hov9g8-0 hKffIi"
 >
   <div
-    className="TitleBlock__StTitleBlock-sc-1jpbjrp-0 cGhYnk"
+    className="TitleBlock__StTitleBlock-sc-13pkgsm-0 cJutXF"
   >
     <h1>
       Results
     </h1>
   </div>
   <div
-    className="CalculatorPage__StPageWrapper-h4fxsn-0 gfXgRu"
+    className="CalculatorPage__StPageWrapper-j4r7p1-0 fVwMHu"
   >
     <p
-      className="Texts__P-teybz3-2 grKhWK"
+      className="Texts__P-sc-1rxjhxp-2 gvEjmS"
     >
       Select a row from the table to see details of the calculation.
     </p>
@@ -160,10 +160,10 @@ exports[`CalculationSPage snapshots to loading 1`] = `
       }
     >
       <div
-        className="sc-bZQynM iBlShU"
+        className="sc-fzowVh iVgtZG"
       >
         <div
-          className="sc-bdVaJa cqSazf"
+          className="sc-AxjAm fVWqyv"
           type="loading"
         >
           <svg

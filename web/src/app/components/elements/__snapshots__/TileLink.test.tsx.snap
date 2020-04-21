@@ -43,7 +43,7 @@ exports[`CalculateFormContainer snapshots 1`] = `
   background-size: cover;
   background-position: center;
   height: 170px;
-  background-Image: url('');
+  background-image: url('');
 }
 
 .c3 {
@@ -58,7 +58,7 @@ exports[`CalculateFormContainer snapshots 1`] = `
   box-sizing: border-box;
   font-size: 16px;
   line-height: 24px;
-  padding: 0px 10px 10px 20px;
+  padding: 0 10px 10px 20px;
   white-space: pre-wrap;
 }
 

@@ -1,9 +1,7 @@
 {
-  "short_name": "NeqSim",
-  "name": "NeqSim",
-  "icons": [
-
-  ],
+  "short_name": "GPA",
+  "name": "Gas processing apps",
+  "icons": [],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
