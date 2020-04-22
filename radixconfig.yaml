@@ -39,7 +39,7 @@ spec:
               cpu: "20m"
           replicas: 1
     - name: api
-      src: ./api
+      src: ./lng
       ports:
         - name: http
           port: 8080
