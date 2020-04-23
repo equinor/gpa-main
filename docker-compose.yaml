@@ -24,6 +24,7 @@ services:
 
   web:
     image: gpa-web
+    tty: true
     build:
       context: web
       target: builder

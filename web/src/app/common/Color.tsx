@@ -1,4 +1,3 @@
-
 export enum EColor {
   GREEN = '#007079',
   LIGHT_GREEN = '#DEEDEE',
@@ -7,7 +6,7 @@ export enum EColor {
   GRAY = '#6F6F6F',
   LIGHT_GRAY = '#F7F7F7',
   VERY_LIGHT_GRAY = '#fdfdfd',
-  BLACK='#303030',
+  BLACK = '#303030',
   DANGER_RED = '#EB0000',
-  DANGER_LIGHT_RED = '#FFC1C1'
+  DANGER_LIGHT_RED = '#FFC1C1',
 }

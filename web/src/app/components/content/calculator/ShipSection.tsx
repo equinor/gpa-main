@@ -9,11 +9,11 @@ import { IOption, StandardSelect } from '../../elements/Selects';
 import { FormSection } from '../../ui/FormSection';
 
 interface ShipSectionProps {
-  ship: IShip,
-  setShip(ship: IShip): void,
+  ship: IShip;
+  setShip(ship: IShip): void;
 }
 
-export const ShipSection: React.FC<ShipSectionProps> = (props) => {
+export const ShipSection: React.FC<ShipSectionProps> = props => {
   const ships = useQuery(SHIPS_QUERY);
 
   //select ships
@@ -22,72 +22,83 @@ export const ShipSection: React.FC<ShipSectionProps> = (props) => {
   if (ships.data) {
     options = ships.data.ships.map((ship: IShip) => {
       return {
-        value: ship.name + "~" + ship.country,
-        label: ship.name + " (" + ship.country + ")"
-      }
-    })
+        value: ship.name + '~' + ship.country,
+        label: ship.name + ' (' + ship.country + ')',
+      };
+    });
   }
 
   return (
-    <FormSection legendText='Ship' index={1}>
+    <FormSection legendText="Ship" index={1}>
       <StShipInputs>
         <StShipInput>
-          {ships.loading &&
-            <div style={{ height: "61px" }}>
-              Loading
-            </div>
-          }
-          {!ships.loading &&
+          {ships.loading && <div style={{ height: '61px' }}>Loading</div>}
+          {!ships.loading && (
             <StandardSelect
               id="storedShip"
-              label={"Stored ship"}
+              label={'Stored ship'}
               options={options}
               onChange={(e: any) => {
-                props.setShip({ ...props.ship, name: e.value.split("~")[0], country: e.value.split("~")[1] });
+                props.setShip({
+                  ...props.ship,
+                  name: e.value.split('~')[0],
+                  country: e.value.split('~')[1],
+                });
                 setStoredShip(true);
               }}
-              value={props.ship.name && storedShip ? {
-                label: props.ship.name,
-                value: props.ship.name
-              } : null}
-            ></StandardSelect>
-          }
+              value={
+                props.ship.name && storedShip
+                  ? {
+                      label: props.ship.name,
+                      value: props.ship.name,
+                    }
+                  : null
+              }
+            />
+          )}
         </StShipInput>
       </StShipInputs>
-      <div style={{ width: "100%", fontSize: "16px", fontWeight: 500, margin: "20px 0 5px 0" }}>
+      <div
+        style={{
+          width: '100%',
+          fontSize: '16px',
+          fontWeight: 500,
+          margin: '20px 0 5px 0',
+        }}
+      >
         - or -
-    </div>
+      </div>
       <StShipInputs>
         <StShipInput>
           <StandardInput
             id="ship-name"
             label="Name"
             onChange={(e: any) => {
-              props.setShip({ ...props.ship, name: e.target.value })
+              props.setShip({ ...props.ship, name: e.target.value });
               setStoredShip(false);
             }}
             placeholder="Name"
             value={props.ship.name}
             type="text"
             required={true}
-          ></StandardInput>
+          />
         </StShipInput>
         <StShipInput>
           <StandardInput
             id="ship-country"
             label="Country"
             onChange={(e: any) => {
-              props.setShip({ ...props.ship, country: e.target.value })
+              props.setShip({ ...props.ship, country: e.target.value });
               setStoredShip(false);
             }}
             placeholder="Country"
             value={props.ship.country}
             type="text"
-          ></StandardInput>
+          />
         </StShipInput>
       </StShipInputs>
     </FormSection>
-  )
+  );
 };
 
 const StShipInputs = styled.div`
@@ -108,4 +119,4 @@ const SHIPS_QUERY = gql`
       country
     }
   }
-`
+`;

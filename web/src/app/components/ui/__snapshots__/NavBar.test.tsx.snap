@@ -2,104 +2,53 @@
 
 exports[`Navbar snapshots 1`] = `
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  width: 100%;
-  min-height: 64px;
-  border-bottom: 2px solid #f7f7f7;
+  height: 64px;
+  top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  background: rgba(255,255,255,1);
+  box-sizing: border-box;
+  z-index: 1000;
+  display: grid;
+  grid-column-gap: 40px;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'left center right';
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  border-bottom: 2px solid rgba(247,247,247,1);
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0;
+  color: rgba(61,61,61,1);
+  font-family: Equinor;
+  font-size: 1.000rem;
+  font-weight: 400;
+  line-height: 1.000em;
+  -webkit-letter-spacing: 0.013em;
+  -moz-letter-spacing: 0.013em;
+  -ms-letter-spacing: 0.013em;
+  letter-spacing: 0.013em;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-left: 50px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-family: Equinor,serif;
-}
-
-.c1 img.logo {
-  width: 80px;
-  height: 55px;
-  margin: 3px 0;
-  object-fit: cover;
-}
-
-.c1 > span {
-  margin: 2px 0 0 25px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.c1 > span > a,
-.c1 > span a:hover {
-  color: black;
   -webkit-text-decoration: none;
   text-decoration: none;
+  color: inherit;
 }
 
-<nav
+<header
   className="c0"
 >
-  <div
+  <a
     className="c1"
+    href="/gpa"
+    onClick={[Function]}
   >
-    <a
-      href="/neqsim"
-      onClick={[Function]}
-    >
-      <svg
-        fill="none"
-        height={24}
-        viewBox="0 0 24 24"
-        width={24}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          clipRule="evenodd"
-          d="M3 8V6H21V8H3ZM3 13H21V11H3V13ZM3 18H21V16H3V18Z"
-          fill="#007079"
-          fillRule="evenodd"
-        />
-      </svg>
-    </a>
-    <span>
-      <a
-        href="/neqsim"
-        onClick={[Function]}
-      >
-        Neqsim
-      </a>
-    </span>
-  </div>
-  <div
-    style={
-      Object {
-        "height": "24px",
-        "marginRight": "50px",
-      }
-    }
-  />
-</nav>
+    GPA
+  </a>
+</header>
 `;

@@ -11,36 +11,51 @@ import './app/utils/css/branding/brandingDefinitions.css';
 import { CalculationsPage } from './app/pages/CalculationsPage';
 import { CalculationPage } from './app/pages/CalculationPage';
 import { LNGAgeingPage } from './app/pages/LNGAgeingPage';
-import { NeqsimPage } from './app/pages/NeqsimPage';
-import { SiteMenuHeader } from './app/components/ui/SiteMenuHeader';
+import { HomePage } from './app/pages/HomePage';
+// @ts-ignore
+import { Accordion } from '@equinor/eds-core-react';
+
+const { AccordionItem, AccordionHeader, AccordionPanel } = Accordion;
 
 const NotFound = () => <div>Page not found</div>;
 
-export const App = () => (
-  <div style={{ height: '100%' }}>
-    <NavBar />
-    <SiteContent>
-      <SiteMenu>
-        <SiteMenuLink to="/neqsim" name="Home" icon={EIcon.INBOX} />
-        <SiteMenuHeader name="LNG Ageing" />
-        <SiteMenuLink to="/LNGageing" name="About" icon={EIcon.INFO} />
-        <SiteMenuLink
-          to="/calculator"
-          name="Calculator"
-          icon={EIcon.CALCULATOR}
-        />
-        <SiteMenuLink to="/results" name="Results" icon={EIcon.RESULT} />
-      </SiteMenu>
-      <Switch>
-        <Redirect exact from="/" to="/LNGageing" />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/calculator" component={CalculatorPage} />
-        <Route path="/result/:id" component={CalculationPage} />
-        <Route path="/results" component={CalculationsPage} />
-        <Route path="/LNGAgeing" component={LNGAgeingPage} />
-        <Route path="/neqsim" component={NeqsimPage} />
-        <Route path="/" component={NotFound} />
-      </Switch>
-    </SiteContent>
-  </div>
-);
+export const App = () => {
+  return (
+    <div style={{ height: '100%' }}>
+      <NavBar />
+      <SiteContent>
+        <SiteMenu>
+          <SiteMenuLink to="/gpa" name="Home" icon={EIcon.INBOX} />
+          <Accordion>
+            <AccordionItem isExpanded>
+              <AccordionHeader>LNG Ageing</AccordionHeader>
+              <AccordionPanel>
+                <SiteMenuLink to="/lng/about" name="About" icon={EIcon.INFO} />
+                <SiteMenuLink
+                  to="/lng/calculator"
+                  name="Calculator"
+                  icon={EIcon.CALCULATOR}
+                />
+                <SiteMenuLink
+                  to="/lng/results"
+                  name="Results"
+                  icon={EIcon.RESULT}
+                />
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </SiteMenu>
+        <Switch>
+          <Redirect exact from="/" to="/LNGageing" />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/lng/calculator" component={CalculatorPage} />
+          <Route path="/lng/result/:id" component={CalculationPage} />
+          <Route path="/lng/results" component={CalculationsPage} />
+          <Route path="/lng/about" component={LNGAgeingPage} />
+          <Route path="/gpa" component={HomePage} />
+          <Route path="/" component={NotFound} />
+        </Switch>
+      </SiteContent>
+    </div>
+  );
+};

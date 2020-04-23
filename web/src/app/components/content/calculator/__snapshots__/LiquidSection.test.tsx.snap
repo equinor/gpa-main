@@ -74,47 +74,84 @@ exports[`LiquidSection snapshots 1`] = `
   color: black;
 }
 
-.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  color: #6F6F6F;
-  font-size: 12px;
-  font-family: Equinor,serif;
-  padding: 5px 10px 6px 10px;
+.c11 {
+  width: 100%;
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  height: 23px;
+  margin: 0;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f7f7f7;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin: 0;
+  color: rgba(0,0,0,1);
+  font-family: Equinor;
+  font-size: 1.000rem;
+  font-weight: 400;
+  line-height: 1.500em;
+  -webkit-letter-spacing: 0.025em;
+  -moz-letter-spacing: 0.025em;
+  -ms-letter-spacing: 0.025em;
+  letter-spacing: 0.025em;
+  color: #3d3d3d;
+  border-bottom: 1px solid #6f6f6f;
+  outline: 1px solid transparent;
 }
 
-.c7 > span:nth-child(2) {
-  font-weight: bold;
-  color: #EB0000;
+.c11:active,
+.c11:focus {
+  outline-offset: 0;
+  border-bottom: 1px solid transparent;
+  outline: 2px solid #007079;
+}
+
+.c11:disabled {
+  cursor: not-allowed;
+  border-bottom: 1px solid transparent;
+  outline: none;
+}
+
+.c11:disabled:focus,
+.c11:disabled:active {
+  outline: none;
+}
+
+.c10 {
+  position: relative;
 }
 
 .c8 {
-  padding: 7px 10px 6px 10px;
-  background-color: #F7F7F7;
-  border: none;
-  border-bottom: 1px solid;
-  border-color: #6F6F6F;
-  font-size: 16px;
-  font-family: Equinor,serif;
-  line-height: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin: 0;
+  color: rgba(0,0,0,1);
+  font-family: Equinor;
+  font-size: 0.750rem;
+  font-weight: 400;
+  line-height: 1.333em;
+  color: #6f6f6f;
+}
+
+.c9 {
+  margin: 0;
+}
+
+.c7 {
+  min-width: 100px;
   width: 100%;
-  box-sizing: border-box;
-  color: #303030;
-  max-width: 300px;
 }
 
 .c4 {
@@ -136,7 +173,7 @@ exports[`LiquidSection snapshots 1`] = `
   width: 135px;
 }
 
-.c9 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -159,7 +196,7 @@ exports[`LiquidSection snapshots 1`] = `
   flex-direction: column;
 }
 
-.c10 {
+.c13 {
   margin: 15px 0 0 0;
 }
 
@@ -195,37 +232,42 @@ exports[`LiquidSection snapshots 1`] = `
           style={Object {}}
         >
           <div
-            style={
-              Object {
-                "display": "flex",
-                "flexWrap": "wrap",
-                "justifyContent": "space-between",
-              }
-            }
+            className="c7"
           >
             <label
-              className="c7"
+              className="c8"
               htmlFor="liquid-nitrogen"
             >
-              <span>
-                nitrogen
-              </span>
-              <span>
-                 *
-              </span>
+              <p
+                className="c9"
+              >
+                nitrogen*
+              </p>
+              <p
+                className="c9"
+              >
+                
+              </p>
             </label>
-            <input
-              className="c8"
-              id="liquid-nitrogen"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onKeyUp={[Function]}
-              placeholder="nitrogen"
-              required={true}
-              step="0.001"
-              type="number"
-              value={5}
-            />
+            <div
+              className="c10"
+            >
+              <input
+                className="c11"
+                disabled={false}
+                id="liquid-nitrogen"
+                label=""
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="nitrogen"
+                required={true}
+                step="0.001"
+                type="number"
+                value={5}
+              />
+            </div>
+            
           </div>
         </div>
       </div>
@@ -243,44 +285,49 @@ exports[`LiquidSection snapshots 1`] = `
            
         </h3>
         <div
-          className="c9"
+          className="c12"
         >
           <div
             className="c6"
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-methane"
               >
-                <span>
-                  methane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  methane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-methane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="methane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-methane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="methane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -288,37 +335,42 @@ exports[`LiquidSection snapshots 1`] = `
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-ethane"
               >
-                <span>
-                  ethane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  ethane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-ethane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="ethane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-ethane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="ethane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -330,37 +382,42 @@ exports[`LiquidSection snapshots 1`] = `
             }
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-propane"
               >
-                <span>
-                  propane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  propane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-propane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="propane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-propane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="propane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -368,37 +425,42 @@ exports[`LiquidSection snapshots 1`] = `
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-iButane"
               >
-                <span>
-                  iButane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  iButane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-iButane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="iButane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-iButane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="iButane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -406,37 +468,42 @@ exports[`LiquidSection snapshots 1`] = `
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-nButane"
               >
-                <span>
-                  nButane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  nButane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-nButane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="nButane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-nButane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="nButane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -448,37 +515,42 @@ exports[`LiquidSection snapshots 1`] = `
             }
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-iPentane"
               >
-                <span>
-                  iPentane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  iPentane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-iPentane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="iPentane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-iPentane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="iPentane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -486,37 +558,42 @@ exports[`LiquidSection snapshots 1`] = `
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-nPentane"
               >
-                <span>
-                  nPentane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  nPentane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-nPentane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="nPentane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-nPentane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="nPentane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
           <div
@@ -524,44 +601,49 @@ exports[`LiquidSection snapshots 1`] = `
             style={Object {}}
           >
             <div
-              style={
-                Object {
-                  "display": "flex",
-                  "flexWrap": "wrap",
-                  "justifyContent": "space-between",
-                }
-              }
+              className="c7"
             >
               <label
-                className="c7"
+                className="c8"
                 htmlFor="liquid-nHexane"
               >
-                <span>
-                  nHexane
-                </span>
-                <span>
-                   *
-                </span>
+                <p
+                  className="c9"
+                >
+                  nHexane*
+                </p>
+                <p
+                  className="c9"
+                >
+                  
+                </p>
               </label>
-              <input
-                className="c8"
-                id="liquid-nHexane"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onKeyUp={[Function]}
-                placeholder="nHexane"
-                required={true}
-                step="0.001"
-                type="number"
-                value={5}
-              />
+              <div
+                className="c10"
+              >
+                <input
+                  className="c11"
+                  disabled={false}
+                  id="liquid-nHexane"
+                  label=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  placeholder="nHexane"
+                  required={true}
+                  step="0.001"
+                  type="number"
+                  value={5}
+                />
+              </div>
+              
             </div>
           </div>
         </div>
       </div>
     </span>
     <div
-      className="c10"
+      className="c13"
     >
       <span
         style={
@@ -570,7 +652,8 @@ exports[`LiquidSection snapshots 1`] = `
           }
         }
       >
-         Sum: 
+         
+        Sum: 
         <b>
           45
         </b>
