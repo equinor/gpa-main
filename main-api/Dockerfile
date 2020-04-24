@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8
 
 ARG GPA_USER=1000
 ARG GPA_GROUP=1000
