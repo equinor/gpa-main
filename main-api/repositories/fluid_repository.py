@@ -2,7 +2,7 @@ from typing import List
 
 from database import Component as ComponentModel
 from database import Fluid as FluidModel
-from gen.api.gpa_api.models.hg_component import HgComponent
+from gpa_api.models.hg_component import HgComponent
 from gpa_api.models.hg_fluid import HgFluid
 
 

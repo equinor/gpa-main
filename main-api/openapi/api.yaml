@@ -149,10 +149,15 @@ components:
     Ship:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
         country:
           type: string
+        createdDate:
+          type: string
+          format: 'date-time'
     Transport:
       type: object
       properties:
@@ -233,7 +238,7 @@ components:
           $ref: '#/components/schemas/Metric'
         gcv:
           $ref: '#/components/schemas/Metric'
-        gcvMass:
+        gcvmass:
           $ref: '#/components/schemas/Metric'
         density:
           $ref: '#/components/schemas/Metric'
@@ -267,6 +272,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CalculationStep'
+        createdDate:
+          type: string
+          format: 'date-time'
     CalculationBody:
       type: object
       properties:
