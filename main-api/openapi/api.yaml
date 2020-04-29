@@ -279,13 +279,59 @@ components:
       type: object
       properties:
         ship:
-          $ref: '#/components/schemas/Ship'
+          type: object
+          properties:
+            name:
+              type: string
+            country:
+              type: string
         fluid:
-          $ref: '#/components/schemas/Fluid'
+          type: object
+          properties:
+            nitrogen:
+              $ref: '#/components/schemas/Metric'
+            methane:
+              $ref: '#/components/schemas/Metric'
+            ethane:
+              $ref: '#/components/schemas/Metric'
+            propane:
+              $ref: '#/components/schemas/Metric'
+            iButane:
+              $ref: '#/components/schemas/Metric'
+            nButane:
+              $ref: '#/components/schemas/Metric'
+            iPentane:
+              $ref: '#/components/schemas/Metric'
+            nPentane:
+              $ref: '#/components/schemas/Metric'
+            nHexane:
+              $ref: '#/components/schemas/Metric'
         transport:
-          $ref: '#/components/schemas/Transport'
+          type: object
+          properties:
+            volume:
+              type: number
+            pressure:
+              type: number
+            boilOffRate:
+              type: number
+            fromDate:
+              type: string
+              format: 'date-time'
+            toDate:
+              type: string
+              format: 'date-time'
         standard:
-          $ref: '#/components/schemas/Standard'
+          type: object
+          properties:
+            combustionTemperature:
+              type: number
+            measurementTemperature:
+              type: number
+            idealGasReferenceState:
+              type: number
+            standardVersion:
+              type: string
       required:
         - ship
         - fluid
