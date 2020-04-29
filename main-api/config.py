@@ -8,3 +8,4 @@ class Config:
     PORT = os.environ.get("FLASK_RUN_PORT", 8080)
 
     LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO").upper()
+    LNG_URL = os.environ.get("LNG_URL")

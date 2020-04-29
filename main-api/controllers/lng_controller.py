@@ -1,26 +1,32 @@
 import connexion
-import six
-from gpa_api.models import Fluid, Metric, Transport, Standard, CalculationStep
+from connexion import problem
+import requests
+import json
 
+from config import Config
 from gpa_api.models.calculation import Calculation  # noqa: E501
-from gpa_api.models.calculation_body import CalculationBody  # noqa: E501
 from gpa_api.models.ship import Ship  # noqa: E501
-from gpa_api import util
+
+from controllers.queries import SHIPS_QUERY, CALCULATIONS_QUERY, CALCULATION_QUERY, \
+    CALCULATION_MUTATION
 
 
-def calculate(calculation_body):  # noqa: E501
+def calculate():  # noqa: E501
     """Calculate LNG Ageing
 
      # noqa: E501
 
-    :param calculation_body: Object containing all info for a calculation
-    :type calculation_body: dict | bytes
-
     :rtype: Calculation
     """
+
     if connexion.request.is_json:
-        calculation_body = CalculationBody.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+        calculation_body = connexion.request.get_json()
+        r = requests.post(url=Config.LNG_URL, json={'query': CALCULATION_MUTATION, 'variables': calculation_body}, headers={})
+
+        j = json.loads(r.text)
+        return j['data']['addCalculation']['id'], 200
+    else:
+        return problem(status=400, title="Bad request", detail="Could not parse json")
 
 
 def get_calculation(calculation_id):  # noqa: E501
@@ -33,36 +39,12 @@ def get_calculation(calculation_id):  # noqa: E501
 
     :rtype: Calculation
     """
-    return Calculation(
-        id=calculation_id,
-        ship=Ship(
-            name='Ship1',
-            country='Norway',
-        ),
-        fluid=Fluid(
-            id='fluid1',
-            nitrogen=Metric(
-                value=3.6,
-                unit='volume',
-            )
-        ),
-        transport=Transport(
-            id='transport1',
-            volume=5555.66,
-        ),
-        standard=Standard(
-            id='standard1',
-            combustion_temperature=20.3,
-            
-        ),
-        result=[CalculationStep(
-            id='calculationStep1',
-            gcv=Metric(
-                value=55.6,
-                unit='unit1',
-            )
-        )]
-    )
+
+    r = requests.post(url=Config.LNG_URL, json={'query': CALCULATION_QUERY, 'variables': {'id': calculation_id}}, headers={})
+    j = json.loads(r.text)
+    calculation = Calculation.from_dict(j['data']['calculation'])
+
+    return calculation, 200
 
 
 def get_calculations():  # noqa: E501
@@ -73,7 +55,14 @@ def get_calculations():  # noqa: E501
 
     :rtype: List[Calculation]
     """
-    return 'do some magic!'
+
+    r = requests.post(url=Config.LNG_URL, json={'query': CALCULATIONS_QUERY}, headers={})
+    j = json.loads(r.text)
+    calculations = j['data']['calculations']
+
+    result = list(map(lambda s: Calculation.from_dict(s), calculations))
+
+    return result, 200
 
 
 def get_ships():  # noqa: E501
@@ -84,4 +73,11 @@ def get_ships():  # noqa: E501
 
     :rtype: List[Ship]
     """
-    return 'do some magic!'
+
+    r = requests.post(url=Config.LNG_URL, json={'query': SHIPS_QUERY}, headers={})
+    j = json.loads(r.text)
+    ships = j['data']['ships']
+
+    result = list(map(lambda s: Ship.from_dict(s), ships))
+
+    return result, 200
