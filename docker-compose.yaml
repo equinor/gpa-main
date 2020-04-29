@@ -50,6 +50,7 @@ services:
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
       - DATABASE_URI=postgresql://gpa:${POSTGRES_PASSWORD}@db:5432/gpa
+      - LNG_URL=http://lng:8080/api/graphql
     networks:
       - frontend
       - main
