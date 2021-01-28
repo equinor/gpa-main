@@ -14,7 +14,7 @@
     "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.149",
     "@types/node": "^12.12.36",
-    "@types/react": "^16.9.34",
+    "@types/react": "^16.14.2",
     "@types/react-csv": "^1.1.1",
     "@types/react-dom": "^16.9.6",
     "@types/react-flatpickr": "3.8.0",
