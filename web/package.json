@@ -39,7 +39,7 @@
     "react-select": "^3.0.8",
     "react-test-renderer": "^16.13.1",
     "styled-components": "^5.1.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
